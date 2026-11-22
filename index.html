@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson: In a restaurant</title>
+<style>
+:root{--ink:#161b22;--mute:#5d6673;--bg:#f2f4f6;--card:#fff;--line:#d5dae0;--acc:#1f4e5f;--accbg:#e6eef1;--ok:#237a4b;--no:#b3372f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+header{background:var(--acc);color:#fff;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header b{font:600 19px Georgia,serif}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:8px 14px;display:flex;justify-content:center;align-items:center;gap:16px}
+main{max-width:820px;margin:18px auto;padding:0 12px 50px}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 22px}
+section.on{display:block}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.25;margin:.1em 0 .5em}
+h1{font-size:28px}h2{font-size:24px}h3{font-size:18px;margin:1.3em 0 .4em;color:var(--acc)}
+.mute{color:var(--mute);font-size:15px}
+.note{background:var(--accbg);border-left:4px solid var(--acc);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.ru{color:var(--mute);font-size:15px}
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.w{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;gap:12px;align-items:center}
+.w .em{flex:none;font-size:34px;width:48px;text-align:center}
+.w b{font-size:19px}.w .ipa{color:var(--acc);font-size:15px}.w .ex{color:var(--mute);font-size:15px;margin-top:2px}
+table{border-collapse:collapse;width:100%;margin:8px 0}td,th{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}th{width:34%;font-weight:600}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:#f9fafb;border:1px solid #9aa4b0;border-radius:4px;padding:4px 8px;max-width:100%}
+input[type=text]{min-width:130px;width:150px}
+select{margin:2px 0}
+textarea{width:100%;min-height:130px;margin:6px 0}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--acc)}
+input.ok,select.ok{background:#e3f3ea;border-color:var(--ok)}input.no,select.no{background:#fbe6e4;border-color:var(--no)}
+.q{padding:10px 0;border-bottom:1px solid #e6e9ed}.fix{display:block;color:var(--no);font-size:15px;margin-top:3px}
+button{font:inherit;font-weight:600;background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:5px;padding:8px 16px;cursor:pointer}
+button.main{background:var(--acc);color:#fff}button:disabled{opacity:.4;cursor:default}
+button.pl{padding:0 9px;font-size:13px;margin-left:8px}
+button:focus-visible{outline:3px solid #7fb0c0;outline-offset:2px}
+.score{font-weight:600;margin-left:10px}
+.rec{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin:12px 0;background:#fafbfc}
+.rec .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rec audio{width:100%;margin-top:6px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
+.pg{border:1px solid var(--line);border-radius:6px;padding:8px;text-align:center}
+.pg b{display:block;font-size:18px;color:var(--acc)}.pg span{font-size:14px;color:var(--mute)}
+svg.sc{width:120px;height:90px;display:block;margin:0 auto}
+.q svg.sc{margin:0 0 4px}
+.fridge{border:3px solid var(--acc);border-radius:10px;max-width:420px;margin:12px 0;background:#f3fafc}
+.fridge div{padding:8px 14px;border-bottom:2px solid var(--acc);font-size:26px}
+.fridge div:last-child{border-bottom:0}.fridge small{display:block;font-size:14px;color:var(--mute)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:10px 0}
+.menu div{border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.menu b{display:block;font-size:18px}
+
+[hidden]{display:none!important}
+.dlg{border-left:4px solid var(--line);padding-left:14px;margin:8px 0}.dlg p{margin:6px 0}
+.btn{display:inline-block;font-weight:600;background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:5px;padding:8px 16px;cursor:pointer}
+.rec ol{padding-left:22px;margin:8px 0}.rec li{margin:4px 0}
+button{touch-action:manipulation}
+</style></head><body>
+<header><b>English lesson</b><span id="pos"></span></header>
+<nav><button id="prev">Back</button><button id="next" class="main">Next</button></nav>
+<main>
+
+<section>
+<h1>In a restaurant</h1>
+<p>By the end of the lesson you can ask for a table, order food and drink politely, ask about a dish and pay the bill.</p>
+<table><tr><th>Words</th><td>things on the table, money, restaurant words</td></tr>
+<tr><th>Phrases</th><td>Can I have…? / I'd like… / I'll have… / Can you explain what this dish is?</td></tr>
+<tr><th>Stress</th><td>menu, credit card, receipt, dessert and others</td></tr>
+<tr><th>Practice</th><td>choose, match, fill the dialogue</td></tr>
+<tr><th>Speaking</th><td>a dialogue with a waiter, recorded and sent to your teacher</td></tr>
+<tr><th>Writing</th><td>one short dialogue</td></tr></table>
+<p>Name: <input type="text" id="name" placeholder="Your name"></p>
+<p class="mute">Your answers are saved on this device automatically.<br><span class="ru">Твои ответы сохраняются на этом устройстве сами.</span></p>
+</section>
+
+<section>
+<h2>Words: on the table</h2>
+<p class="mute">Press ▶ to listen. (Нажми ▶, чтобы послушать.)</p>
+<div class="words" id="w-table"></div>
+<div class="note"><b>knife</b> /naɪf/: буква k не читается. Много ножей — <b>knives</b> /naɪvz/ (f меняется на ves, как в shelf — shelves).</div>
+</section>
+
+<section>
+<h2>Words: paying and people</h2>
+<div class="words" id="w-pay"></div>
+<div class="note"><b>change</b> — это «сдача» (деньги, которые тебе возвращают): Here's your change. Слово <b>bill</b> (счёт) в США часто говорят <b>check</b>: Can I have the check, please?</div>
+<div class="note"><b>receipt</b> /rɪˈsit/: буква p не читается. Это чек, бумажка с суммой.</div>
+</section>
+
+<section>
+<h2>Words: food and drink</h2>
+<div class="words" id="w-food"></div>
+<div class="note"><b>dessert</b> /dɪˈzɜrt/ — десерт, ударение на втором слоге. Не путай с <b>desert</b> /ˈdɛzərt/ — пустыня.</div>
+</section>
+
+<section>
+<h2>Stress: where is the strong part?</h2>
+<p>В английском слове один слог говорим сильнее и дольше. Это <b>ударение</b>. Если поставить его не туда, слово звучит странно.</p>
+<table>
+<tr><th>MEN-u</th><td><b>menu</b> /ˈmɛnju/. Ударение на <b>первом</b> слоге. Не «ме-НЮ», как по-русски!</td></tr>
+<tr><th>CRE-dit card</th><td><b>credit card</b> /ˈkrɛdɪt kɑrd/. В слове credit ударение на <b>первом</b> слоге: КРЕ-дит. Во втором слове card тоже сильно.</td></tr>
+<tr><th>REST-rant</th><td><b>restaurant</b> /ˈrɛstərɑnt/. Ударение на <b>первом</b> слоге. В быстрой речи звучит почти как «РЕС-трант».</td></tr>
+<tr><th>WAI-ter</th><td><b>waiter</b> /ˈweɪtər/, <b>napkin</b> /ˈnæpkɪn/, <b>water</b> /ˈwɔtər/, <b>chicken</b> /ˈtʃɪkɪn/: ударение на первом.</td></tr>
+<tr><th>de-SSERT</th><td><b>dessert</b> /dɪˈzɜrt/, <b>receipt</b> /rɪˈsit/, <b>delicious</b> /dɪˈlɪʃəs/: ударение на <b>втором</b> слоге.</td></tr>
+</table>
+<p>Послушай и повтори. Первый раз — медленно, потом как в речи.</p>
+<div class="words" id="w-stress"></div>
+<div class="note">Правило для тренировки: <b>двусложные существительные</b> чаще всего имеют ударение на первом слоге (TA-ble, WAI-ter, NAP-kin, MEN-u). Исключения надо запомнить: dessert, receipt, delicious.</div>
+</section>
+
+<section>
+<h2>Phrases: the customer</h2>
+<p>Клиент говорит вежливо. Слово <b>please</b> добавляем почти всегда.</p>
+<table>
+<tr><th>Can I have a table for two, please?</th><td>Можно мне столик на двоих? <button class="pl" data-say="Can I have a table for two, please?">&#9654;</button></td></tr>
+<tr><th>Can I have the menu, please?</th><td>Можно меню? <button class="pl" data-say="Can I have the menu, please?">&#9654;</button></td></tr>
+<tr><th>I'd like a coffee, please.</th><td>Я бы хотел(а) кофе. <button class="pl" data-say="I'd like a coffee, please.">&#9654;</button></td></tr>
+<tr><th>I'll have the soup.</th><td>Я возьму суп. <button class="pl" data-say="I'll have the soup.">&#9654;</button></td></tr>
+<tr><th>Can I have some water, please?</th><td>Можно мне воды? <button class="pl" data-say="Can I have some water, please?">&#9654;</button></td></tr>
+<tr><th>Excuse me, what is this?</th><td>Извините, что это? <button class="pl" data-say="Excuse me, what is this?">&#9654;</button></td></tr>
+<tr><th>Can you explain what this dish is?</th><td>Можете объяснить, что это за блюдо? <button class="pl" data-say="Can you explain what this dish is?">&#9654;</button></td></tr>
+<tr><th>Is there any meat in it?</th><td>В нём есть мясо? <button class="pl" data-say="Is there any meat in it?">&#9654;</button></td></tr>
+<tr><th>Can I pay by card?</th><td>Можно заплатить картой? <button class="pl" data-say="Can I pay by card?">&#9654;</button></td></tr>
+<tr><th>Can I have the bill, please?</th><td>Можно счёт? <button class="pl" data-say="Can I have the bill, please?">&#9654;</button></td></tr>
+<tr><th>Thank you. It was delicious.</th><td>Спасибо. Было очень вкусно. <button class="pl" data-say="Thank you. It was delicious.">&#9654;</button></td></tr>
+</table>
+</section>
+
+<section>
+<h2>Phrases: the waiter</h2>
+<p>Официант тоже говорит вежливо. Эти фразы тебе надо <b>понимать</b>.</p>
+<table>
+<tr><th>Hello! Welcome.</th><td>Здравствуйте! Добро пожаловать. <button class="pl" data-say="Hello! Welcome.">&#9654;</button></td></tr>
+<tr><th>A table for how many?</th><td>Столик на сколько человек? <button class="pl" data-say="A table for how many?">&#9654;</button></td></tr>
+<tr><th>This way, please.</th><td>Пройдите сюда, пожалуйста. <button class="pl" data-say="This way, please.">&#9654;</button></td></tr>
+<tr><th>Here's the menu.</th><td>Вот меню. <button class="pl" data-say="Here's the menu.">&#9654;</button></td></tr>
+<tr><th>Are you ready to order?</th><td>Вы готовы сделать заказ? <button class="pl" data-say="Are you ready to order?">&#9654;</button></td></tr>
+<tr><th>What would you like?</th><td>Что бы вы хотели? <button class="pl" data-say="What would you like?">&#9654;</button></td></tr>
+<tr><th>Would you like something to drink?</th><td>Хотите что-нибудь выпить? <button class="pl" data-say="Would you like something to drink?">&#9654;</button></td></tr>
+<tr><th>Anything else?</th><td>Что-нибудь ещё? <button class="pl" data-say="Anything else?">&#9654;</button></td></tr>
+<tr><th>Here you are.</th><td>Пожалуйста (когда что-то подаём). <button class="pl" data-say="Here you are.">&#9654;</button></td></tr>
+<tr><th>Enjoy your meal!</th><td>Приятного аппетита! <button class="pl" data-say="Enjoy your meal!">&#9654;</button></td></tr>
+<tr><th>Cash or card?</th><td>Наличными или картой? <button class="pl" data-say="Cash or card?">&#9654;</button></td></tr>
+<tr><th>Here's your change.</th><td>Вот ваша сдача. <button class="pl" data-say="Here's your change.">&#9654;</button></td></tr>
+</table>
+</section>
+
+<section>
+<h2>Rules: Can I have / I'd like / I'll have</h2>
+<table>
+<tr><th>Can I have…?</th><td>Вопрос: <b>просим</b> что-то. Can I have <b>a</b> coffee? Can I have <b>the</b> bill? Can I have <b>some</b> water?</td></tr>
+<tr><th>I'd like…</th><td>Утверждение: «я бы хотел». Вежливо. I'd like <b>a</b> pizza. I'd like <b>some</b> tea.</td></tr>
+<tr><th>I'll have…</th><td>Утверждение: «я возьму». Решил и говоришь официанту. I'll have <b>the</b> soup.</td></tr>
+<tr><th>I want…</th><td>Звучит грубо. В ресторане лучше не говорить.</td></tr>
+</table>
+<div class="note"><b>I'd</b> = I would. <b>I'll</b> = I will. Не путай: I'd like (хотел бы), I'll have (возьму).</div>
+<h3>a / the / some</h3>
+<p><b>a / an</b> — один предмет: a coffee, an egg. <b>some</b> — неисчисляемое: some water, some rice. <b>the</b> — конкретный предмет, который есть у всех в голове: the menu, the bill, the soup (из меню).</p>
+<h3>Is there any…?</h3>
+<p>Если хочешь узнать, что внутри блюда: <b>Is there any</b> meat in it? Ответ: <b>Yes, there is.</b> / <b>No, there isn't.</b> Много предметов: <b>Are there any</b> nuts in it? — Yes, there are. / No, there aren't.</p>
+</section>
+
+<section>
+<h2>Dialogue 1: a table</h2>
+<div class="dlg">
+<p><b>Waiter:</b> Hello! Welcome. A table for how many?</p>
+<p><b>You:</b> Can I have a table for two, please?</p>
+<p><b>Waiter:</b> Sure. This way, please. Here's the menu.</p>
+<p><b>You:</b> Thank you.</p>
+</div>
+<h2 style="margin-top:22px">Dialogue 2: the order</h2>
+<div class="dlg">
+<p><b>Waiter:</b> Are you ready to order?</p>
+<p><b>You:</b> Yes. Can I have the chicken soup, please?</p>
+<p><b>Waiter:</b> Of course. Anything to drink?</p>
+<p><b>You:</b> I'd like a coffee, please.</p>
+<p><b>Waiter:</b> And for your friend?</p>
+<p><b>Friend:</b> I'll have the pizza and some water.</p>
+</div>
+</section>
+
+<section>
+<h2>Dialogue 3: what is this dish?</h2>
+<div class="dlg">
+<p><b>You:</b> Excuse me, can you explain what this dish is?</p>
+<p><b>Waiter:</b> It's chicken with rice and vegetables.</p>
+<p><b>You:</b> Is there any fish in it?</p>
+<p><b>Waiter:</b> No, there isn't.</p>
+<p><b>You:</b> Great. I'll have it, please.</p>
+</div>
+<h2 style="margin-top:22px">Dialogue 4: the bill</h2>
+<div class="dlg">
+<p><b>You:</b> Can I have the bill, please?</p>
+<p><b>Waiter:</b> Sure. Here you are. Cash or card?</p>
+<p><b>You:</b> Can I pay by credit card?</p>
+<p><b>Waiter:</b> Yes, of course.</p>
+<p><b>You:</b> Thank you. It was delicious.</p>
+<p><b>Waiter:</b> Enjoy your day!</p>
+</div>
+<div class="note">Деньги: <b>cash</b> — наличные, <b>credit card</b> — кредитная карта, <b>change</b> — сдача, <b>tip</b> — чаевые. Чаевые в США обычно 15–20%: Keep the change.</div>
+</section>
+
+<section><h2>Practice 1: words</h2><p class="mute">Choose the word. (Выбери слово.)</p><div id="ex-words"></div></section>
+<section><h2>Practice 2: stress</h2><p class="mute">Where is the strong part? (Где ударение?)</p><div id="ex-stress"></div></section>
+<section><h2>Practice 3: who says it?</h2><p class="mute">Waiter or customer? (Официант или клиент?)</p><div id="ex-who"></div></section>
+<section><h2>Practice 4: Can I have, I'd like, I'll have</h2><p class="mute">Choose the best phrase. (Выбери подходящую фразу.)</p><div id="ex-phr"></div></section>
+<section><h2>Practice 5: question and answer</h2><p class="mute">Choose the answer. (Выбери ответ.)</p><div id="ex-qa"></div></section>
+<section><h2>Practice 6: from Russian to English</h2><p class="mute">Choose the right English phrase. (Выбери английскую фразу.)</p><div id="ex-ru"></div></section>
+<section><h2>Practice 7: fill the dialogue</h2><p class="mute">Choose the missing line. (Выбери пропущенную реплику.)</p><div id="ex-dlg"></div></section>
+
+<section><h2>Practice 8: the menu</h2>
+<div class="menu">
+<div><b>🍲 Chicken soup</b>chicken, carrots, onion, rice. £5</div>
+<div><b>🥗 Greek salad</b>tomatoes, cucumbers, cheese, olives. £6</div>
+<div><b>🍕 Pizza</b>tomatoes, cheese, mushrooms. £9</div>
+<div><b>🍝 Pasta</b>pasta, cream, chicken. £8</div>
+<div><b>🍰 Cake</b>eggs, flour, sugar, butter. £4</div>
+<div><b>☕ Coffee</b>£3</div>
+</div>
+<p class="mute">Read the menu and answer. (Прочитай меню и ответь.)</p>
+<div id="ex-menu"></div></section>
+
+<section><h2>Practice 9: write the word</h2><p class="mute">Write one word. (Напиши одно слово.)</p><div id="ex-wr"></div></section>
+
+<section>
+<h2>Speaking and writing</h2>
+<h3>Speaking</h3>
+<div class="rec" id="recbox">
+<p id="rtask"><b>Task:</b> Choose one situation and say the whole dialogue (you and the waiter). Say 8–10 lines. Use: Can I have…? I'd like… I'll have… Can you explain what this dish is? Can I have the bill, please?</p>
+<ol>
+<li>Friday evening. You come to a restaurant with a friend. You want a table by the window. You don't know one dish on the menu.</li>
+<li>Your birthday. You come with your family: a table for four. Order a starter, a main dish, a dessert and drinks for everybody.</li>
+<li>You are at the airport cafe and you are in a hurry. Order fast, ask for the bill and pay by card.</li>
+</ol>
+<p class="ru">Выбери одну ситуацию и произнеси весь диалог: и за себя, и за официанта.</p>
+<div class="row"><button id="rbtn" class="main" type="button">Record</button><span id="rtime" class="mute">0:00 / 5:00</span></div>
+<audio id="raud" controls hidden></audio>
+<div class="row"><button id="rre" type="button" disabled>Re-record</button><button id="rdel" type="button" disabled>Delete</button><button id="rlink" type="button" class="main" disabled>Send to teacher</button><button id="rsend" type="button" disabled>Share</button><button id="rsave" type="button" disabled>Save</button></div>
+<div class="row" id="rconf" hidden><b>Are you sure you want to send this recording?</b><button id="ryes" type="button" class="main">Yes, send</button><button id="rno" type="button">Cancel</button></div>
+<div class="row"><label class="btn">🎙️ Record with your phone's recorder app<input type="file" id="rfile" accept="audio/*" capture hidden></label></div>
+<p class="mute" style="font-size:14px">If the Record button asks nothing or does nothing, use this button. It opens the recorder of your phone, then the recording appears here.</p>
+<p class="mute" style="font-size:13px">If sending does not work, use Share or Save.</p>
+<p class="mute" id="rstat" role="status"></p>
+</div>
+<h3>Writing</h3>
+<p>Write a short dialogue in a restaurant. 6–8 lines: Waiter and You.</p>
+<p class="ru">Пример: <i>Waiter: Are you ready to order? You: Yes. I'll have the pizza, please. Can I have some water?</i></p>
+<textarea data-open="My dialogue"></textarea>
+</section>
+
+<section>
+<h2>Done</h2>
+<p>Press the button to send your answers to your teacher.</p>
+<button class="main" id="send" type="button">Send answers to teacher</button> <button id="copy" type="button">Copy answers</button>
+<p id="status"></p>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+<script>
+// ===== Teacher: VK settings (answers go to VK) =====
+const VK_TOKEN="vk1.a.tK6DmD3Qyhn1JVv2ZYrg3ximf65iPMjojvveQxeJyIksMAyKtxWuXtHKK7aty8JmBVzheAGRPAsrCQiMsT87GsbMelSpTowNBEriOaYGYBiYU0XD0evk8OgY8IgjDLmF-8V11GtA4F25Dg-nUtpbY-QWy_4pU6XEs0-jzCbLo-MFV0sfC5rIwDBTNUv0N-TCZGKjw_PeJnJolFrBOt1LaA";   // community access key with "messages" permission
+const VK_USER="267123155";            // your numeric VK id (digits only)
+function vk(m,p){return new Promise((ok,no)=>{const cb="vk"+Math.random().toString(36).slice(2),sc=document.createElement("script");
+ window[cb]=r=>{delete window[cb];sc.remove();ok(r)};sc.onerror=()=>{delete window[cb];sc.remove();no()};
+ sc.src="https://api.vk.com/method/"+m+"?"+new URLSearchParams({...p,access_token:VK_TOKEN,v:"5.199",callback:cb});document.head.append(sc)})}
+async function vkSend(text){
+ const r=await vk("messages.send",{peer_ids:VK_USER,random_id:Date.now()+Math.floor(Math.random()*1e6),message:text});
+ if(r&&r.error)throw "VK error "+r.error.error_code+": "+r.error.error_msg;
+ const x=r&&r.response&&r.response[0];
+ if(x&&x.error)throw "VK error "+x.error.code+": "+(x.error.description||"message not sent");
+ if(!(x&&x.conversation_message_id))throw "VK did not confirm the message";
+ return true}
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+// ===== Word cards: [word, russian, example, emoji, ipa] =====
+const T=[
+["a spoon","ложка","I eat soup with a spoon.","🥄","spun"],
+["a fork","вилка","I eat pasta with a fork.","🍴","fɔrk"],
+["a knife","нож","I cut meat with a knife.","🔪","naɪf"],
+["a plate","тарелка","The pizza is on the plate.","🍽️","pleɪt"],
+["a bowl","миска, глубокая тарелка","I'd like a bowl of soup.","🥣","boʊl"],
+["a glass","стакан, бокал","Can I have a glass of water?","🥛","glæs"],
+["a cup","чашка","I'd like a cup of tea.","☕","kʌp"],
+["a napkin","салфетка","Can I have a napkin, please?","🧻","ˈnæpkɪn"],
+["a menu","меню","Can I have the menu, please?","📋","ˈmɛnju"],
+["a table","стол, столик","A table for two, please.","🪑","ˈteɪbəl"],
+["a waiter","официант","The waiter is nice.","🧑‍🍳","ˈweɪtər"],
+["a dish","блюдо","What is this dish?","🍛","dɪʃ"]];
+const M=[
+["the bill","счёт","Can I have the bill, please?","🧾","bɪl"],
+["the check","счёт (американский вариант)","Can I have the check, please?","🧾","tʃɛk"],
+["change","сдача","Here's your change.","🪙","tʃeɪndʒ"],
+["cash","наличные","Cash or card?","💵","kæʃ"],
+["a credit card","кредитная карта","Can I pay by credit card?","💳","ˈkrɛdɪt kɑrd"],
+["a receipt","чек","Here's your receipt.","🧾","rɪˈsit"],
+["a tip","чаевые","Thank you for the tip.","💰","tɪp"],
+["a price","цена","The price is five pounds.","🏷️","praɪs"],
+["to pay","платить","Can I pay by card?","🤝","peɪ"]];
+const D=[
+["soup","суп","I'll have the soup.","🍲","sup"],
+["a salad","салат","I'd like a salad.","🥗","ˈsæləd"],
+["a starter","закуска (перед основным)","I'll have a starter.","🥟","ˈstɑrtər"],
+["a main course","основное блюдо","The main course is chicken.","🍗","meɪn kɔrs"],
+["a dessert","десерт","I'd like a dessert.","🍰","dɪˈzɜrt"],
+["a drink","напиток","Would you like a drink?","🥤","drɪŋk"],
+["water","вода","Can I have some water?","💧","ˈwɔtər"],
+["juice","сок","I'd like some juice.","🧃","dʒus"],
+["tea","чай","I'd like some tea.","🍵","ti"],
+["coffee","кофе","Can I have a coffee?","☕","ˈkɔfi"],
+["chicken","курица","Is there any chicken in it?","🍗","ˈtʃɪkɪn"],
+["fish","рыба","Is there any fish in it?","🐟","fɪʃ"],
+["meat","мясо","I don't eat meat.","🥩","mit"],
+["vegetables","овощи","The dish has vegetables.","🥦","ˈvɛdʒtəbəlz"],
+["rice","рис","Chicken with rice, please.","🍚","raɪs"],
+["pasta","паста","I'll have the pasta.","🍝","ˈpɑstə"],
+["pizza","пицца","I'd like a pizza.","🍕","ˈpitsə"],
+["ice cream","мороженое","I'd like some ice cream.","🍨","ˈaɪs krim"],
+["delicious","очень вкусный","It was delicious.","😋","dɪˈlɪʃəs"]];
+const ST=[
+["menu","МЕН-ю (1-й слог)","MEN-u: Can I have the menu?","📋","ˈmɛnju"],
+["credit card","КРЕ-дит кард (1-й слог в credit)","CRE-dit card: I pay by credit card.","💳","ˈkrɛdɪt kɑrd"],
+["restaurant","РЕС-трант (1-й слог)","REST-rant: We eat in a restaurant.","🍽️","ˈrɛstərɑnt"],
+["waiter","УЭЙ-тер (1-й слог)","WAI-ter: The waiter is here.","🧑‍🍳","ˈweɪtər"],
+["napkin","НЭП-кин (1-й слог)","NAP-kin: Can I have a napkin?","🧻","ˈnæpkɪn"],
+["water","УО-тер (1-й слог)","WA-ter: Some water, please.","💧","ˈwɔtər"],
+["chicken","ЧИ-кен (1-й слог)","CHI-ken: chicken soup.","🍗","ˈtʃɪkɪn"],
+["dessert","ди-ЗЕРТ (2-й слог)","de-SSERT: I'd like a dessert.","🍰","dɪˈzɜrt"],
+["receipt","ри-СИТ (2-й слог), p не читается","re-CEIPT: Here's your receipt.","🧾","rɪˈsit"],
+["delicious","ди-ЛИ-шес (2-й слог)","de-LI-cious: It was delicious.","😋","dɪˈlɪʃəs"],
+["vegetables","ВЕДЖ-та-белз (1-й слог)","VEG-ta-bles: fresh vegetables.","🥦","ˈvɛdʒtəbəlz"]];
+function cards(id,L){$(id).innerHTML=L.map(w=>`<div class="w"><div class="em">${w[3]}</div><div><b>${w[0]}</b>${w[4]?` <span class="ipa">/${w[4]}/</span>`:""}<button class="pl" type="button" data-say="${w[0].replace(/ \/ .*/,"").replace(/^(an?|some|the|to) /,"")}" aria-label="Listen">&#9654;</button><div>${w[1]}</div><div class="ex">${w[2]}</div></div></div>`).join("")}
+cards("#w-table",T);cards("#w-pay",M);cards("#w-food",D);cards("#w-stress",ST);
+
+// ===== Pronunciation (browser voice, American English) =====
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;
+ const v=speechSynthesis.getVoices().find(v=>/^en[-_]US$/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-say]");if(b)speak(b.dataset.say)});
+if(window.speechSynthesis)speechSynthesis.getVoices();
+
+// ===== Exercises: item = [text with __, answer(s) a/b, options or null, explanation in Russian] =====
+const eg=w=>String(w).replace(/"/g,"&quot;");
+function ex(id,items){$("#ex-"+id).innerHTML=items.map(it=>{const[t,a,o,w]=it;
+ const c=o?`<select data-a="${eg(a)}" data-why="${eg(w)}"><option value="">…</option>${o.map(x=>`<option value="${eg(x)}">${x}</option>`).join("")}</select>`
+  :`<input type="text" data-a="${eg(a)}" data-why="${eg(w)}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">`;
+ return `<div class="q">${t.replace("__",c)}</div>`}).join("")
+ +`<p><button type="button" data-chk="${id}">Check</button><span class="score" id="sc-${id}"></span></p>`}
+const norm=s=>s.toLowerCase().replace(/-/g," ").replace(/[’`]/g,"'").replace(/[.,!?]/g,"").replace(/\s+/g," ").trim();
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-chk]");if(!b)return;const id=b.dataset.chk;
+ let ok=0;const ins=$$("#ex-"+id+" input,#ex-"+id+" select");
+ ins.forEach(i=>{const nx=i.nextElementSibling;nx&&nx.classList.contains("fix")&&nx.remove();
+  const al=i.dataset.a.split("/"),good=al.some(x=>norm(x)==norm(i.value));i.className=good?"ok":"no";
+  if(good){ok++;i.dataset.m=0}else{const m=(+i.dataset.m||0)+1;i.dataset.m=m;const s=document.createElement("span");s.className="fix";
+   s.textContent=m==1?"Try again. Попробуй ещё раз.":"Answer: "+al[0]+". "+i.dataset.why;i.after(s)}});
+ $("#sc-"+id).textContent=ok+" / "+ins.length+(ok==ins.length?"  Excellent!":"")});
+
+const W=["spoon","fork","knife","napkin","menu","receipt","bill","change","tip","plate","waiter","card","dish","dessert"];
+ex("words",[
+["🥄 You eat soup with a __.","spoon",W,"spoon — ложка."],
+["🍴 You eat pasta with a __.","fork",W,"fork — вилка."],
+["🔪 You cut meat with a __.","knife",W,"knife — нож. Буква k не читается."],
+["You clean your hands and mouth with a __.","napkin",W,"napkin — салфетка."],
+["📋 You read it and choose food: the __.","menu",W,"menu — меню."],
+["🧾 You pay and you get a __.","receipt",W,"receipt — чек. Буква p не читается."],
+["The paper with the total price: the __.","bill",W,"bill — счёт."],
+["You pay £10 for a £8 coffee. The waiter gives you £2. This is your __.","change",W,"change — сдача."],
+["Extra money for a good waiter: a __.","tip",W,"tip — чаевые."],
+["🍽️ The pizza is on the __.","plate",W,"plate — тарелка."],
+["He brings your food: the __.","waiter",W,"waiter — официант."],
+["You can pay by cash or by credit __.","card",W,"credit card — кредитная карта."],
+["A plate of food with a name, like «chicken with rice»: a __.","dish",W,"dish — блюдо."],
+["🍰 You eat it after the main course: a __.","dessert",W,"dessert — десерт, ударение на втором слоге."]]);
+
+const SS=["MEN-u","men-U"],S2=["CRE-dit","cre-DIT"],S3=["RES-tau-rant","res-TAU-rant"],S4=["WAI-ter","wai-TER"],S5=["NAP-kin","nap-KIN"],S6=["DES-sert","de-SSERT"],S7=["REC-eipt","re-CEIPT"],S8=["DE-li-cious","de-LI-cious"],S9=["WA-ter","wa-TER"],S10=["CHI-cken","chi-CKEN"];
+ex("stress",[
+["menu: __","MEN-u",SS,"menu /ˈmɛnju/ — ударение на первом слоге."],
+["credit card: __ card","CRE-dit",S2,"credit /ˈkrɛdɪt/ — ударение на первом слоге."],
+["restaurant: __","RES-tau-rant",S3,"restaurant /ˈrɛstərɑnt/ — ударение на первом слоге."],
+["waiter: __","WAI-ter",S4,"waiter /ˈweɪtər/ — ударение на первом слоге."],
+["napkin: __","NAP-kin",S5,"napkin /ˈnæpkɪn/ — ударение на первом слоге."],
+["dessert: __","de-SSERT",S6,"dessert /dɪˈzɜrt/ — ударение на втором слоге."],
+["receipt: __","re-CEIPT",S7,"receipt /rɪˈsit/ — ударение на втором слоге."],
+["delicious: __","de-LI-cious",S8,"delicious /dɪˈlɪʃəs/ — ударение на втором слоге."],
+["water: __","WA-ter",S9,"water /ˈwɔtər/ — ударение на первом слоге."],
+["chicken: __","CHI-cken",S10,"chicken /ˈtʃɪkɪn/ — ударение на первом слоге."]]);
+
+const WC=["Waiter","Customer"];
+ex("who",[
+["“Are you ready to order?” — __","Waiter",WC,"Это спрашивает официант."],
+["“Can I have the menu, please?” — __","Customer",WC,"Это просит клиент."],
+["“I'll have the soup.” — __","Customer",WC,"Это говорит клиент, когда выбирает."],
+["“Here's your change.” — __","Waiter",WC,"Сдачу даёт официант."],
+["“Can you explain what this dish is?” — __","Customer",WC,"Это спрашивает клиент."],
+["“Enjoy your meal!” — __","Waiter",WC,"Это желает официант."],
+["“Cash or card?” — __","Waiter",WC,"Это спрашивает официант."],
+["“Can I pay by card?” — __","Customer",WC,"Это спрашивает клиент."],
+["“Would you like something to drink?” — __","Waiter",WC,"Это спрашивает официант."],
+["“I'd like a coffee, please.” — __","Customer",WC,"Это говорит клиент."],
+["“Anything else?” — __","Waiter",WC,"Это спрашивает официант."],
+["“Can I have the bill, please?” — __","Customer",WC,"Это просит клиент."]]);
+
+const PH=["Can I have","I'd like","I'll have","I want"],PC=["Can I","Can I have","I'd like"];
+ex("phr",[
+["__ a table for two, please?","Can I have",PH,"Вопрос со знаком «?» → Can I have…?"],
+["Waiter: What would you like? You: __ the fish, please.","I'll have/I'd like",PH,"Утверждение при заказе: I'll have… (возьму) или I'd like… (хотел бы). Обе фразы подходят."],
+["__ some water, please?","Can I have",PH,"Просьба-вопрос → Can I have…?"],
+["Which phrase is not polite? __ a burger.","I want",PH,"I want звучит грубо. В ресторане говорим I'd like или I'll have."],
+["__ the menu, please?","Can I have",PH,"Просьба-вопрос → Can I have…?"],
+["Waiter: Are you ready to order? You: Yes. __ the pasta.","I'll have/I'd like",PH,"Решил и заказываешь: I'll have… или I'd like…"],
+["__ pay by card?","Can I",PC,"С глаголом pay: Can I pay…? Слово have здесь не нужно."],
+["You want a polite way to say «Я бы хотел чай»: __ some tea, please.","I'd like",PH,"I'd like = я бы хотел. Это вежливо."]]);
+
+ex("qa",[
+["Waiter: “Are you ready to order?” You: __","Yes, I'll have the soup.",["Yes, I'll have the soup.","Yes, it is delicious.","No, I'm a waiter."],"Это ответ на вопрос о заказе."],
+["Waiter: “Would you like something to drink?” You: __","Yes, I'd like a coffee, please.",["Yes, I'd like a coffee, please.","Yes, it is on the table.","I'm ready."],"Просим напиток: I'd like a coffee."],
+["Waiter: “Cash or card?” You: __","Card, please.",["Card, please.","Yes, please.","Two, please."],"Выбираем: cash или card."],
+["Waiter: “A table for how many?” You: __","Two, please.",["Two, please.","Card, please.","Yes, I'm ready."],"How many → число."],
+["You: “Is there any meat in it?” Waiter: __","No, there isn't.",["No, there isn't.","No, I'm not.","Yes, I'd like."],"Вопрос Is there any…? → Yes, there is. / No, there isn't."],
+["Waiter: “Here's your change.” You: __","Thank you.",["Thank you.","Two, please.","I'll have it."],"Благодарим: Thank you."],
+["Waiter: “Anything else?” You: __","No, thank you. That's all.",["No, thank you. That's all.","Yes, it's a spoon.","Cash, please."],"Больше ничего: No, thank you. That's all."],
+["Waiter: “Enjoy your meal!” You: __","Thank you!",["Thank you!","You're ready.","I'd like it."],"Благодарим: Thank you!"]]);
+
+ex("ru",[
+["Можно мне счёт? → __","Can I have the bill, please?",["Can I have the bill, please?","Can I have the menu, please?","Can I pay by card?"],"bill — счёт."],
+["Я возьму суп. → __","I'll have the soup.",["I'll have the soup.","I'll have the salad.","Is there any soup?"],"I'll have… — я возьму."],
+["Можно столик на двоих? → __","Can I have a table for two, please?",["Can I have a table for two, please?","Can I have a table for four, please?","I'd like to pay for two."],"for two — на двоих."],
+["Можете объяснить, что это за блюдо? → __","Can you explain what this dish is?",["Can you explain what this dish is?","Can you bring this dish, please?","What is your name?"],"explain — объяснить, dish — блюдо."],
+["Можно заплатить картой? → __","Can I pay by card?",["Can I pay by card?","Can I have cash?","Can I have a card?"],"pay by card — заплатить картой."],
+["Я бы хотел кофе. → __","I'd like a coffee.",["I'd like a coffee.","I'll like a coffee.","I have a coffee."],"I'd like — я бы хотел."],
+["В нём есть рыба? → __","Is there any fish in it?",["Is there any fish in it?","Is it a fish?","Is there a fish on me?"],"Is there any…? — есть ли…"],
+["Вы готовы сделать заказ? → __","Are you ready to order?",["Are you ready to order?","Are you ready to pay?","Do you like to order?"],"order — заказывать."]]);
+
+ex("dlg",[
+["Waiter: Hello! Welcome. A table for how many?<br>You: __","A table for two, please.",["A table for two, please.","I'll have the soup.","Here's your change."],"How many? → число людей."],
+["You: Can I have the menu, please?<br>Waiter: __","Here's the menu.",["Here's the menu.","Here's your change.","Cash or card?"],"Официант даёт меню."],
+["Waiter: Are you ready to order?<br>You: __","Yes. I'll have the pizza, please.",["Yes. I'll have the pizza, please.","Here you are.","Enjoy your meal!"],"Клиент заказывает."],
+["You: __<br>Waiter: It's chicken with rice and vegetables.","Can you explain what this dish is?",["Can you explain what this dish is?","Can I have the bill, please?","Are you ready to order?"],"Официант объясняет блюдо."],
+["You: Is there any fish in it?<br>Waiter: __","No, there isn't.",["No, there isn't.","Yes, I'm ready.","Cash, please."],"Is there any…? → Yes, there is. / No, there isn't."],
+["Waiter: Would you like something to drink?<br>You: __","I'd like some water, please.",["I'd like some water, please.","It's chicken with rice.","Here you are."],"Просим напиток."],
+["You: __<br>Waiter: Sure. Here you are. Cash or card?","Can I have the bill, please?",["Can I have the bill, please?","I'll have the soup.","This way, please."],"Просим счёт."],
+["Waiter: Cash or card?<br>You: __","Can I pay by card?",["Can I pay by card?","Enjoy your meal!","This way, please."],"Выбираем оплату."],
+["Waiter: Here's your change.<br>You: __","Thank you. It was delicious.",["Thank you. It was delicious.","Can I have a table?","I'll have the pasta."],"Благодарим."]]);
+
+const YS=["Yes, there is.","No, there isn't."],YP=["Yes, there are.","No, there aren't."];
+ex("menu",[
+["How much is the pizza? __","£9",["£8","£9","£10"],"В меню pizza — £9."],
+["Is there any meat in the Greek salad? __","No, there isn't.",YS,"В Greek salad нет мяса (tomatoes, cucumbers, cheese, olives)."],
+["Is there any chicken in the soup? __","Yes, there is.",YS,"В chicken soup есть chicken."],
+["Are there any mushrooms in the pizza? __","Yes, there are.",YP,"В pizza есть mushrooms."],
+["Are there any eggs in the pasta? __","No, there aren't.",YP,"В pasta нет eggs."],
+["Are there any eggs in the cake? __","Yes, there are.",YP,"В cake есть eggs."],
+["Mia: “I'll have the soup and a coffee.” How much is it? __","£8",["£7","£8","£9"],"Soup £5 + coffee £3 = £8."],
+["Tom: “I'll have the pizza and a cake.” How much is it? __","£13",["£12","£13","£14"],"Pizza £9 + cake £4 = £13."],
+["You are vegetarian (no meat, no fish). Which dish is good? __","Greek salad/Pizza",["Chicken soup","Pasta","Greek salad","Pizza"],"В Greek salad и pizza нет мяса. В soup и pasta есть chicken."],
+["Can you explain what the pasta is? — It's pasta with cream and __.","chicken",["chicken","fish","olives"],"В меню: pasta, cream, chicken."]]);
+
+ex("wr",[
+["Can I have the __, please? (счёт)","bill/check",null,"bill — счёт."],
+["A table for __, please. (на двоих)","two",null,"two — два."],
+["I'd __ a coffee, please.","like",null,"I'd like — я бы хотел."],
+["I'll __ the soup.","have",null,"I'll have — я возьму."],
+["Can I __ by card?","pay",null,"pay — платить."],
+["Here's your __. (сдача)","change",null,"change — сдача."],
+["Are you ready to __?","order",null,"Are you ready to order? — Вы готовы заказать?"],
+["Enjoy your __!","meal",null,"Enjoy your meal! — Приятного аппетита!"],
+["It was __. (очень вкусно)","delicious",null,"delicious — очень вкусный."],
+["You cut meat with a __.","knife",null,"knife — нож."],
+["Can you __ what this dish is?","explain",null,"explain — объяснить."]]);
+
+// ===== Autosave on this device =====
+const KEY="lesson_restaurant_v1",fields=()=>$$("input[type=text],textarea,select");
+function save(){try{localStorage.setItem(KEY,JSON.stringify({v:fields().map(f=>f.value),p:cur}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;fields().forEach((f,i)=>{if(d.v[i]!=null)f.value=d.v[i]});return d.p||0}catch(e){return 0}}
+document.addEventListener("input",e=>{if(e.target.matches("input[type=text],textarea,select"))save()});
+document.addEventListener("change",e=>{if(e.target.matches("select"))save()});
+
+// ===== Slides =====
+const S=$$("section");let cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle("on",k==cur));
+ $("#pos").textContent=(cur+1)+" / "+S.length;$("#prev").disabled=cur==0;$("#next").disabled=cur==S.length-1;scrollTo(0,0);save()}
+$("#prev").onclick=()=>go(cur-1);$("#next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(e.target.matches("input,textarea,select"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});
+go(load()||0);
+
+// ===== Send results to VK (one message, on button press) =====
+function report(){
+ const L=[],er=[],open=[];let tot=0,good=0;
+ $$("section").forEach(s=>{const qs=[...s.querySelectorAll(".q")].filter(q=>q.querySelector("input,select"));
+  if(qs.length){let g=0;const bad=[];
+   qs.forEach((q,n)=>{const i=q.querySelector("input,select"),c=q.cloneNode(true);c.querySelectorAll(".fix").forEach(x=>x.remove());c.querySelectorAll("br").forEach(b=>b.replaceWith(" | "));c.querySelector("input,select").replaceWith("__");
+    const t=c.textContent.replace(/\s+/g," ").trim(),ok=i.dataset.a.split("/").some(x=>norm(x)==norm(i.value));
+    if(ok)g++;else bad.push((n+1)+". "+t+"\n    wrote: "+(i.value.trim()||"(no answer)")+"\n    correct: "+i.dataset.a.split("/")[0])});
+   tot+=qs.length;good+=g;L.push(s.querySelector("h2").textContent+": "+g+" / "+qs.length);
+   if(bad.length)er.push("\n"+s.querySelector("h2").textContent+" — mistakes:",...bad)}
+  s.querySelectorAll("textarea").forEach(t=>open.push(t.dataset.open+": "+(t.value.trim()||"(empty)")))});
+ return ["Lesson: In a restaurant","Student: "+($("#name").value||"(no name)"),"Total: "+good+" / "+tot+" ("+Math.round(100*good/tot)+"%)","",...L,...(er.length?er:["\nNo mistakes."]),"\nWriting:",...open].join("\n")}
+$("#copy").onclick=()=>{try{navigator.clipboard.writeText(report()).then(()=>$("#status").textContent="Copied.",()=>$("#status").textContent="Could not copy")}catch(e){$("#status").textContent="Could not copy"}};
+$("#send").onclick=async()=>{
+ if(!$("#name").value.trim()){$("#status").textContent="Please write your name on the first page.";return}
+ if(!confirm("Are you sure you want to send your answers?"))return;
+ const txt=report();$("#status").textContent="Sending…";
+ try{const parts=[];let cur2="";txt.split("\n").forEach(l=>{if((cur2+"\n"+l).length>3500){parts.push(cur2);cur2=l}else cur2+=(cur2?"\n":"")+l});parts.push(cur2);
+  for(const p of parts){if(!(await vkSend(p)))throw 0}
+  $("#status").textContent="Sent. Thank you!"}catch(e){$("#status").textContent="Could not send ("+(typeof e=="string"?e:"no connection or blocked")+"). Press 'Copy answers' and send them to your teacher."}};
+
+</script>
+<script>
+// ===== Audio recorder (own script block: works even if the rest of the page has a problem) =====
+(function(){
+const R=s=>document.querySelector(s);
+let mr=null,chunks=[],blob=null,mime="",tm=null,sec=0,strm=null,url=null,busy=false;
+const fmt=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0"),say=t=>{R("#rstat").textContent=t};
+function ui(rec){
+ R("#rbtn").textContent=rec?"Stop":"Record";R("#rbtn").disabled=busy||(!rec&&!!blob);
+ const off=rec||!blob||busy;
+ ["#rre","#rdel","#rlink","#rsend","#rsave"].forEach(s=>R(s).disabled=off);
+ R("#raud").hidden=!blob}
+function setBlob(b){if(url){URL.revokeObjectURL(url);url=null}blob=b;
+ if(b){url=URL.createObjectURL(b);R("#raud").src=url}else R("#raud").removeAttribute("src")}
+async function toMp3(b){
+ if(!window.lamejs)return b;
+ const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return b;
+ const ab=await b.arrayBuffer(),ctx=new AC(),buf=await new Promise((ok,no)=>{const p=ctx.decodeAudioData(ab,ok,no);if(p&&p.catch)p.catch(no)});
+ try{ctx.close()}catch(e){}
+ const ch=buf.getChannelData(0),pcm=new Int16Array(ch.length);
+ for(let i=0;i<ch.length;i++){const v=Math.max(-1,Math.min(1,ch[i]));pcm[i]=v<0?v*32768:v*32767}
+ const enc=new lamejs.Mp3Encoder(1,buf.sampleRate,96),out=[];
+ for(let i=0;i<pcm.length;i+=1152){const c=enc.encodeBuffer(pcm.subarray(i,i+1152));if(c.length)out.push(c)}
+ const f=enc.flush();if(f.length)out.push(f);
+ return new Blob(out,{type:"audio/mpeg"})}
+(function(){const ok=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+ if(!ok)say("This browser blocks the microphone for this page"+(location.protocol=="file:"?" (opened as a file)":"")+". Use the phone recorder button below, or open the file in Chrome (Android) / Safari (iPhone) instead of a messenger.")})();
+async function start(){
+ if(busy)return;
+ if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)){
+  say("This browser cannot record here. Open the page in Chrome or Safari, or use «Record with your phone's recorder app» below.");return}
+ const wt=setTimeout(()=>say("Waiting for the microphone permission… If no window appeared, this browser blocks the microphone here. Use the phone recorder button below."),3500);
+ try{strm=await navigator.mediaDevices.getUserMedia({audio:true});clearTimeout(wt);say("")}
+ catch(e){clearTimeout(wt);const n=e&&e.name;
+  say(n=="NotAllowedError"||n=="SecurityError"?"The browser refused the microphone without asking (error: "+n+", page type: "+location.protocol+"). "+(location.protocol=="https:"||location.protocol=="http:"?"Check the microphone permission for this site in the browser settings.":"Chrome does not show the permission window for a file opened from the device. Use the phone recorder button below."):n=="NotFoundError"?"No microphone found on this device.":"Could not start the microphone ("+(n||"error")+"). Use «Record with your phone's recorder app» below.");return}
+ let opts={};mime="";
+ try{const m=["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"].find(x=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(x));if(m){mime=m;opts={mimeType:m}}}catch(e){}
+ try{mr=new MediaRecorder(strm,opts)}catch(e){try{mr=new MediaRecorder(strm)}catch(e2){strm.getTracks().forEach(t=>t.stop());say("This browser cannot record audio. Use «Record with your phone's recorder app» below.");return}}
+ chunks=[];sec=0;
+ mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ mr.onerror=()=>{clearInterval(tm);try{strm.getTracks().forEach(t=>t.stop())}catch(e){}ui(false);say("Recording error. Try again.")};
+ mr.onstop=async()=>{clearInterval(tm);try{strm.getTracks().forEach(t=>t.stop())}catch(e){}
+  const raw=new Blob(chunks,{type:(mr&&mr.mimeType)||mime||"audio/webm"});
+  if(!raw.size){ui(false);say("Nothing was recorded. Try again.");return}
+  busy=true;ui(false);say("Preparing MP3…");
+  try{setBlob(await toMp3(raw))}catch(e){setBlob(raw)}
+  busy=false;ui(false);say("Listen to your recording, then send it to your teacher.")};
+ try{mr.start(1000)}catch(e){try{strm.getTracks().forEach(t=>t.stop())}catch(e2){}say("Could not start recording. Use «Record with your phone's recorder app» below.");return}
+ ui(true);say("Recording…");R("#rtime").textContent="0:00 / 5:00";
+ tm=setInterval(()=>{sec++;R("#rtime").textContent=fmt(sec)+" / 5:00";if(sec>=300&&mr&&mr.state=="recording")mr.stop()},1000)}
+R("#rbtn").addEventListener("click",()=>{if(mr&&mr.state=="recording")mr.stop();else start()});
+R("#rre").addEventListener("click",()=>{setBlob(null);R("#rconf").hidden=true;R("#rtime").textContent="0:00 / 5:00";ui(false);start()});
+R("#rdel").addEventListener("click",()=>{setBlob(null);R("#rconf").hidden=true;R("#rtime").textContent="0:00 / 5:00";ui(false);say("Recording deleted.")});
+R("#rfile").addEventListener("change",e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f)return;
+ if(f.size>45e6){say("This file is too big (more than 45 MB). Record a shorter one.");return}
+ setBlob(f);R("#rtime").textContent="file";ui(false);say("Listen to your recording, then send it to your teacher.")});
+function taskText(){return R("#rtask").textContent.trim()+"\n"+[...R("#recbox ol").querySelectorAll("li")].map((l,i)=>(i+1)+". "+l.textContent.trim()).join("\n")}
+function mkfile(){const nm=((document.querySelector("#name")||{}).value||"").trim();
+ if(!nm){say("Please write your name on the first page.");return null}
+ const t=blob.type||"",own=blob.name&&blob.name.includes(".")?blob.name.split(".").pop().toLowerCase():"";
+ const ext=own||(t.includes("mpeg")?"mp3":t.includes("mp4")?"m4a":t.includes("ogg")?"ogg":"webm");
+ return{nm,ext,file:new File([blob],"speaking-"+nm.replace(/\s+/g,"_")+"."+ext,{type:t||"audio/"+ext})}}
+R("#rsave").addEventListener("click",()=>{const m=mkfile();if(!m)return;const l=document.createElement("a");l.href=URL.createObjectURL(m.file);l.download=m.file.name;document.body.append(l);l.click();l.remove();say("Saved to this device.")});
+R("#rsend").addEventListener("click",async()=>{const m=mkfile();if(!m)return;
+ const data={files:[m.file],title:"Speaking task",text:m.nm+"\n"+taskText()};
+ try{if(navigator.canShare&&navigator.canShare(data)){await navigator.share(data);say("Shared.");return}}
+ catch(e){if(e.name=="AbortError"){say("Cancelled.");return}}
+ say("Sharing is not available on this device. Use Save and attach the file to your chat.")});
+R("#rlink").addEventListener("click",()=>{if(!mkfile())return;R("#rconf").hidden=false});
+R("#rno").addEventListener("click",()=>{R("#rconf").hidden=true});
+async function sendCloud(m){ // temporary download link, sent to the teacher in VK
+ if(typeof vkSend!="function")throw "no way to send";
+ const fd=new FormData();fd.append("file",m.file);
+ const res=await fetch("https://tmpfiles.org/api/v1/upload",{method:"POST",body:fd}),j=await res.json(),
+  u=((j.data||{}).url||"").replace("tmpfiles.org/","tmpfiles.org/dl/");
+ if(!res.ok||!u)throw "upload failed";
+ if(!(await vkSend("Audio: "+m.nm+"\n"+taskText().slice(0,900)+"\nListen (link lives about 1 hour): "+u)))throw "the link was made but VK did not accept the message"}
+R("#ryes").addEventListener("click",async()=>{R("#rconf").hidden=true;
+ const m=mkfile();if(!m)return;busy=true;ui(false);say("Sending…");
+ try{await sendCloud(m);say("Sent ✅")}
+ catch(e){say("Could not send ("+(typeof e=="string"?e:"no connection or blocked")+"). Use Share or Save.")}
+ busy=false;ui(false)});
+ui(false);
+})();
+
+</script></body></html>
