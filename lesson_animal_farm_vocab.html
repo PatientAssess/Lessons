@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson: Animal Farm, chapters 1-2 — vocabulary</title>
+<style>
+:root{--ink:#161b22;--mute:#5d6673;--bg:#f2f4f6;--card:#fff;--line:#d5dae0;--acc:#1f4e5f;--accbg:#e6eef1;--ok:#237a4b;--no:#b3372f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+header{background:var(--acc);color:#fff;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header b{font:600 19px Georgia,serif}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:8px 14px;display:flex;justify-content:center;align-items:center;gap:16px}
+main{max-width:860px;margin:18px auto;padding:0 12px 50px}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 22px}
+section.on{display:block}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.25;margin:.1em 0 .5em}
+h1{font-size:28px}h2{font-size:24px}h3{font-size:18px;margin:1.4em 0 .4em;color:var(--acc)}
+.mute{color:var(--mute);font-size:15px}
+.note{background:var(--accbg);border-left:4px solid var(--acc);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.ru{color:var(--mute);font-size:15px}
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.w{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;gap:12px;align-items:flex-start}
+.w .em{flex:none;font-size:36px;width:52px;text-align:center;line-height:1.2}
+.w b{font-size:19px}.w .ipa{color:var(--acc);font-size:15px}
+.w .df{font-size:15.5px;margin-top:2px}
+.w .ex{color:var(--mute);font-size:15px;margin-top:4px}
+table{border-collapse:collapse;width:100%;margin:8px 0}td,th{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}th{width:34%;font-weight:600}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:#f9fafb;border:1px solid #9aa4b0;border-radius:4px;padding:4px 8px;max-width:100%}
+input[type=text]{min-width:130px;width:160px}
+select{margin:2px 0}
+textarea{width:100%;min-height:150px;margin:6px 0}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--acc)}
+input.ok,select.ok{background:#e3f3ea;border-color:var(--ok)}input.no,select.no{background:#fbe6e4;border-color:var(--no)}
+.q{padding:10px 0;border-bottom:1px solid #e6e9ed}.fix{display:block;color:var(--no);font-size:15px;margin-top:3px}
+.big{font-size:44px;line-height:1.2;margin-bottom:2px}
+button{font:inherit;font-weight:600;background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:5px;padding:8px 16px;cursor:pointer}
+button.main{background:var(--acc);color:#fff}button:disabled{opacity:.4;cursor:default}
+button.pl{padding:0 9px;font-size:13px;margin-left:8px}
+button:focus-visible{outline:3px solid #7fb0c0;outline-offset:2px}
+.score{font-weight:600;margin-left:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{background:var(--accbg);border:1px solid var(--acc);border-radius:16px;padding:1px 10px;font-size:15px}
+.rec{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin:12px 0;background:#fafbfc}
+.sit{border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:8px 0}
+</style></head><body>
+<header><b>English lesson</b><span id="pos"></span></header>
+<nav><button id="prev">Back</button><button id="next" class="main">Next</button></nav>
+<main id="main"></main>
+
+<script>
+// ===== Teacher: VK settings =====
+const VK_TOKEN="vk1.a.tK6DmD3Qyhn1JVv2ZYrg3ximf65iPMjojvveQxeJyIksMAyKtxWuXtHKK7aty8JmBVzheAGRPAsrCQiMsT87GsbMelSpTowNBEriOaYGYBiYU0XD0evk8OgY8IgjDLmF-8V11GtA4F25Dg-nUtpbY-QWy_4pU6XEs0-jzCbLo-MFV0sfC5rIwDBTNUv0N-TCZGKjw_PeJnJolFrBOt1LaA";   // community access key with "messages" permission
+const VK_USER="267123155";            // your numeric VK id (digits only)
+function vk(m,p){return new Promise((ok,no)=>{const cb="vk"+Math.random().toString(36).slice(2),sc=document.createElement("script");
+ window[cb]=r=>{delete window[cb];sc.remove();ok(r)};sc.onerror=()=>{delete window[cb];sc.remove();no()};
+ sc.src="https://api.vk.com/method/"+m+"?"+new URLSearchParams({...p,access_token:VK_TOKEN,v:"5.199",callback:cb});document.head.append(sc)})}
+async function tg(method,o){ // sends to VK
+ if(VK_TOKEN.startsWith("PASTE"))return{ok:false};
+ if(method=="sendMessage"){const r=await vk("messages.send",{peer_ids:VK_USER,random_id:Date.now()+Math.floor(Math.random()*1e6),message:o.text});
+  const x=r.response&&r.response[0];return x&&x.conversation_message_id?{ok:true,result:{message_id:x.conversation_message_id}}:{ok:false}}
+ const r=await vk("messages.edit",{peer_id:VK_USER,conversation_message_id:o.message_id,message:o.text});return{ok:!!r.response}}
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+// ===== Pronunciation (browser voice, American English) =====
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;
+ const v=speechSynthesis.getVoices().find(v=>/^en[-_]US$/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+document.addEventListener("click",e=>{const w=e.target.dataset&&e.target.dataset.say;if(w)speak(w)});
+if(window.speechSynthesis)speechSynthesis.getVoices();
+
+// ===== helpers =====
+function mk(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const R=mk(20261124);
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const eg=s=>String(s).replace(/"/g,"&quot;");
+const strip=s=>s.replace(/^to /,"");
+
+// ===== WORDS: [key, display, IPA, Russian, emoji, definition, farm-world sentence, another sentence] =====
+const BL=[
+{t:"Power and revolt",
+ note:"<b>tyrannize over</b> (British: tyrannise) always has <b>over</b>: he tyrannizes <b>over</b> his staff. <b>wipe out</b> can be split: wipe out the village / wipe the village out. <b>reign</b> is a noun (a long reign) and a verb (to reign). Forms: overthrow – overthrew – overthrown.<br><span class='ru'>tyrannize over — всегда с over. overthrow — неправильный глагол: overthrew, overthrown.</span>",
+ w:[
+ ["overthrow","to overthrow","ˌoʊvərˈθroʊ","свергнуть","👑💥","to remove a ruler or a government by force","The animals dream of overthrowing the farmer who owns them.","The army overthrew the government in a single night."],
+ ["rebellion","rebellion","rɪˈbɛljən","восстание, бунт","✊","an organized fight against those in power","Old Major says that a rebellion will come one day.","The rebellion began in a small town and spread across the country."],
+ ["conquer","to conquer","ˈkɑŋkər","завоевать; победить (страх)","🚩","to take a place by force or to overcome a fear","The animals want to conquer their fear and fight for freedom.","Rome conquered most of Europe."],
+ ["expel","to expel","ɪkˈspɛl","изгнать; исключить","🚷","to force someone to leave a place or a group","The animals expel Mr Jones and his men from the farm.","The student was expelled from school for cheating."],
+ ["wipeout","to wipe out","ˈwaɪp ˌaʊt","уничтожить, стереть с лица земли","🌪️","to destroy completely","Hunger and cruelty almost wiped out the animals' hope.","The disease wiped out half of the village's cattle."],
+ ["reign","reign","reɪn","правление, царствование","👑","the time when a king or a queen rules","The reign of Mr Jones was a time of hunger and whips.","Queen Victoria's reign lasted over sixty years."],
+ ["tyrannize","to tyrannize over","ˈtɪrəˌnaɪz ˈoʊvər","тиранить, притеснять","👹","to treat people cruelly and control them by fear","A cruel master tyrannizes over every creature on his farm.","The old manager tyrannized over his staff."],
+ ["enmity","enmity","ˈɛnməti","вражда","💢","a strong feeling of hatred between people","There is an old enmity between animals and humans.","Years of enmity separated the two families."],
+ ["maltreat","to maltreat","mælˈtrit","жестоко обращаться","🤕","to treat a person or an animal cruelly","The farmer maltreats his animals and gives them little food.","It is a crime to maltreat a child or an animal."],
+ ["tormentor","tormentor","tɔrˈmɛntər","мучитель","😈","a person who makes someone suffer on purpose","For the animals, the farmer is their worst tormentor.","At school he finally stood up to his tormentor."],
+ ["neglect","to neglect","nɪˈglɛkt","пренебрегать, запускать","🥀","to fail to take care of someone or something","The farmer drinks all day and neglects his animals.","She neglected her health while she was working so hard."]
+ ],
+ ch:["The people started a __ against the cruel king.;rebellion;rebellion|reign|enmity|tormentor;rebellion",
+ "The queen's __ lasted forty years.;reign;reign|rebellion|enmity|neglect;reign",
+ "The army wanted to __ the whole country.;conquer;conquer|expel|neglect|maltreat;conquer",
+ "The school decided to __ him for fighting.;expel;expel|conquer|overthrow|reign;expel",
+ "The farmer began to __ his animals: he beat them and gave them almost no food.;maltreat;maltreat|conquer|overthrow|wipe out;maltreat",
+ "There has been __ between the two families for years.;enmity;enmity|reign|rebellion|tormentor;enmity",
+ "The bully was his __ all through school.;tormentor;tormentor|reign|enmity|rebellion;tormentor",
+ "He didn't feed the dog for days. He really __ it.;neglected;neglected|expelled|conquered|overthrew;neglect",
+ "The flood almost __ the village.;wiped out;wiped out|overthrew|expelled|reigned;wipeout",
+ "The boss shouts at everyone and __ the whole office.;tyrannizes over;tyrannizes over|conquers|expels|neglects;tyrannize",
+ "The generals planned to __ the president by force.;overthrow;overthrow|neglect|maltreat|reign;overthrow"],
+ ty:["The people rose up in a __ against the government.;rebellion;;rebellion",
+ "Under the king's cruel __, many people left the country.;reign;;reign",
+ "If you __ your garden, the weeds will take over.;neglect;;neglect",
+ "Last winter the cold __ the whole herd of sheep.;wiped out/wiped;;wipeout",
+ "The boss shouts all day and __ his team.;tyrannizes over/tyrannises over;;tyrannize",
+ "The two football clubs of the city have a long __.;enmity;;enmity",
+ "The generals wanted to __ the president and take power.;overthrow;;overthrow"],
+ used:["rebellion","reign","neglect","wipeout","tyrannize","enmity","overthrow"]
+},
+{t:"Persuading and teaching",
+ note:"<b>persuade</b> someone <b>to do</b> something (he persuaded me to join). <b>convince</b> someone <b>that</b> … / <b>of</b> something (he convinced me that it was safe). <b>disheartened</b> goes with <b>by</b>: disheartened by the news. <b>of one's own accord</b> = nobody asked you; <b>with one accord</b> = everyone together.<br><span class='ru'>persuade + to do; convince + that. of one's own accord — сам, по своей воле; with one accord — все вместе, единодушно.</span>",
+ w:[
+ ["reproach","to reproach someone sharply","rɪˈproʊtʃ","резко упрекать","👉😠","to blame someone angrily for something they did","An older animal reproaches a young one sharply for being late.","The teacher reproached him sharply for his rude answer."],
+ ["persuade","to persuade","pərˈsweɪd","убедить (сделать что-то)","🗣️","to make someone do something by giving reasons","Snowball tries to persuade the animals to join the rebellion.","I persuaded my brother to come with us."],
+ ["convince","to convince","kənˈvɪns","убедить (в чём-то)","💡","to make someone believe that something is true","The speech convinced them that life could be better.","He convinced me that the plan was safe."],
+ ["persuasive","persuasive","pərˈsweɪsɪv","убедительный","🎤","able to make people do or believe something","A persuasive speaker can change the mind of a whole barn.","She gave a very persuasive speech."],
+ ["counteract","to counteract","ˌkaʊntərˈækt","противодействовать, нейтрализовать","🛡️","to reduce or stop the effect of something","The pigs try to counteract the lies of the farmer's men.","Cold water counteracted the effect of the heat."],
+ ["expound","to expound the principles","ɪkˈspaʊnd ðə ˈprɪnsəpəlz","излагать принципы","👨‍🏫","to explain the main ideas of something in detail","The pigs expound the principles of Animalism every evening.","The professor expounded the principles of economics for an hour."],
+ ["disciples","faithful disciples","ˈfeɪθfəl dɪˈsaɪpəlz","верные ученики, последователи","🧑‍🎓","loyal followers of a teacher or an idea","The pigs' loyal followers listen like faithful disciples.","The teacher's faithful disciples wrote down every word."],
+ ["unfailing","unfailing in their attendance","ʌnˈfeɪlɪŋ ɪn ðɛr əˈtɛndəns","никогда не пропускающие","📅","never absent and always present","The hens were unfailing in their attendance at the evening classes.","He is unfailing in his attendance at the gym."],
+ ["disheartened","disheartened","dɪsˈhɑrtənd","обескураженный, упавший духом","😞","having lost hope or confidence","Some animals felt disheartened after the first failures.","She was disheartened by the bad results."],
+ ["ownaccord","of one's own accord","əv wʌnz oʊn əˈkɔrd","по собственной воле, сам","🙋","voluntarily, without being asked or forced","Nobody forced the animals: they came of their own accord.","The door opened of its own accord."],
+ ["oneaccord","with one accord","wɪð wʌn əˈkɔrd","единодушно, все вместе","🙌","all together, everyone agreeing","With one accord, they ran to the farmhouse.","With one accord, the audience stood up and clapped."]
+ ],
+ ch:["She persuaded me __ the team.;to join;to join|joining|join|for join;!persuade + someone + to do: she persuaded me to join.",
+ "He convinced me __ the plan was safe.;that;that|to|for|about;!convince + someone + that + clause: he convinced me that the plan was safe.",
+ "He is a very __ speaker: everyone agrees with him.;persuasive;persuasive|disheartened|faithful|unfailing;persuasive",
+ "After three defeats the team felt __.;disheartened;disheartened|persuasive|faithful|unfailing;disheartened",
+ "Nobody asked him to help. He came __.;of his own accord;of his own accord|with one accord|in great leaps|with a kind of awe;ownaccord",
+ "The whole crowd shouted __: 'Yes!';with one accord;with one accord|of its own accord|without bothering|in silence;oneaccord",
+ "The professor spent an hour __ of the new method.;expounding the principles;expounding the principles|counteracting|reproaching sharply|persuading;expound",
+ "The manager __ the young worker sharply for being late.;reproached;reproached|persuaded|expounded|counteracted;reproach",
+ "This medicine will __ the effect of the poison.;counteract;counteract|persuade|expound|convince;counteract",
+ "Her students were her __: they followed every word she said.;faithful disciples;faithful disciples|persuasive speakers|disheartened workers|unfailing rules;disciples",
+ "He never missed a lesson. He was __.;unfailing in his attendance;unfailing in his attendance|disheartened by attendance|persuasive in his attendance|faithful to attend;unfailing"],
+ ty:["The advert tried to __ people to buy the new phone.;persuade;;!persuade + someone + to do something.",
+ "I'm sure now. You have __ me that I was wrong.;convinced;;!convince + someone + that …: you have convinced me that I was wrong.",
+ "Nobody forced her. She joined us of her own __.;accord;;ownaccord",
+ "The crowd stood up with one __ and clapped.;accord;;oneaccord",
+ "Yesterday our teacher __ the principles of grammar very clearly.;expounded;;expound",
+ "He was __ after he lost the match.;disheartened;;disheartened",
+ "The speaker was so __ that the audience changed its mind.;persuasive;;persuasive"],
+ used:["persuade","convince","ownaccord","oneaccord","expound","disheartened","persuasive"]
+},
+{t:"Action and fight",
+ note:"<b>take to one's heels</b> changes the possessive: he took to <b>his</b> heels, they took to <b>their</b> heels. <b>fling oneself</b> changes too: she flung <b>herself</b>. Forms: fling – flung – flung; take – took – taken. <b>keep your wits about you</b> = stay alert in a dangerous or confusing situation.<br><span class='ru'>take to one's heels, fling oneself, keep one's wits about one — слова one's / oneself меняются: his, her, their.</span>",
+ w:[
+ ["heels","to take to one's heels","teɪk tu wʌnz hilz","пуститься наутёк, убежать","🏃💨","to run away quickly","Seeing the angry animals, the men took to their heels.","When the dog barked, the thief took to his heels."],
+ ["fling","to fling oneself upon someone","flɪŋ wʌnˈsɛlf əˈpɑn","броситься на кого-то","🐕💥","to jump on someone with force","The animals flung themselves upon the men.","The child flung himself upon his father and hugged him."],
+ ["thrashing","to give someone a thrashing","ˈθræʃɪŋ","задать трёпку; разгромить","🥊","to beat someone badly or to defeat them heavily","The animals gave the men a thrashing they would never forget.","Our team gave the visitors a thrashing: 6-0."],
+ ["wits","to keep one's wits about one","kip wʌnz wɪts əˈbaʊt wʌn","сохранять присутствие духа","🧠","to stay calm and ready to think quickly","In the panic, only a few animals kept their wits about them.","Keep your wits about you in a crowded city."],
+ ["carry","to carry something through","ˈkæri θru","довести до конца","🏁","to finish a difficult plan successfully","The clever pigs were able to carry the plan through.","It was hard, but she carried the project through."],
+ ["possession","to take possession of","teɪk pəˈzɛʃən əv","завладеть","🔑","to become the owner of something or to take control of it","The animals took possession of the whole farm.","The new owners take possession of the house on Friday."],
+ ["chase","to chase someone away","tʃeɪs əˈweɪ","прогнать","🐕💨","to make someone leave by running after them","They chased the farmer away from the yard.","He chased the cat away from his fish."],
+ ["slam","to slam the gate","slæm ðə geɪt","захлопнуть ворота","🚪💥","to close a gate or a door very hard and loudly","Someone slammed the gate shut behind the last man.","She slammed the door and left."]
+ ],
+ ch:["When the dog started to bark, the thief __.;took to his heels;took to his heels|slammed the gate|gave a thrashing|carried it through;heels",
+ "The little girl __ her father and hugged him.;flung herself upon;flung herself upon|took possession of|chased away|carried through;fling",
+ "In the fire, only Tom __ and called the firefighters.;kept his wits about him;kept his wits about him|took to his heels|gave a thrashing|slammed the gate;wits",
+ "It was a very hard plan, but she __.;carried it through;carried it through|chased it away|took possession of it|slammed it;carry",
+ "The new owner will __ the house on Monday.;take possession of;take possession of|attend to|fling himself upon|gambol;possession",
+ "The dog barked and __ the strangers.;chased away;chased away|carried through|took possession of|flung;chase",
+ "She was very angry and __ the gate behind her.;slammed;slammed|flung|hurled|carried;slam",
+ "Our team gave the visitors a __: 6-0.;thrashing;thrashing|reign|rebellion|enmity;thrashing",
+ "The soldiers saw the huge army and __.;took to their heels;took to their heels|kept their wits about them|gave a thrashing|slammed the gate;heels"],
+ ty:["The boys saw the headmaster and took to their __.;heels;;heels",
+ "Keep your __ about you in a big crowd.;wits;;wits",
+ "Yesterday the dog __ itself upon the postman.;flung;;fling",
+ "He __ the gate so hard that the whole fence shook.;slammed;;slam",
+ "The settlers took __ of the land.;possession;;possession",
+ "It took a year, but the team __ the project through.;carried;;carry",
+ "The farmers __ the foxes away from the henhouse.;chased;;chase"],
+ used:["heels","wits","fling","slam","possession","carry","chase"]
+},
+{t:"Movement, looks and feelings",
+ note:"<b>caper</b> and <b>gambol</b> describe happy, playful jumping (lambs, children, puppies); they sound a bit literary. <b>hurl</b> is stronger than <b>throw</b>: you throw with anger or force. <b>file back</b> = walk back in a line, one after another. <b>utmost</b> is often used in <b>do your utmost</b> and <b>of the utmost importance</b>.<br><span class='ru'>caper, gambol — весело скакать. hurl — швырнуть (сильнее, чем throw). do your utmost — сделать всё возможное.</span>",
+ w:[
+ ["caper","to caper","ˈkeɪpər","резвиться, скакать","🐑","to jump and run about happily","The lambs capered across the field.","Children were capering around the Christmas tree."],
+ ["gambol","to gambol","ˈgæmbəl","резвиться, играть","🐇","to jump and play happily, like young animals","Young animals gambol in the spring grass.","The puppies gamboled on the lawn."],
+ ["hurl","to hurl","hɜrl","швырять, метать","🎯","to throw something with great force","The animals hurled stones at the intruders.","He hurled the ball over the fence."],
+ ["leaps","in great leaps","ɪn greɪt lips","огромными прыжками","🦌","with long, big jumps","The calf ran in great leaps across the meadow.","The deer crossed the road in great leaps."],
+ ["crop","to crop mouthfuls of grass","krɑp ˈmaʊθfʊlz əv græs","щипать траву","🐄","to bite off and eat grass","The cows cropped mouthfuls of grass in the morning sun.","Sheep crop mouthfuls of grass all day long."],
+ ["snuff","to snuff up the scent","snʌf ʌp ðə sɛnt","втягивать носом запах","👃","to breathe in a smell through the nose","The horse stopped to snuff up the scent of fresh hay.","The dog snuffed up the scent of the trail."],
+ ["gaze","to gaze round","geɪz raʊnd","окинуть взглядом","👀","to look slowly at everything around you","They gazed round the farmyard as if they saw it for the first time.","She gazed round the room, looking for a friend."],
+ ["admiration","with speechless admiration","wɪð ˈspitʃləs ˌædməˈreɪʃən","в немом восхищении","🤩","so impressed that you cannot speak","They looked at the big house with speechless admiration.","He watched the dancer with speechless admiration."],
+ ["awe","with a kind of awe","wɪð ə kaɪnd əv ɔ","с неким благоговением","😮","with respect mixed with wonder or fear","They touched the farmhouse furniture with a kind of awe.","The tourists stood with a kind of awe in front of the mountain."],
+ ["fileback","to file back","faɪl bæk","возвращаться гуськом, строем","🚶‍♂️🚶‍♀️","to walk back one behind another","The animals filed back into the barn.","The students filed back into the classroom after the break."],
+ ["halt","to halt in silence","hɔlt ɪn ˈsaɪləns","остановиться молча","🛑","to stop and say nothing","The animals halted in silence at the door.","The group halted in silence when they saw the bear tracks."],
+ ["utmost","utmost","ˈʌtˌmoʊst","предельный, наибольший","💯","the greatest possible","The matter was of the utmost importance.","I will do my utmost to help you."],
+ ["lounge","to lounge","laʊndʒ","бездельничать, валяться","🛋️","to lie or sit lazily, doing nothing","Some animals lounged in the sun while others worked.","We lounged on the sofa all Sunday."]
+ ],
+ ch:["The lambs __ in the meadow all morning.;capered;capered|hurled|halted|lounged;caper",
+ "She __ the ball across the garden.;hurled;hurled|capered|lounged|faltered;hurl",
+ "The goat crossed the stream __.;in great leaps;in great leaps|in silence|of its own accord|with awe;leaps",
+ "The cows __ in the field all day.;cropped mouthfuls of grass;cropped mouthfuls of grass|filed back|halted in silence|snuffed up the scent;crop",
+ "The dog stopped to __ of the rabbit.;snuff up the scent;snuff up the scent|file back|slam the gate|hurl stones;snuff",
+ "She __ the huge hall, amazed.;gazed round;gazed round|filed back|halted|hurled;gaze",
+ "He couldn't say a word. He just stared __.;with speechless admiration;with speechless admiration|in great leaps|of his own accord|without bothering;admiration",
+ "They stood in front of the mountain __, as if before a holy place.;with a kind of awe;with a kind of awe|with one accord|in great leaps|of their own accord;awe",
+ "After the break the pupils __ into the classroom, one by one.;filed back;filed back|gambolled|hurled|lounged;fileback",
+ "Seeing the bear tracks, the whole group __.;halted in silence;halted in silence|capered|lounged|filed;halt",
+ "I will do my __ to finish today.;utmost;utmost|prosperity|considerable|inscribe;utmost",
+ "On Sundays we __ on the sofa and do nothing.;lounge;lounge|hurl|caper|file back;lounge"],
+ ty:["Yesterday the young lambs __ in the spring grass.;capered/gambolled/gamboled;;caper",
+ "Furious, he __ the stone far into the lake. (a stronger word than throw);hurled;;hurl",
+ "After lunch everyone __ back into the hall.;filed;;fileback",
+ "It is a matter of the __ importance.;utmost;;utmost",
+ "She __ round the room and smiled.;gazed;;gaze",
+ "We spent the whole day __ by the pool and doing nothing.;lounging;;lounge",
+ "The tourists were quiet and looked at the old castle with a kind of __.;awe;;awe"],
+ used:["caper","hurl","fileback","utmost","gaze","lounge","awe"]
+},
+{t:"Other useful words",
+ note:"<b>without bothering to do</b> something = you don't take the trouble: he left without bothering to say goodbye. <b>attend to</b> something = deal with it (a patient, an email); <b>attend</b> a lesson has no <b>to</b>. <b>considerable</b> = large (a considerable amount of money).<br><span class='ru'>attend to — заняться чем-то; attend a lesson — посещать урок (без to). without bothering to — не потрудившись.</span>",
+ w:[
+ ["bothering","without bothering to do something","wɪˈðaʊt ˈbɑðərɪŋ","не потрудившись, не удосужившись","🤷","not taking the trouble to do something","Mr Jones went to bed without bothering to lock the henhouse.","He left without bothering to say goodbye."],
+ ["attend","to attend to something","əˈtɛnd tu","заняться чем-то, уделить внимание","📋","to deal with something","Someone has to attend to the sick animals.","I must attend to some urgent emails."],
+ ["reveal","to reveal","rɪˈvil","раскрыть, обнаружить","🎭","to show or tell something that was secret","Old Major reveals his dream to the others.","The report revealed a serious problem."],
+ ["inscribe","to inscribe","ɪnˈskraɪb","надписать, начертать","✍️","to write or cut words on a surface","They inscribed the new rules on the barn wall.","Her name was inscribed on the silver cup."],
+ ["considerable","considerable","kənˈsɪdərəbəl","значительный","📈","large in amount or importance","The pigs gained considerable power over the farm.","It took a considerable amount of time."],
+ ["prosperity","prosperity","prɑˈspɛrəti","процветание","💰","success and wealth","The animals dream of a life of prosperity without Jones.","The new factory brought prosperity to the town."],
+ ["falter","to falter","ˈfɔltər","запнуться, дрогнуть","😰","to lose strength or confidence, or to speak hesitantly","His voice faltered when he saw the empty barn.","The economy began to falter."]
+ ],
+ ch:["He left the room __ to say goodbye.;without bothering;without bothering|with one accord|of his own accord|in silence;bothering",
+ "I must __ some urgent emails.;attend to;attend to|reveal|inscribe|falter;attend",
+ "The test results __ a serious problem.;revealed;revealed|inscribed|faltered|attended;reveal",
+ "Her name was __ on the silver cup.;inscribed;inscribed|revealed|faltered|neglected;inscribe",
+ "It took a __ amount of time to finish the work.;considerable;considerable|persuasive|faithful|inscribed;considerable",
+ "The country's __ grew after the reforms.;prosperity;prosperity|enmity|rebellion|neglect;prosperity",
+ "His voice __ when he began to speak about his father.;faltered;faltered|inscribed|revealed|attended;falter"],
+ ty:["The doctor will __ to the patient at once.;attend;;attend",
+ "Yesterday the magician __ the secret of his trick.;revealed;;reveal",
+ "The date was __ on the old stone.;inscribed;;inscribe",
+ "There was a __ delay at the airport.;considerable;;considerable",
+ "The town enjoyed many years of __.;prosperity;;prosperity",
+ "She didn't __ for a second: she answered at once.;falter;;falter",
+ "He went out without __ to close the window.;bothering;;bothering"],
+ used:["attend","reveal","inscribe","considerable","prosperity","falter","bothering"]
+}
+];
+const WD={},DM={};BL.forEach(b=>b.w.forEach(w=>{WD[w[0]]=w;DM[w[0]]=w[1]}));
+const whyOf=k=>k[0]=="!"?k.slice(1):(WD[k]?DM[k]+": "+WD[k][5]+".":"");
+
+// ===== build items =====
+function U(a){return a.map(s=>{const[t,x,o,k]=s.split(";");return[t,x,o?shuf(o.split("|")):null,whyOf(k)]})}
+function ex(id,items){$("#ex-"+id).innerHTML=items.map(it=>{const[t,a,o,w,s]=it;
+ const c=o?`<select data-a="${eg(a)}" data-why="${eg(w)}"><option value="">…</option>${o.map(x=>`<option value="${eg(x)}">${x}</option>`).join("")}</select>`
+  :`<input type="text" data-a="${eg(a)}" data-why="${eg(w)}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">`;
+ return `<div class="q">${s?`<div class="big">${s}</div>`:""}${t.replace("__",c)}</div>`}).join("")
+ +`<p><button data-chk="${id}">Check</button><span class="score" id="sc-${id}"></span></p>`}
+const norm=s=>s.toLowerCase().replace(/-/g," ").replace(/[’`]/g,"'").replace(/[.,!?:]/g,"").replace(/\s+/g," ").trim();
+document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.chk;if(!id)return;
+ let ok=0;const ins=$$("#ex-"+id+" input,#ex-"+id+" select");
+ ins.forEach(i=>{const nx=i.nextElementSibling;nx&&nx.classList.contains("fix")&&nx.remove();
+  const al=i.dataset.a.split("/"),good=al.some(x=>norm(x)==norm(i.value));i.className=good?"ok":"no";
+  if(good){ok++;i.dataset.m=0}else{const m=(+i.dataset.m||0)+1;i.dataset.m=m;const s=document.createElement("span");s.className="fix";
+   s.textContent=m==1?"Try again. Попробуй ещё раз.":"Answer: "+al[0]+". "+i.dataset.why;i.after(s)}});
+ $("#sc-"+id).textContent=ok+" / "+ins.length+(ok==ins.length?"  Excellent!":"")});
+
+function cards(L){return `<div class="words">`+L.map(w=>`<div class="w"><div class="em">${w[4]}</div><div><b>${w[1]}</b> <span class="ipa">/${w[2]}/</span><button class="pl" data-say="${eg(strip(w[1]))}" aria-label="Listen">&#9654;</button>
+<div class="ru">${w[3]}</div><div class="df">${w[5]}.</div>
+<div class="ex">🌾 ${w[6]}<button class="pl" data-say="${eg(w[6])}" aria-label="Listen">&#9654;</button></div>
+<div class="ex">✏️ ${w[7]}<button class="pl" data-say="${eg(w[7])}" aria-label="Listen">&#9654;</button></div></div></div>`).join("")+`</div>`}
+const chips=ks=>`<div class="chips">`+shuf(ks).map(k=>`<span class="chip">${DM[k]}</span>`).join("")+`</div>`;
+
+// ===== pages =====
+let H=`<section>
+<h1>Animal Farm: chapters 1-2</h1>
+<p>Vocabulary practice for 50 words and phrases from the first two chapters. The words are split into 5 blocks. Each block has: cards with pronunciation, a matching and picture page, and a gap-fill page.</p>
+<table><tr><th>Blocks</th><td>1 Power and revolt · 2 Persuading and teaching · 3 Action and fight · 4 Movement, looks and feelings · 5 Other useful words</td></tr>
+<tr><th>Each card</th><td>meaning, transcription, ▶ listen, a sentence from the farm world and one more example</td></tr>
+<tr><th>Practice</th><td>match the meaning, look at the picture, choose, type, review</td></tr>
+<tr><th>Writing</th><td>one short text at the very end</td></tr></table>
+<p>Name: <input type="text" id="name" placeholder="Your name"></p>
+<p class="mute">Press ▶ to listen (American English). Your answers are saved on this device automatically.<br><span class="ru">Нажми ▶, чтобы послушать. Твои ответы сохраняются на этом устройстве сами.</span></p>
+</section>`;
+BL.forEach((b,i)=>{const n=i+1;
+ H+=`<section><h2>Block ${n}: ${b.t} · words</h2><p class="mute">${b.w.length} words. Listen to the word and to both sentences. (🌾 = a sentence about life on the farm, ✏️ = another example.)</p>${cards(b.w)}<div class="note">${b.note}</div></section>`;
+ H+=`<section><h2>Block ${n} · Practice A</h2><h3>1. What does it mean?</h3><div id="ex-m${i}"></div><h3>2. Look at the picture</h3><p class="mute">Choose the word or phrase that goes with the picture.</p><div id="ex-p${i}"></div></section>`;
+ H+=`<section><h2>Block ${n} · Practice B</h2><h3>3. Choose the right word</h3><div id="ex-c${i}"></div><h3>4. Type the missing word</h3><p class="mute">Used on this page:</p>${chips(b.used)}<div id="ex-t${i}"></div></section>`});
+H+=`<section><h2>Review · choose</h2><p class="mute">Words from all five blocks.</p><div id="ex-rc"></div></section>`;
+H+=`<section><h2>Review · type and correct</h2><h3>1. Which sentence is correct?</h3><div id="ex-rw"></div><h3>2. Translate the missing word</h3><div id="ex-tr"></div></section>`;
+H+=`<section><h2>Chapters 1-2, retold</h2><p class="mute">A short retelling of the story. Type the missing word in each sentence. Used on this page:</p><div id="story-chips"></div><div id="ex-st"></div></section>`;
+H+=`<section><h2>Writing</h2>
+<p>Choose <b>one</b> situation and write 6-8 sentences. Use at least <b>8 words or phrases</b> from this lesson.</p>
+<div class="sit"><b>1.</b> A rebellion starts on a farm, in a zoo or at a school. Who leads it, and what happens next?</div>
+<div class="sit"><b>2.</b> A terrible boss tyrannizes over the whole office. How do the workers react?</div>
+<div class="sit"><b>3.</b> A quiet village before and after the end of a long reign: what was life like under the old ruler, and what changed?</div>
+<textarea data-open="Writing" placeholder="Write the number of your situation first, then your text."></textarea>
+<div class="rec"><button id="copy">Copy answers</button> <button id="send" class="main">Send to teacher</button> <span id="status" class="mute"></span>
+<p class="mute" style="margin:8px 0 0">Press “Send to teacher” when you have finished. If sending does not work, press “Copy answers” and send the text to your teacher.</p></div>
+</section>`;
+$("#main").innerHTML=H;
+
+BL.forEach((b,i)=>{
+ const defs=b.w.map(w=>w[5]);
+ ex("m"+i,shuf(b.w).map(w=>{const others=shuf(defs.filter(d=>d!=w[5])).slice(0,3);
+  return["<b>"+w[1]+"</b> means __",w[5],shuf([w[5],...others]),DM[w[0]]+": "+w[5]+"."]}));
+ const names=b.w.map(w=>w[1]);
+ ex("p"+i,shuf(b.w).map(w=>{const others=shuf(names.filter(d=>d!=w[1])).slice(0,3);
+  return["Which word goes with the picture? __",w[1],shuf([w[1],...others]),DM[w[0]]+": "+w[5]+".",w[4]]}));
+ ex("c"+i,U(b.ch));ex("t"+i,U(b.ty))});
+
+ex("rc",U([
+ "The prince wanted to __ the king and rule himself.;overthrow;overthrow|expel|persuade|reveal;overthrow",
+ "After the vote, the club decided to __ two members.;expel;expel|attend to|conquer|inscribe;expel",
+ "He is so __ that he can sell anything to anyone.;persuasive;persuasive|considerable|disheartened|unfailing;persuasive",
+ "The soldiers dropped their weapons and __.;took to their heels;took to their heels|slammed the gate|filed back|carried it through;heels",
+ "The monkeys __ in the trees all afternoon.;capered;capered|attended|inscribed|neglected;caper",
+ "At the museum we stood __ in front of the ancient statue.;with a kind of awe;with a kind of awe|in great leaps|of our own accord|without bothering;awe",
+ "He never missed a lesson. He was __.;unfailing in his attendance;unfailing in his attendance|disheartened|persuasive|considerable;unfailing",
+ "The champion gave his rival a real __.;thrashing;thrashing|reign|prosperity|enmity;thrashing",
+ "A good leader must __ even when things go wrong.;keep his wits about him;keep his wits about him|take to his heels|lounge|slam the gate;wits",
+ "The poor country finally found __ after the reforms.;prosperity;prosperity|enmity|rebellion|neglect;prosperity",
+ "The dog stopped to __ in the grass.;snuff up the scent;snuff up the scent|file back|slam the gate|hurl;snuff",
+ "When she saw the mess, she __ the children sharply.;reproached;reproached|persuaded|revealed|conquered;reproach",
+ "The explorers wanted to __ the highest mountain in the world.;conquer;conquer|expel|maltreat|inscribe;conquer",
+ "He spent the whole Sunday __ on the sofa.;lounging;lounging|hurling|faltering|inscribing;lounge"
+]));
+ex("rw",U([
+ "The boss tyrannizes over his workers. __;correct;correct|wrong;!tyrannize over + someone: correct.",
+ "The boss tyrannizes his workers. __;wrong;correct|wrong;!tyrannize over someone: the boss tyrannizes over his workers.",
+ "I was disheartened by the results. __;correct;correct|wrong;!disheartened by something: correct.",
+ "I was disheartened of the results. __;wrong;correct|wrong;!disheartened by the results.",
+ "They came with their own accord. __;wrong;correct|wrong;!of their own accord.",
+ "He left without to say goodbye. __;wrong;correct|wrong;!without bothering to say goodbye.",
+ "The animals gazed round the farmyard. __;correct;correct|wrong;!gaze round: correct.",
+ "The king's rebellion lasted for fifty years. __;wrong;correct|wrong;!a king's reign lasts for years, a rebellion is a fight against the ruler.",
+ "I will do my utmost to help you. __;correct;correct|wrong;!do your utmost: correct.",
+ "He took possession the house on Monday. __;wrong;correct|wrong;!take possession of the house."
+]));
+ex("tr",U([
+ "Они пустились наутёк. → They took to their __.;heels;;heels",
+ "Он ушёл, не потрудившись попрощаться. → He left without __ to say goodbye.;bothering;;bothering",
+ "Они пришли по собственной воле. → They came of their own __.;accord;;ownaccord",
+ "Он сохранил присутствие духа. → He kept his __ about him.;wits;;wits",
+ "Страна процветала. → The country enjoyed __.;prosperity;;prosperity",
+ "Его голос дрогнул. → His voice __.;faltered;;falter",
+ "Толпа молча остановилась. → The crowd __ in silence.;halted;;halt",
+ "Они жестоко обращались с животными. → They __ the animals.;maltreated;;maltreat"
+]));
+const STK=["disheartened","neglect","rebellion","persuasive","expound","unfailing","fling","heels","expel","slam","possession","gaze","inscribe","fileback"];
+$("#story-chips").innerHTML=chips(STK);
+ex("st",U([
+ "Mr Jones was a careless farmer who drank too much and __ his farm and his animals.;neglected;;neglect",
+ "One evening an old pig called all the animals to the barn and spoke about a coming __.;rebellion;;rebellion",
+ "His speech was so __ that nobody wanted to argue.;persuasive;;persuasive",
+ "Soon the pigs began to __ the principles of the new idea to everybody.;expound;;expound",
+ "The hens, the horses and the ducks were __ in their attendance.;unfailing;;unfailing",
+ "When the farmer forgot to feed them again, the hungry animals __ themselves upon the men.;flung;;fling",
+ "The frightened men took to their __.;heels;;heels",
+ "The animals __ Mr Jones and his men from the farm.;expelled;;expel",
+ "Someone __ the gate shut behind them.;slammed;;slam",
+ "At last the animals took __ of the whole farm.;possession;;possession",
+ "They __ round the yard with speechless admiration.;gazed;;gaze",
+ "On the barn wall they __ the new rules.;inscribed;;inscribe",
+ "Then they __ back into the barn, one after another.;filed;;fileback",
+ "Nobody felt __ any more: for the first time they had hope.;disheartened;;disheartened"
+]));
+
+// ===== Autosave on this device =====
+const KEY="lesson_animal_farm_vocab_v1",fields=()=>$$("input[type=text],textarea,select");
+function save(){try{localStorage.setItem(KEY,JSON.stringify({v:fields().map(f=>f.value),p:cur}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;fields().forEach((f,i)=>{if(d.v[i]!=null)f.value=d.v[i]});return d.p||0}catch(e){return 0}}
+document.addEventListener("input",e=>{if(e.target.matches("input[type=text],textarea,select"))save()});
+document.addEventListener("change",e=>{if(e.target.matches("select"))save()});
+
+// ===== Slides =====
+const S=$$("section");let cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle("on",k==cur));
+ $("#pos").textContent=(cur+1)+" / "+S.length;$("#prev").disabled=cur==0;$("#next").disabled=cur==S.length-1;scrollTo(0,0);save()}
+$("#prev").onclick=()=>go(cur-1);$("#next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(e.target.matches("input,textarea,select"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});
+go(load()||0);
+
+// ===== Send results to VK (one message, on button press) =====
+function report(){
+ const L=[],er=[],open=[];let tot=0,good=0;
+ $$("section").forEach(s=>{const qs=[...s.querySelectorAll(".q")].filter(q=>q.querySelector("input,select"));
+  if(qs.length){let g=0;const bad=[];
+   qs.forEach((q,n)=>{const i=q.querySelector("input,select"),c=q.cloneNode(true);c.querySelectorAll(".fix,.big").forEach(x=>x.remove());c.querySelector("input,select").replaceWith("__");
+    const t=c.textContent.replace(/\s+/g," ").trim(),ok=i.dataset.a.split("/").some(x=>norm(x)==norm(i.value));
+    if(ok)g++;else bad.push((n+1)+". "+t+"\n    wrote: "+(i.value.trim()||"(no answer)")+"\n    correct: "+i.dataset.a.split("/")[0])});
+   tot+=qs.length;good+=g;L.push(s.querySelector("h2").textContent+": "+g+" / "+qs.length);
+   if(bad.length)er.push("\n"+s.querySelector("h2").textContent+" — mistakes:",...bad)}
+  s.querySelectorAll("textarea").forEach(t=>open.push(t.dataset.open+": "+(t.value.trim()||"(empty)")))});
+ return ["Lesson: Animal Farm, chapters 1-2 — vocabulary","Student: "+($("#name").value||"(no name)"),"Total: "+good+" / "+tot+" ("+Math.round(100*good/tot)+"%)","",...L,...(er.length?er:["\nNo mistakes."]),"\nWriting:",...open].join("\n")}
+$("#copy").onclick=()=>{navigator.clipboard.writeText(report()).then(()=>$("#status").textContent="Copied.",()=>$("#status").textContent="Could not copy")};
+$("#send").onclick=async()=>{
+ if(!$("#name").value.trim()){$("#status").textContent="Please write your name on the first page.";return}
+ if(!confirm("Are you sure you want to send your answers?"))return;
+ const txt=report();$("#status").textContent="Sending…";
+ try{const parts=[];let cur2="";txt.split("\n").forEach(l=>{if((cur2+"\n"+l).length>3500){parts.push(cur2);cur2=l}else cur2+=(cur2?"\n":"")+l});parts.push(cur2);
+  for(const p of parts){if(!(await tg("sendMessage",{text:p})).ok)throw 0}
+  $("#status").textContent="Sent. Thank you!"}catch(e){$("#status").textContent="Could not send. Press 'Copy answers' and send them to your teacher."}};
+</script></body></html>

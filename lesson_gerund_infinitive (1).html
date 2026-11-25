@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson: Gerund or infinitive?</title>
+<style>
+:root{--ink:#161b22;--mute:#5d6673;--bg:#f2f4f6;--card:#fff;--line:#d5dae0;--acc:#1f4e5f;--accbg:#e6eef1;--ok:#237a4b;--no:#b3372f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+header{background:var(--acc);color:#fff;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header b{font:600 19px Georgia,serif}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:8px 14px;display:flex;justify-content:center;align-items:center;gap:16px}
+main{max-width:820px;margin:18px auto;padding:0 12px 50px}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 22px}
+section.on{display:block}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.25;margin:.1em 0 .5em}
+h1{font-size:28px}h2{font-size:24px}h3{font-size:18px;margin:1.3em 0 .4em;color:var(--acc)}
+.mute{color:var(--mute);font-size:15px}
+.note{background:var(--accbg);border-left:4px solid var(--acc);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.ru{color:var(--mute);font-size:15px}
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.w{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;gap:12px;align-items:center}
+.w .em{flex:none;font-size:34px;width:48px;text-align:center}
+.w b{font-size:19px}.w .ipa{color:var(--acc);font-size:15px}.w .ex{color:var(--mute);font-size:15px;margin-top:2px}
+table{border-collapse:collapse;width:100%;margin:8px 0}td,th{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}th{width:34%;font-weight:600}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:#f9fafb;border:1px solid #9aa4b0;border-radius:4px;padding:4px 8px;max-width:100%}
+input[type=text]{min-width:130px;width:150px}
+select{margin:2px 0}
+textarea{width:100%;min-height:130px;margin:6px 0}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--acc)}
+input.ok,select.ok{background:#e3f3ea;border-color:var(--ok)}input.no,select.no{background:#fbe6e4;border-color:var(--no)}
+.q{padding:10px 0;border-bottom:1px solid #e6e9ed}.fix{display:block;color:var(--no);font-size:15px;margin-top:3px}
+button{font:inherit;font-weight:600;background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:5px;padding:8px 16px;cursor:pointer}
+button.main{background:var(--acc);color:#fff}button:disabled{opacity:.4;cursor:default}
+button.pl{padding:0 9px;font-size:13px;margin-left:8px}
+button:focus-visible{outline:3px solid #7fb0c0;outline-offset:2px}
+.score{font-weight:600;margin-left:10px}
+.rec{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin:12px 0;background:#fafbfc}
+.rec .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rec audio{width:100%;margin-top:6px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
+.pg{border:1px solid var(--line);border-radius:6px;padding:8px;text-align:center}
+.pg b{display:block;font-size:18px;color:var(--acc)}.pg span{font-size:14px;color:var(--mute)}
+svg.sc{width:120px;height:90px;display:block;margin:0 auto}
+.q svg.sc{margin:0 0 4px}
+.fridge{border:3px solid var(--acc);border-radius:10px;max-width:420px;margin:12px 0;background:#f3fafc}
+.fridge div{padding:8px 14px;border-bottom:2px solid var(--acc);font-size:26px}
+.fridge div:last-child{border-bottom:0}.fridge small{display:block;font-size:14px;color:var(--mute)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:10px 0}
+.menu div{border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.menu b{display:block;font-size:18px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{background:var(--accbg);border:1px solid var(--acc);border-radius:16px;padding:1px 10px;font-size:15px}
+.c2{background:#fdf1dc;border-color:#c98a1b}.c3{background:#e3f3ea;border-color:var(--ok)}
+.gb{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}
+.gb div{border:2px solid var(--acc);border-radius:8px;padding:10px 12px;background:var(--accbg)}
+.gb div.c2{border-color:#c98a1b}.gb div.c3{border-color:var(--ok)}
+.gb b{font-size:20px;display:block}
+
+</style></head><body>
+<header><b>English lesson</b><span id="pos"></span></header>
+<nav><button id="prev">Back</button><button id="next" class="main">Next</button></nav>
+<main>
+
+<section>
+<h1>Gerund or infinitive?</h1>
+<p>Verb patterns: <b>enjoy doing</b> or <b>want to do</b>? By the end of the lesson you know which form to use after the most common verbs and can use them in your own sentences.</p>
+<table><tr><th>Level</th><td>B1</td></tr>
+<tr><th>Rules</th><td>3 groups of verbs: + -ing, + to, + both</td></tr>
+<tr><th>Practice</th><td>choose, type, find mistakes, translate</td></tr>
+<tr><th>Writing</th><td>one short text at the end</td></tr></table>
+<p>Name: <input type="text" id="name" placeholder="Your name"></p>
+<p class="mute">Your answers are saved on this device automatically.<br><span class="ru">Твои ответы сохраняются на этом устройстве сами.</span></p>
+</section>
+
+<section>
+<h2>The idea: the first verb decides</h2>
+<p>Когда два глагола стоят рядом, второй меняет форму. Какую — зависит <b>от первого глагола</b>, а не от смысла фразы.</p>
+<table>
+<tr><th>Gerund</th><td>verb + <b>-ing</b>: I enjoy <b>swimming</b>.</td></tr>
+<tr><th>Infinitive</th><td><b>to</b> + verb: I want <b>to swim</b>.</td></tr></table>
+<div class="gb">
+<div><b>🔁 + -ing</b>enjoy, avoid, finish, mind…<br><span class="ru">процесс, факт, то, что уже есть или было</span></div>
+<div class="c2"><b>➡️ + to</b>want, decide, hope, plan…<br><span class="ru">цель, план, желание, будущее</span></div>
+<div class="c3"><b>↔️ both</b>like, love, start, stop…<br><span class="ru">можно оба, иногда смысл меняется</span></div></div>
+<div class="note"><b>Подсказка для памяти:</b> «стрелка вперёд» → <b>to</b>: ты тянешься к цели (want, hope, plan, decide). «Круг» → <b>-ing</b>: ты занят процессом или избегаешь его (enjoy, avoid, keep, finish). Это подсказка, а не закон, поэтому списки ниже надо выучить.</div>
+</section>
+
+<section>
+<h2>Group 1: verb + -ing 🔁</h2>
+<p class="mute">Press ▶ to listen. (Нажми ▶, чтобы послушать.)</p>
+<div class="words" id="w-g1"></div>
+<div class="note"><b>look forward to</b> — здесь <b>to</b> это предлог, а не часть инфинитива. Поэтому: I'm looking forward to <b>seeing</b> you. Так же после <b>be used to</b>.<br><b>practise</b> (британское) = <b>practice</b> (американское).</div>
+</section>
+
+<section>
+<h2>Group 2: verb + to + verb ➡️</h2>
+<div class="words" id="w-g2"></div>
+<div class="note"><b>Не с кем-то:</b> want, would like, expect можно использовать с человеком: I want <b>you to come</b>. She expects <b>him to call</b>. Форма та же: to + verb.</div>
+</section>
+
+<section>
+<h2>Group 3: both forms ↔️</h2>
+<h3>Same meaning</h3>
+<div class="words" id="w-g3"></div>
+<div class="note"><b>start, begin</b> — после -ing лучше не ставить второе -ing: It's starting <b>to rain</b>. (не starting raining).<br><b>would like / would love / would prefer</b> — только <b>to</b>: I'd like <b>to go</b>.</div>
+<h3>Different meaning</h3>
+<table>
+<tr><th>stop + -ing</th><td>бросить, прекратить: He <b>stopped smoking</b>.</td></tr>
+<tr><th>stop + to</th><td>остановиться, чтобы…: He <b>stopped to smoke</b>.</td></tr>
+<tr><th>remember + -ing</th><td>помнить, что было: I remember <b>locking</b> the door.</td></tr>
+<tr><th>remember + to</th><td>не забыть сделать: Remember <b>to lock</b> the door.</td></tr>
+<tr><th>forget + -ing</th><td>забыть, что было: I'll never forget <b>meeting</b> her.</td></tr>
+<tr><th>forget + to</th><td>забыть сделать: I forgot <b>to call</b> him.</td></tr>
+<tr><th>try + -ing</th><td>попробовать как эксперимент: Try <b>adding</b> salt.</td></tr>
+<tr><th>try + to</th><td>пытаться (может не выйти): I tried <b>to open</b> it, but it was stuck.</td></tr>
+<tr><th>regret + -ing</th><td>жалеть о том, что было: I regret <b>telling</b> her.</td></tr>
+<tr><th>regret + to</th><td>с сожалением сообщать: We regret <b>to inform</b> you…</td></tr></table>
+<div class="note">Правило: <b>-ing</b> — то, что уже было или идёт. <b>to</b> — то, что ещё надо сделать или цель.</div>
+</section>
+
+<section>
+<h2>More patterns</h2>
+<table>
+<tr><th>After a preposition</th><td>всегда <b>-ing</b>: good at <b>cooking</b>, interested in <b>learning</b>, Thanks for <b>helping</b>, before <b>leaving</b>, without <b>saying</b>.</td></tr>
+<tr><th>As a subject</th><td><b>Swimming</b> is fun. <b>Learning</b> languages takes time.</td></tr>
+<tr><th>verb + person + to</th><td>tell, ask, advise, allow, invite, remind, teach, force, persuade: My teacher <b>told me to read</b> more. Mum <b>doesn't allow me to stay</b> late.</td></tr>
+<tr><th>Not yet</th><td>make / let (<i>she made me laugh</i>) — это отдельная тема, пока не трогаем.</td></tr></table>
+</section>
+
+<section>
+<h2>Cheat sheet</h2>
+<p class="mute">Закрой список рукой и назови группы вслух. Потом проверь себя.</p>
+<h3>🔁 + -ing</h3>
+<div class="chips"><span class="chip">enjoy</span><span class="chip">avoid</span><span class="chip">finish</span><span class="chip">mind</span><span class="chip">suggest</span><span class="chip">practise</span><span class="chip">keep</span><span class="chip">give up</span><span class="chip">quit</span><span class="chip">imagine</span><span class="chip">consider</span><span class="chip">miss</span><span class="chip">dislike</span><span class="chip">admit</span><span class="chip">deny</span><span class="chip">risk</span><span class="chip">postpone</span><span class="chip">recommend</span><span class="chip">fancy</span><span class="chip">can't stand</span><span class="chip">look forward to</span></div>
+<h3>➡️ + to</h3>
+<div class="chips"><span class="chip c2">want</span><span class="chip c2">would like</span><span class="chip c2">decide</span><span class="chip c2">hope</span><span class="chip c2">plan</span><span class="chip c2">promise</span><span class="chip c2">learn</span><span class="chip c2">manage</span><span class="chip c2">afford</span><span class="chip c2">agree</span><span class="chip c2">refuse</span><span class="chip c2">offer</span><span class="chip c2">expect</span><span class="chip c2">need</span><span class="chip c2">choose</span><span class="chip c2">seem</span><span class="chip c2">pretend</span><span class="chip c2">fail</span><span class="chip c2">arrange</span><span class="chip c2">deserve</span><span class="chip c2">prepare</span></div>
+<h3>↔️ both</h3>
+<div class="chips"><span class="chip c3">like</span><span class="chip c3">love</span><span class="chip c3">hate</span><span class="chip c3">prefer</span><span class="chip c3">start</span><span class="chip c3">begin</span><span class="chip c3">continue</span><span class="chip c3">stop*</span><span class="chip c3">remember*</span><span class="chip c3">forget*</span><span class="chip c3">try*</span><span class="chip c3">regret*</span></div>
+<p class="mute">* смысл меняется</p>
+</section>
+
+<section><h2>Practice 1: which group?</h2><p class="mute">Choose the group. (Выбери группу.)</p><div id="ex-gr"></div></section>
+<section><h2>Practice 2: -ing verbs</h2><p class="mute">Choose the correct form. (Выбери правильную форму.)</p><div id="ex-g1"></div></section>
+<section><h2>Practice 3: to + verb</h2><p class="mute">Choose the correct form.</p><div id="ex-g2"></div></section>
+<section><h2>Practice 4: mix</h2><p class="mute">Groups 1 and 2 together.</p><div id="ex-mx"></div></section>
+<section><h2>Practice 5: write the form</h2><p class="mute">Write the verb in the correct form: -ing or to + verb. (Напиши форму.)</p><div id="ex-wr"></div></section>
+<section><h2>Practice 6: different meaning</h2><p class="mute">Read the Russian hint and choose the form.</p><div id="ex-dm"></div></section>
+<section><h2>Practice 7: people and prepositions</h2><div id="ex-pp"></div></section>
+<section><h2>Practice 8: right or wrong?</h2><p class="mute">Is the sentence correct? (Предложение верное?)</p><div id="ex-rw"></div></section>
+<section><h2>Practice 9: choose the translation</h2><div id="ex-tr"></div></section>
+<section><h2>Practice 10: email to a friend</h2><p class="mute">Write the verb in brackets in the correct form.</p><div id="ex-em"></div></section>
+
+<section>
+<h2>Writing</h2>
+<p>Write 6–8 sentences about yourself: your habits, plans and things you like or avoid. Use at least <b>3 verbs + -ing</b> and <b>3 verbs + to</b> from the lesson.</p>
+<p class="ru">Пример: <i>I enjoy walking in the park. I want to learn Italian. I avoid eating late…</i></p>
+<textarea data-open="About me"></textarea>
+</section>
+
+<section>
+<h2>Done</h2>
+<p>Press the button to send your answers to your teacher.</p>
+<button class="main" id="send">Send answers to teacher</button> <button id="copy">Copy answers</button>
+<p id="status"></p>
+</section>
+</main>
+<script>
+
+// ===== Teacher: VK settings =====
+const VK_TOKEN="vk1.a.tK6DmD3Qyhn1JVv2ZYrg3ximf65iPMjojvveQxeJyIksMAyKtxWuXtHKK7aty8JmBVzheAGRPAsrCQiMsT87GsbMelSpTowNBEriOaYGYBiYU0XD0evk8OgY8IgjDLmF-8V11GtA4F25Dg-nUtpbY-QWy_4pU6XEs0-jzCbLo-MFV0sfC5rIwDBTNUv0N-TCZGKjw_PeJnJolFrBOt1LaA";   // community access key with "messages" permission
+const VK_USER="267123155";            // your numeric VK id (digits only)
+function vk(m,p){return new Promise((ok,no)=>{const cb="vk"+Math.random().toString(36).slice(2),sc=document.createElement("script");
+ window[cb]=r=>{delete window[cb];sc.remove();ok(r)};sc.onerror=()=>{delete window[cb];sc.remove();no()};
+ sc.src="https://api.vk.com/method/"+m+"?"+new URLSearchParams({...p,access_token:VK_TOKEN,v:"5.199",callback:cb});document.head.append(sc)})}
+async function tg(method,o){ // sends to VK
+ if(VK_TOKEN.startsWith("PASTE"))return{ok:false};
+ if(method=="sendMessage"){const r=await vk("messages.send",{peer_ids:VK_USER,random_id:Date.now()+Math.floor(Math.random()*1e6),message:o.text});
+  const x=r.response&&r.response[0];return x&&x.conversation_message_id?{ok:true,result:{message_id:x.conversation_message_id}}:{ok:false}}
+ const r=await vk("messages.edit",{peer_id:VK_USER,conversation_message_id:o.message_id,message:o.text});return{ok:!!r.response}}
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+function cards(id,L){$(id).innerHTML=L.map(w=>`<div class="w"><div class="em">${w[3]}</div><div><b>${w[0]}</b>${w[4]?` <span class="ipa">/${w[4]}/</span>`:""}<button class="pl" data-say="${w[0].replace(/ \/ .*/,"").replace(/^(an?|some) /,"")}" aria-label="Listen">&#9654;</button><div>${w[1]}</div><div class="ex">${w[2]}</div></div></div>`).join("")}
+// ===== Pronunciation (browser voice, American English) =====
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;
+ const v=speechSynthesis.getVoices().find(v=>/^en[-_]US$/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+document.addEventListener("click",e=>{const w=e.target.dataset&&e.target.dataset.say;if(w)speak(w)});
+if(window.speechSynthesis)speechSynthesis.getVoices();
+const eg=(w,i)=>String(w).replace(/"/g,"&quot;");
+function ex(id,items){$("#ex-"+id).innerHTML=items.map(it=>{const[t,a,o,w,s]=it;
+ const c=o?`<select data-a="${eg(a)}" data-why="${eg(w)}"><option value="">…</option>${o.map(x=>`<option value="${eg(x)}">${x}</option>`).join("")}</select>`
+  :`<input type="text" data-a="${eg(a)}" data-why="${eg(w)}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">`;
+ return `<div class="q">${s?sc(s):""}${t.replace("__",c)}</div>`}).join("")
+ +`<p><button data-chk="${id}">Check</button><span class="score" id="sc-${id}"></span></p>`}
+const norm=s=>s.toLowerCase().replace(/-/g," ").replace(/[’`]/g,"'").replace(/[.,!?]/g,"").replace(/\s+/g," ").trim();
+document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.chk;if(!id)return;
+ let ok=0;const ins=$$("#ex-"+id+" input,#ex-"+id+" select");
+ ins.forEach(i=>{const nx=i.nextElementSibling;nx&&nx.classList.contains("fix")&&nx.remove();
+  const al=i.dataset.a.split("/"),good=al.some(x=>norm(x)==norm(i.value));i.className=good?"ok":"no";
+  if(good){ok++;i.dataset.m=0}else{const m=(+i.dataset.m||0)+1;i.dataset.m=m;const s=document.createElement("span");s.className="fix";
+   s.textContent=m==1?"Try again. Попробуй ещё раз.":m==2?(i.tagName=="INPUT"?"Hint: first letter «"+al[0][0]+"». Подсказка: первая буква «"+al[0][0]+"».":"Look at the Rules pages (Back). Посмотри правила на страницах Rules."):"Answer: "+al[0]+". "+i.dataset.why;i.after(s)}});
+ $("#sc-"+id).textContent=ok+" / "+ins.length+(ok==ins.length?"  Excellent!":"")});
+
+const G1=[["enjoy","наслаждаться","I enjoy reading in bed.","😍"],["avoid","избегать","He avoids driving at night.","🚫"],["finish","закончить","She finished doing her homework.","🏁"],["mind","возражать","Do you mind opening the window?","🙋"],["suggest","предлагать","I suggest taking a taxi.","💡"],["keep","продолжать","Keep going!","🔁"],["give up","бросить","He gave up smoking.","🏳️"],["imagine","представлять","Imagine living on a boat.","💭"],["consider","обдумывать","We're considering moving.","🤔"],["miss","скучать по","I miss walking on the beach.","💔"],["dislike","не любить","She dislikes getting up early.","👎"],["admit","признавать","He admitted breaking the cup.","🙈"],["postpone","откладывать","They postponed having the party.","📅"],["recommend","рекомендовать","I recommend visiting the museum.","👍"],["can't stand","терпеть не мочь","I can't stand waiting in queues.","😖"],["look forward to","ждать с нетерпением","I look forward to seeing you.","⏳"]];
+const G2=[["want","хотеть","I want to buy a new phone.","🎁"],["would like","хотел бы","I'd like to have a coffee.","🍵"],["decide","решить","She decided to stay at home.","✅"],["hope","надеяться","We hope to see you soon.","🤞"],["plan","планировать","They plan to move in May.","🗓️"],["promise","обещать","He promised to call me.","🤝"],["learn","учиться","I'm learning to play the guitar.","📖"],["manage","суметь","She managed to pass the exam.","💪"],["afford","позволить себе","I can't afford to buy a car.","💰"],["agree","соглашаться","They agreed to help us.","🙆"],["refuse","отказываться","He refused to take the money.","🙅"],["offer","предлагать","She offered to drive us.","🫴"],["expect","ожидать","We expect to arrive at six.","⏰"],["need","нужно","You need to rest.","❗"],["pretend","притворяться","The boy pretended to sleep.","🎭"],["fail","не суметь","He failed to pass the test.","😞"]];
+const G3=[["like","любить, нравиться","I like swimming. / I like to swim.","🙂"],["love","обожать","She loves dancing. / She loves to dance.","❤️"],["hate","ненавидеть","I hate waiting. / I hate to wait.","😠"],["prefer","предпочитать","He prefers walking. / He prefers to walk.","⚖️"],["start","начинать","It started raining. / It started to rain.","🌧️"],["begin","начинать","She began working. / She began to work.","▶️"],["continue","продолжать","He continued talking. / He continued to talk.","⏩"]];
+cards("#w-g1",G1);cards("#w-g2",G2);cards("#w-g3",G3);
+
+const U=a=>a.map(s=>{const[t,x,o,w]=s.split(";");return[t,x,o?o.split("|"):null,w||""]});
+const T=a=>a.map((s,i)=>{const[t,x,y,v]=s.split(";");return[t,x,i%2?[y,x]:[x,y],v+(x.startsWith("to ")?" — после этого глагола идёт to + глагол.":" — после этого глагола идёт глагол + -ing.")]});
+const GR=[["enjoy","-ing"],["want","to + verb"],["like","both"],["avoid","-ing"],["decide","to + verb"],["finish","-ing"],["hope","to + verb"],["love","both"],["mind","-ing"],["plan","to + verb"],["suggest","-ing"],["promise","to + verb"],["keep","-ing"],["learn","to + verb"],["start","both"],["give up","-ing"],["manage","to + verb"],["miss","-ing"],["afford","to + verb"],["prefer","both"],["agree","to + verb"],["dislike","-ing"],["refuse","to + verb"],["offer","to + verb"]];
+ex("gr",GR.map(g=>["<b>"+g[0]+"</b> → __",g[1],["-ing","to + verb","both"],g[0]+" — группа «"+g[1]+"»."]));
+
+ex("g1",T(["She enjoys __ to jazz in the evening.;listening;to listen;enjoy","I avoid __ coffee after six o'clock.;drinking;to drink;avoid","We finished __ the project on Friday.;writing;to write;finish","Would you mind __ the window?;closing;to close;mind","He suggested __ a taxi because it was late.;taking;to take;suggest","You should practise __ English every day.;speaking;to speak;practise","I gave up __ sweets last year.;eating;to eat;give up","Can you imagine __ on the moon?;living;to live;imagine","They are considering __ to Canada.;moving;to move;consider","I miss __ my grandmother's soup.;eating;to eat;miss"]));
+ex("g2",T(["I want __ a new phone.;to buy;buying;want","She decided __ in Spain.;to stay;staying;decide","We hope __ you soon.;to see;seeing;hope","They plan __ a party on Saturday.;to have;having;plan","He promised __ me tomorrow.;to call;calling;promise","I'm learning __ the guitar.;to play;playing;learn","She managed __ the exam.;to pass;passing;manage","I can't afford __ a new car.;to buy;buying;afford","He refused __ the money.;to take;taking;refuse","We expect __ at six.;to arrive;arriving;expect"]));
+ex("mx",T(["My brother needs __ his room.;to clean;cleaning;need","Do you fancy __ out tonight?;going;to go;fancy","I'd like __ a coffee, please.;to have;having;would like","She seems __ tired today.;to be;being;seem","He admitted __ the window.;breaking;to break;admit","I'm looking forward to __ you.;seeing;to see;look forward to","I pretended __ asleep.;to be;being;pretend","We postponed __ the meeting.;having;to have;postpone","She deserves __ a prize.;to win;winning;deserve","He denied __ the money.;taking;to take;deny","They risked __ everything.;losing;to lose;risk","She recommended __ the museum.;visiting;to visit;recommend","He failed __ the test.;to pass;passing;fail","I can't stand __ in queues.;waiting;to wait;can't stand","We arranged __ at the station.;to meet;meeting;arrange","He quit __ last year.;smoking;to smoke;quit"]));
+ex("wr",U(["I hope __ (get) the job.;to get;;hope + to + verb.","He avoids __ (talk) about money.;talking;;avoid + -ing.","We decided __ (take) a taxi.;to take;;decide + to + verb.","She finished __ (read) the book.;reading;;finish + -ing.","They agreed __ (help) us.;to help;;agree + to + verb.","I don't mind __ (wait).;waiting;;mind + -ing.","He promised __ (be) careful.;to be;;promise + to + verb.","She stopped __ (run) because she was tired.;running;;stop + -ing: бросила бежать. Буква n удваивается.","We can't afford __ (go) on holiday.;to go;;afford + to + verb.","She suggested __ (visit) the castle.;visiting;;suggest + -ing."]));
+ex("dm",U(["He stopped __ because he wanted a healthy life. (бросил курить);smoking;smoking|to smoke;stop + -ing — бросить.","He stopped __ because he wanted a cigarette. (остановился, чтобы покурить);to smoke;smoking|to smoke;stop + to — остановиться ради действия.","I remember __ the door. It's locked. (помню, что запер);locking;locking|to lock;remember + -ing — помнить, что было.","Please remember __ the door when you leave. (не забудь запереть);to lock;locking|to lock;remember + to — не забыть сделать.","I forgot __ my mum, so she was angry. (забыл позвонить);to call;calling|to call;forget + to — забыть сделать.","I'll never forget __ the Eiffel Tower. (не забуду, как увидел);seeing;seeing|to see;forget + -ing — не забуду то, что было.","I tried __ the window, but it was stuck. (пыталась, но не вышло);to open;opening|to open;try + to — пытаться.","Try __ some salt. Maybe it will taste better. (попробуй как эксперимент);adding;adding|to add;try + -ing — попробовать как эксперимент.","I regret __ her my secret. (жалею, что рассказал);telling;telling|to tell;regret + -ing — жалеть о том, что было.","We regret __ you that the flight is cancelled. (с сожалением сообщаем);to inform;informing|to inform;regret + to — сообщить с сожалением.","It started __ at noon.;to rain/raining;to rain|raining|rain;start — можно оба варианта.","She loves __ in the sea.;swimming/to swim;swimming|to swim|swim;love — можно оба варианта."]).map((it,i)=>(it[2]=i%2?it[2].slice().reverse():it[2],it)));
+ex("pp",U(["My teacher told me __ more.;to read;to read|reading;tell + человек + to + глагол.","She asked him __ the door.;to open;to open|opening;ask + человек + to + глагол.","Mum doesn't allow me __ late.;to stay;staying|to stay;allow + человек + to + глагол.","I advise you __ a doctor.;to see;to see|seeing;advise + человек + to + глагол.","He reminded me __ the bill.;to pay;paying|to pay;remind + человек + to + глагол.","She's good at __ people.;helping;to help|helping;После предлога at — только -ing.","I'm interested in __ photography.;learning;learning|to learn;После предлога in — только -ing.","Thanks for __ me!;helping;to help|helping;После предлога for — только -ing.","He left without __ goodbye.;saying;to say|saying;После предлога without — только -ing.","Before __ home, I called Mum.;leaving;leaving|to leave;После предлога before — только -ing."]));
+ex("rw",U(["I want going home now.;wrong;correct|wrong;want + to: I want to go home.","She enjoys playing tennis.;correct;correct|wrong;enjoy + -ing — верно.","He decided to leave early.;correct;correct|wrong;decide + to — верно.","They avoid to talk about it.;wrong;correct|wrong;avoid + -ing: avoid talking.","We finished to eat at nine.;wrong;correct|wrong;finish + -ing: finished eating.","I hope seeing you soon.;wrong;correct|wrong;hope + to: hope to see.","Would you mind opening the window?;correct;correct|wrong;mind + -ing — верно.","He suggested to go to the cinema.;wrong;correct|wrong;suggest + -ing: suggested going.","I'm looking forward to see you.;wrong;correct|wrong;look forward to + -ing: looking forward to seeing.","They refused paying.;wrong;correct|wrong;refuse + to: refused to pay."]));
+ex("tr",U(["Я решила выучить испанский. → __;I decided to learn Spanish.;I decided to learn Spanish.|I decided learning Spanish.;decide + to.","Мне нравится готовить ужин. → __;I enjoy cooking dinner.;I enjoy to cook dinner.|I enjoy cooking dinner.;enjoy + -ing.","Он отказался нам помогать. → __;He refused to help us.;He refused helping us.|He refused to help us.;refuse + to.","Ты не против подождать? → __;Do you mind waiting?;Do you mind waiting?|Do you mind to wait?;mind + -ing.","Она бросила курить. → __;She gave up smoking.;She gave up to smoke.|She gave up smoking.;give up + -ing.","Не забудь позвонить маме. → __;Don't forget to call your mum.;Don't forget to call your mum.|Don't forget calling your mum.;forget to — не забыть сделать.","Мне удалось найти ключи. → __;I managed to find the keys.;I managed finding the keys.|I managed to find the keys.;manage + to.","Я жду встречи с тобой. → __;I'm looking forward to meeting you.;I'm looking forward to meet you.|I'm looking forward to meeting you.;look forward to + -ing."]));
+ex("em",U(["Hi Anna! Last week I decided __ (change) my life.;to change;;decide + to.","I gave up __ (eat) fast food.;eating;;give up + -ing.","Now I enjoy __ (cook) at home.;cooking;;enjoy + -ing.","I want __ (learn) new recipes every week.;to learn;;want + to.","My friend Tom suggested __ (join) a gym.;joining;;suggest + -ing.","At first I refused __ (go), but then I agreed.;to go;;refuse + to.","I can't stand __ (run) in the rain, so I use a treadmill.;running;;can't stand + -ing.","I'm trying __ (sleep) before eleven every day.;to sleep;;try + to — пытаюсь.","I hope __ (feel) better soon.;to feel;;hope + to.","I'm looking forward to __ (see) you on Saturday!;seeing;;look forward to + -ing."]));
+
+// ===== Autosave on this device =====
+
+// ===== Autosave on this device =====
+const KEY="lesson_gerund_infinitive_v1",fields=()=>$$("input[type=text],textarea,select");
+function save(){try{localStorage.setItem(KEY,JSON.stringify({v:fields().map(f=>f.value),p:cur}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;fields().forEach((f,i)=>{if(d.v[i]!=null)f.value=d.v[i]});return d.p||0}catch(e){return 0}}
+document.addEventListener("input",e=>{if(e.target.matches("input[type=text],textarea,select"))save()});
+document.addEventListener("change",e=>{if(e.target.matches("select"))save()});
+
+// ===== Slides =====
+const S=$$("section");let cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle("on",k==cur));
+ $("#pos").textContent=(cur+1)+" / "+S.length;$("#prev").disabled=cur==0;$("#next").disabled=cur==S.length-1;scrollTo(0,0);save()}
+$("#prev").onclick=()=>go(cur-1);$("#next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(e.target.matches("input,textarea,select"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});
+go(load()||0);
+// ===== Send results to VK (one message, on button press) =====
+function report(){
+ const L=[],er=[],open=[];let tot=0,good=0;
+ $$("section").forEach(s=>{const qs=[...s.querySelectorAll(".q")].filter(q=>q.querySelector("input,select"));
+  if(qs.length){let g=0;const bad=[];
+   qs.forEach((q,n)=>{const i=q.querySelector("input,select"),c=q.cloneNode(true);c.querySelectorAll(".fix").forEach(x=>x.remove());c.querySelector("input,select").replaceWith("__");
+    const t=c.textContent.replace(/\s+/g," ").trim(),ok=i.dataset.a.split("/").some(x=>norm(x)==norm(i.value));
+    if(ok)g++;else bad.push((n+1)+". "+t+"\n    wrote: "+(i.value.trim()||"(no answer)")+"\n    correct: "+i.dataset.a.split("/")[0])});
+   tot+=qs.length;good+=g;L.push(s.querySelector("h2").textContent+": "+g+" / "+qs.length);
+   if(bad.length)er.push("\n"+s.querySelector("h2").textContent+" — mistakes:",...bad)}
+  s.querySelectorAll("textarea").forEach(t=>open.push(t.dataset.open+": "+(t.value.trim()||"(empty)")))});
+ return ["Lesson: Gerund or infinitive? (B1)","Student: "+($("#name").value||"(no name)"),"Total: "+good+" / "+tot+" ("+Math.round(100*good/tot)+"%)","",...L,...(er.length?er:["\nNo mistakes."]),"\nWriting:",...open].join("\n")}
+$("#copy").onclick=()=>{navigator.clipboard.writeText(report()).then(()=>$("#status").textContent="Copied.",()=>$("#status").textContent="Could not copy")};
+$("#send").onclick=async()=>{
+ if(!$("#name").value.trim()){$("#status").textContent="Please write your name on the first page.";return}
+ if(!confirm("Are you sure you want to send your answers?"))return;
+ const txt=report();$("#status").textContent="Sending…";
+ try{const parts=[];let cur2="";txt.split("\n").forEach(l=>{if((cur2+"\n"+l).length>3500){parts.push(cur2);cur2=l}else cur2+=(cur2?"\n":"")+l});parts.push(cur2);
+  for(const p of parts){if(!(await tg("sendMessage",{text:p})).ok)throw 0}
+  $("#status").textContent="Sent. Thank you!"}catch(e){$("#status").textContent="Could not send. Press 'Copy answers' and send them to your teacher."}};
+</script></body></html>
