@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English lesson: Clothes, appearance and To be</title>
+<style>
+:root{--ink:#1f2a44;--sun:#ffc93c;--sea:#12998f;--bg:#f6f4ee;--card:#fff;--ok:#1f9d55;--no:#d64545;--mute:#6b7488}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 "Trebuchet MS","Segoe UI",Arial,sans-serif}
+header{background:var(--ink);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+header b{font-size:20px}
+#dots{display:flex;gap:6px;flex-wrap:wrap}
+#dots span{width:12px;height:12px;border-radius:50%;background:#56628a;cursor:pointer}
+#dots span.on{background:var(--sun)}
+main{max-width:900px;margin:18px auto;padding:0 14px 40px}
+section{display:none;background:var(--card);border-radius:14px;padding:22px 24px;border:3px solid var(--ink)}
+section.on{display:block}
+h1,h2{margin:.1em 0 .4em;line-height:1.2}
+h2{font-size:28px}
+h3{margin:1em 0 .3em;color:var(--sea)}
+p{margin:.65em 0}
+.hint,i{color:var(--mute);font-size:15px}
+.box{background:#fff6d6;border-left:8px solid var(--sun);padding:11px 14px;border-radius:8px;margin:12px 0}
+.box.sea{background:#e2f5f3;border-color:var(--sea)}
+.box.pink{background:#fff0f0;border-color:#d77b7b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.cell{border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:#fff}
+.cell big{font-size:25px;display:block}
+.pos{color:var(--ok);font-weight:bold}.neg{color:var(--no);font-weight:bold}
+table{border-collapse:collapse;width:100%;margin:10px 0}
+td,th{border:2px solid var(--ink);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--sun)}
+input[type=text],textarea,select{font:inherit;border:0;border-bottom:3px solid var(--ink);background:#fffbe9;padding:5px 7px;min-width:145px;color:var(--ink);border-radius:4px 4px 0 0;max-width:100%}
+textarea{width:100%;border:3px solid var(--ink);border-radius:8px;min-height:100px;margin:6px 0}
+input:focus,textarea:focus,select:focus{outline:3px solid var(--sea)}
+input.ok,select.ok{background:#d9f5e3;border-color:var(--ok)}input.no,select.no{background:#fde0e0;border-color:var(--no)}
+.q{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 0;border-bottom:1px dashed #cfd3df}
+.q .prompt{flex:1;min-width:230px}
+.fix{color:var(--no);font-size:15px}
+button{font:inherit;font-weight:bold;background:var(--sun);color:var(--ink);border:3px solid var(--ink);border-radius:10px;padding:8px 18px;cursor:pointer}
+button.alt{background:var(--sea);color:#fff}
+button:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.score{font-weight:bold;margin-left:10px}
+nav{position:sticky;top:0;z-index:5;background:var(--ink);padding:8px 10px 10px;display:flex;justify-content:center;gap:14px}
+.tag{display:inline-block;background:#e2f5f3;border-radius:8px;padding:3px 8px;margin:2px;font-weight:bold}
+.small{font-size:15px;color:var(--mute)}
+.phrase{background:#f1f3fa;border-radius:8px;padding:8px 10px;margin:5px 0}
+footer{color:var(--mute);font-size:13px;text-align:center;margin:14px}
+@media(max-width:600px){section{padding:17px 14px}body{font-size:16px}h2{font-size:24px}}
+.gold{background:#fff0f0;border:3px solid #d77b7b;border-left-width:10px;border-radius:8px;padding:10px 14px;margin:12px 0}
+.opts button{margin:2px 3px;padding:4px 12px}button.ok{background:#d9f5e3;border-color:var(--ok)}button.no{background:#fde0e0;border-color:var(--no)}
+.q{align-items:flex-start}.msg{flex-basis:100%;font-size:15px}.msg.g{color:var(--ok)}.msg.e{color:var(--no)}
+p.score{font-weight:bold;margin:8px 0}.rec{border:3px dashed var(--sea);border-radius:10px;padding:12px;margin:10px 0}
+.att{color:var(--mute);font-size:13px;margin-left:6px;white-space:nowrap}button:disabled{opacity:.55;cursor:default}
+.spk{padding:0 8px;margin-left:6px;font-size:14px;border-width:2px;border-radius:8px;vertical-align:middle;background:#e2f5f3}.ln{margin:3px 0}
+.bI{color:#7b3fc4;font-weight:bold}.bS{color:#c96a10;font-weight:bold}.bA{color:#12998f;font-weight:bold}
+.dot{display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:6px}
+.cell.s{padding:7px 10px}.cell.s big{font-size:20px}
+.map .cell{border-left-width:10px}.map .m1{border-left-color:#7b3fc4}.map .m2{border-left-color:#c96a10}.map .m3{border-left-color:#12998f}
+svg{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<header><b>English lesson · Clothes, appearance, To be</b><div id="dots"></div></header>
+<nav><button id="prev">← Назад</button><button id="next">Далее →</button></nav>
+<main>
+
+<section>
+<h1>Clothes, appearance and To be</h1>
+<p>Сегодня мы учим слова про <b>одежду и внешность</b> и закрепляем <b>to be: <span class="bI">am</span> / <span class="bS">is</span> / <span class="bA">are</span></b>. Главная цель: понимать, <b>какую форму ставить и почему</b>.</p>
+<div class="grid">
+<div class="cell">👕 <b>Одежда и цвета</b></div>
+<div class="cell">🧑 <b>Волосы, глаза, рост</b></div>
+<div class="cell">🟣🟠🟢 <b>am — is — are</b></div>
+<div class="cell">↔️ <b>Порядок слов</b></div>
+</div>
+<p>🔊 Везде, где есть значок, можно <b>послушать</b> английский.</p>
+<div class="gold"></div>
+<div class="box sea"><b>Как проверяются ответы:</b> оценок нет. На каждое задание <b>10 попыток</b>, а рядом видно, какая попытка сейчас. Кнопок «Проверить» нет: пиши, и ответ проверится сам. Подсказки приходят <b>по чуть-чуть</b>: сначала «Попробуй ещё раз», потом короткая подсказка, потом объяснение, потом первые буквы ответа. Если все 10 попыток закончились, покажем правильный ответ.</div>
+<p>Имя ученика: <input type="text" id="name" placeholder="Напиши своё имя"></p>
+</section>
+
+<section>
+<h2>1. Слова: одежда и внешность</h2>
+<h3>Одежда</h3>
+<div class="grid">
+<div class="cell s"><big>🧥 jacket</big>куртка</div><div class="cell s"><big>coat</big>пальто</div>
+<div class="cell s"><big>👔 shirt</big>рубашка</div><div class="cell s"><big>👕 T-shirt</big>футболка</div>
+<div class="cell s"><big>🧶 sweater</big>свитер</div><div class="cell s"><big>👖 jeans</big>джинсы (всегда мн. ч.)</div>
+<div class="cell s"><big>trousers</big>брюки (всегда мн. ч.)</div><div class="cell s"><big>👗 dress</big>платье</div>
+<div class="cell s"><big>skirt</big>юбка</div><div class="cell s"><big>👟 shoes</big>туфли, обувь (мн. ч.)</div>
+<div class="cell s"><big>🧢 hat</big>шапка, шляпа</div>
+</div>
+<h3>Волосы и глаза</h3>
+<div class="grid">
+<div class="cell s"><big>long</big>длинные</div><div class="cell s"><big>short</big>короткие</div>
+<div class="cell s"><big>dark</big>тёмные</div><div class="cell s"><big>fair</big>светлые</div>
+<div class="cell s"><big>curly</big>кудрявые</div><div class="cell s"><big>straight</big>прямые</div>
+</div>
+<p class="small"><b>hair</b> (волосы) по-русски во множественном числе, а по-английски это <b>одно слово</b>: hair <b>is</b> long.</p>
+<h3>Рост и возраст</h3>
+<div class="grid">
+<div class="cell s"><big>tall</big>высокий</div><div class="cell s"><big>short</big>невысокий</div>
+<div class="cell s"><big>young</big>молодой</div><div class="cell s"><big>old</big>старый</div>
+</div>
+<h3>Цвета</h3>
+<div class="grid">
+<div class="cell s"><big><span class="dot" style="background:#d64545"></span>red</big>красный</div>
+<div class="cell s"><big><span class="dot" style="background:#2f6fd0"></span>blue</big>синий</div>
+<div class="cell s"><big><span class="dot" style="background:#2f9d55"></span>green</big>зелёный</div>
+<div class="cell s"><big><span class="dot" style="background:#222"></span>black</big>чёрный</div>
+<div class="cell s"><big><span class="dot" style="background:#fff"></span>white</big>белый</div>
+<div class="cell s"><big><span class="dot" style="background:#9aa0ad"></span>grey</big>серый</div>
+<div class="cell s"><big><span class="dot" style="background:#7a4a2a"></span>brown</big>коричневый</div>
+<div class="cell s"><big><span class="dot" style="background:#ffc93c"></span>yellow</big>жёлтый</div>
+</div>
+</section>
+
+<section>
+<h2>2. Смотри и читай: Anna</h2>
+<svg viewBox="0 0 440 320" role="img" aria-label="Anna: long brown hair, green eyes, blue jacket, white T-shirt, black jeans, grey shoes">
+<path d="M130 58 Q130 20 170 20 Q210 20 210 58 L216 124 L196 124 L196 72 L144 72 L144 124 L124 124 Z" fill="#7a4a2a"/>
+<circle cx="170" cy="58" r="30" fill="#f5d3b3"/>
+<circle cx="160" cy="56" r="4" fill="#2f9d55"/><circle cx="180" cy="56" r="4" fill="#2f9d55"/>
+<path d="M160 70 Q170 78 180 70" stroke="#1f2a44" stroke-width="2.5" fill="none"/>
+<rect x="162" y="86" width="16" height="14" fill="#f5d3b3"/>
+<rect x="125" y="98" width="90" height="102" rx="10" fill="#fff" stroke="#1f2a44" stroke-width="3"/>
+<rect x="95" y="100" width="30" height="88" rx="12" fill="#2f6fd0"/><rect x="215" y="100" width="30" height="88" rx="12" fill="#2f6fd0"/>
+<rect x="125" y="98" width="24" height="102" fill="#2f6fd0"/><rect x="191" y="98" width="24" height="102" fill="#2f6fd0"/>
+<circle cx="110" cy="196" r="9" fill="#f5d3b3"/><circle cx="230" cy="196" r="9" fill="#f5d3b3"/>
+<rect x="130" y="200" width="38" height="82" fill="#222"/><rect x="172" y="200" width="38" height="82" fill="#222"/>
+<rect x="120" y="282" width="50" height="17" rx="7" fill="#9aa0ad"/><rect x="170" y="282" width="50" height="17" rx="7" fill="#9aa0ad"/>
+<g stroke="#1f2a44" stroke-width="1.5" fill="#1f2a44" font-size="16" font-family="Trebuchet MS,Arial,sans-serif">
+<line x1="205" y1="38" x2="262" y2="38"/><text x="268" y="43" stroke="none">hair: long, brown</text>
+<line x1="184" y1="56" x2="262" y2="64"/><text x="268" y="69" stroke="none">eyes: green</text>
+<line x1="240" y1="130" x2="262" y2="130"/><text x="268" y="135" stroke="none">jacket: blue</text>
+<line x1="170" y1="170" x2="262" y2="170"/><text x="268" y="175" stroke="none">T-shirt: white</text>
+<line x1="200" y1="240" x2="262" y2="240"/><text x="268" y="245" stroke="none">jeans: black</text>
+<line x1="210" y1="291" x2="262" y2="291"/><text x="268" y="296" stroke="none">shoes: grey</text>
+</g>
+</svg>
+<div class="phrase">Anna <b class="bS">is</b> tall.<br>Her hair <b class="bS">is</b> long and brown.<br>Her eyes <b class="bA">are</b> green.<br>Her jacket <b class="bS">is</b> blue.<br>Her T-shirt <b class="bS">is</b> white.<br>Her jeans <b class="bA">are</b> black.<br>Her shoes <b class="bA">are</b> grey.</div>
+<div class="box">Почему так? <b>Anna</b> = she → <b class="bS">is</b>. <b>Hair</b> и <b>jacket</b> = it → <b class="bS">is</b>. <b>Eyes, jeans, shoes</b> = they (их несколько или это «пара») → <b class="bA">are</b>.</div>
+</section>
+
+<section>
+<h2>3. To be: am / is / are</h2>
+<div class="gold"></div>
+<p>По-русски мы говорим «Моя куртка синяя», глагола нет. А по-английски <b>глагол нужен всегда</b>. Он нужен, когда мы отвечаем на вопросы <b>кто? какой? где? сколько лет?</b></p>
+<div class="grid map">
+<div class="cell m1"><b class="bI">AM</b><br><b>I</b><br>I am tall.</div>
+<div class="cell m2"><b class="bS">IS</b><br><b>he / she / it</b><br>My hair is long.</div>
+<div class="cell m3"><b class="bA">ARE</b><br><b>you / we / they</b><br>My shoes are new.</div>
+</div>
+<h3>Кто это: he, she, it или they?</h3>
+<table>
+<tr><td>my brother, Tom</td><td><b>HE</b> <b class="bS">is</b></td></tr>
+<tr><td>my sister, Anna</td><td><b>SHE</b> <b class="bS">is</b></td></tr>
+<tr><td>my hair, my jacket, my hat, a dress</td><td><b>IT</b> <b class="bS">is</b></td></tr>
+<tr><td>my eyes, my shoes, my jeans, my trousers</td><td><b>THEY</b> <b class="bA">are</b></td></tr>
+<tr><td>my brother and I</td><td><b>WE</b> <b class="bA">are</b></td></tr>
+</table>
+<table>
+<tr><th></th><th>I</th><th>he / she / it</th><th>you / we / they</th></tr>
+<tr><td>(+)</td><td>I <b class="bI">am</b> tall.</td><td>She <b class="bS">is</b> tall.</td><td>They <b class="bA">are</b> tall.</td></tr>
+<tr><td>(−)</td><td>I <b class="bI">am not</b> tall.</td><td>She <b class="bS">isn't</b> tall.</td><td>They <b class="bA">aren't</b> tall.</td></tr>
+<tr><td>(?)</td><td><b class="bI">Am</b> I tall?</td><td><b class="bS">Is</b> she tall?</td><td><b class="bA">Are</b> they tall?</td></tr>
+</table>
+<h3>Короткие ответы и сокращения</h3>
+<table>
+<tr><td>Is your jacket blue?</td><td><b>Yes, it is.</b> / <b>No, it isn't.</b></td></tr>
+<tr><td>Are your shoes black?</td><td><b>Yes, they are.</b> / <b>No, they aren't.</b></td></tr>
+<tr><td>Are you tall?</td><td><b>Yes, I am.</b> / <b>No, I'm not.</b></td></tr>
+<tr><td>Сокращения</td><td>I'm · he's · she's · it's · you're · we're · they're</td></tr>
+</table>
+</section>
+
+<section>
+<h2>4. Порядок слов</h2>
+<p>В предложении с to be слова идут <b>по порядку</b>, как кубики:</p>
+<table>
+<tr><th>Кто / что</th><th>am / is / are</th><th>какой? где?</th><th>когда?</th></tr>
+<tr><td>I</td><td><b class="bI">am</b></td><td>tired</td><td><b>now.</b></td></tr>
+<tr><td>My hair</td><td><b class="bS">is</b></td><td>long</td><td><b>today.</b></td></tr>
+<tr><td>The shoes</td><td><b class="bA">are</b></td><td>in the car</td><td><b>now.</b></td></tr>
+<tr><td>We</td><td><b class="bA">are</b></td><td>at home</td><td><b>now.</b></td></tr>
+</table>
+<div class="box"><b>Слово now (и today) ставим в конец.</b> Его можно поставить и в начало: <b>Now</b> we are at home. А вот <b>между</b> подлежащим и to be слов не вставляем. <span class="neg">НЕВЕРНО:</span> We now are at home. <span class="pos">ВЕРНО:</span> We are at home now.</div>
+<h3>Вопрос и отрицание</h3>
+<table>
+<tr><td>(+)</td><td>Her jacket <b class="bS">is</b> warm now.</td></tr>
+<tr><td>(−)</td><td>Her jacket <b class="bS">is not</b> (<b>isn't</b>) warm. Тут <b>not</b> ставим <b>после</b> to be.</td></tr>
+<tr><td>(?)</td><td><b class="bS">Is</b> her jacket warm? Тут to be выходит <b>на первое место</b>.</td></tr>
+<tr><td>(?)</td><td><b>Where</b> <b class="bA">are</b> your shoes? · <b>What colour</b> <b class="bS">is</b> your hat?</td></tr>
+</table>
+<div class="box sea"><b>Прилагательное:</b> либо <b>после to be</b> (The jacket <b class="bS">is</b> blue), либо <b>перед существительным</b> (It <b class="bS">is</b> a blue jacket). В обоих случаях to be остаётся.</div>
+</section>
+
+<section>
+<h2>Practice 1: Слова</h2>
+<h3>Что на картинке?</h3><div id="ex-v1"></div>
+<h3>Выбери перевод</h3><div id="ex-v2"></div>
+<h3>Скажи по-английски</h3><div id="ex-v3"></div>
+</section>
+
+<section>
+<h2>Practice 2: am / is / are</h2>
+<div class="gold"></div>
+<h3>Впиши am / is / are</h3><div id="ex-be1"></div>
+<h3>Выбери</h3><div id="ex-be2"></div>
+<h3>he, she, it, we или they?</h3><div id="ex-pron"></div>
+<h3>Исправь: потерялся to be!</h3><div id="ex-fix"></div>
+</section>
+
+<section>
+<h2>Practice 3: Порядок слов</h2>
+<p>Подсказка: <b>кто / что → am / is / are → какой? где? → когда?</b></p>
+<h3>Составь предложение</h3><div id="ex-wo1"></div>
+<h3>Выбери верное предложение</h3><div id="ex-wo2"></div>
+</section>
+
+<section>
+<h2>Practice 4: Отрицание, вопрос, короткий ответ</h2>
+<h3>Отрицание и вопрос</h3><div id="ex-neg"></div>
+<h3>Короткие ответы</h3><div id="ex-sa"></div>
+</section>
+
+<section>
+<h2>Writing ✍️</h2>
+<div class="box pink"><b>Проверь себя:</b> в каждом предложении есть <b>am / is / are</b>; <b>now</b> или <b>today</b> стоит в конце; у <b>hair</b> — <b>is</b>, у <b>eyes, shoes, jeans</b> — <b>are</b>.</div>
+<h3>1. О себе (4 предложения)</h3>
+<p><b>I am... My hair is... My eyes are... My jacket / shoes / jeans ...</b></p>
+<textarea data-open="О себе" placeholder="I am ..."></textarea>
+<h3>2. О друге или члене семьи (3 предложения)</h3>
+<textarea data-open="О друге" placeholder="My friend is ..."></textarea>
+<h3>Отправить учителю</h3>
+<p><button id="send">Отправить ответы учителю 📨</button> <button class="alt" id="copy">Скопировать ответы</button></p>
+<p id="status" class="small"></p>
+</section>
+
+</main>
+<footer>Ответы сохраняются на этом устройстве автоматически.</footer>
+<script>
+// ===== Teacher: VK settings =====
+const VK_TOKEN="vk1.a.tK6DmD3Qyhn1JVv2ZYrg3ximf65iPMjojvveQxeJyIksMAyKtxWuXtHKK7aty8JmBVzheAGRPAsrCQiMsT87GsbMelSpTowNBEriOaYGYBiYU0XD0evk8OgY8IgjDLmF-8V11GtA4F25Dg-nUtpbY-QWy_4pU6XEs0-jzCbLo-MFV0sfC5rIwDBTNUv0N-TCZGKjw_PeJnJolFrBOt1LaA";   // community access key with "messages" permission
+const VK_USER="267123155";            // your numeric VK id (digits only)
+function vk(m,p){return new Promise((ok,no)=>{const cb="vk"+Math.random().toString(36).slice(2),sc=document.createElement("script");
+ window[cb]=r=>{delete window[cb];sc.remove();ok(r)};sc.onerror=()=>{delete window[cb];sc.remove();no()};
+ sc.src="https://api.vk.com/method/"+m+"?"+new URLSearchParams({...p,access_token:VK_TOKEN,v:"5.199",callback:cb});document.head.append(sc)})}
+async function tg(method,o){ // sends to VK
+ if(VK_TOKEN.startsWith("PASTE"))return{ok:false};
+ if(method=="sendMessage"){const r=await vk("messages.send",{peer_ids:VK_USER,random_id:Date.now()+Math.floor(Math.random()*1e6),message:o.text});
+  const x=r.response&&r.response[0];return x&&x.conversation_message_id?{ok:true,result:{message_id:x.conversation_message_id}}:{ok:false}}
+ const r=await vk("messages.edit",{peer_id:VK_USER,conversation_message_id:o.message_id,message:o.text});return{ok:!!r.response}}
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const norm=s=>String(s).toLowerCase().replace(/-/g," ").replace(/[’`]/g,"'").replace(/[.,!?]/g,"").replace(/\s+/g," ").trim();
+
+// ===== Rules: [short hint, long explanation] =====
+const R={
+am:["после <b>I</b> всегда <b>am</b>.","<b>I → AM</b>. I <b>am</b> tall. Глагол нужен всегда: I <b>am</b> tired, а не «I tired»."],
+is:["<b>he / she / it</b>, один предмет и слово <b>hair</b> → <b>IS</b>.","<b>He / She / It / My hair / My jacket → IS</b>. Глагол нужен всегда: My jacket <b>IS</b> blue, а не «My jacket blue»."],
+are:["<b>you / we / they</b> и всё, что во множественном числе (eyes, shoes, jeans) → <b>ARE</b>.","<b>Eyes, shoes, jeans, trousers → ARE</b>: My jeans <b>ARE</b> black. Это «пары» и множественное число."],
+be0:["в предложении потерялся to be.","Нельзя говорить «My hair long». Нужно <b>My hair IS long</b>. I → <b>am</b>, he / she / it → <b>is</b>, you / we / they → <b>are</b>."],
+pron:["подставь слово вместо имени.","<b>my hair, my jacket → IT</b> (hair — всегда it); <b>my shoes, my jeans → THEY</b> (пара — это «они»); <b>my sister → SHE</b>; <b>my brother → HE</b>; <b>my brother and I → WE</b>."],
+ben:["для отрицания добавь <b>not</b> после to be.","<b>am not</b>, <b>is not (isn't)</b>, <b>are not (aren't)</b>. Не нужны do / does: My jacket <b>isn't</b> red."],
+beq:["в вопросе to be выходит на первое место.","<b>Is</b> she tall? <b>Are</b> your shoes new? To be ставим <b>перед</b> подлежащим."],
+sa:["в коротком ответе повторяем to be: Yes, it <b>is</b>. No, they <b>aren't</b>.","<b>Yes, it is. Yes, they are. Yes, I am.</b> После <b>I</b> опять <b>am</b>. В отрицании: No, it <b>isn't</b> / No, they <b>aren't</b> / No, I'<b>m not</b>."],
+w:["вспомни слайд со словами.","<b>jacket</b> куртка, <b>coat</b> пальто, <b>shirt</b> рубашка, <b>T-shirt</b> футболка, <b>sweater</b> свитер, <b>jeans</b> джинсы, <b>trousers</b> брюки, <b>dress</b> платье, <b>skirt</b> юбка, <b>shoes</b> туфли, <b>hat</b> шапка. <b>long</b> длинные, <b>curly</b> кудрявые, <b>green</b> зелёный, <b>tall</b> высокий, <b>old</b> старый."],
+wo:["порядок: кто → to be → какой / где → когда (now).","<b>Подлежащее + am / is / are + описание + место + время.</b> My brother <b>is</b> at home <b>now</b>. Слово <b>now</b> в конец (или в самое начало). В вопросе to be идёт <b>перед</b> подлежащим: <b>Is</b> your jacket warm? <b>Where are</b> your shoes?"]
+};
+const GOLD="<b>🔑 ЗОЛОТОЕ ПРАВИЛО:</b><br>В английском предложении <b>ВСЕГДА</b> есть глагол. Когда мы описываем (<b>какой? кто? где?</b>), этот глагол — <b>to be: <span class='bI'>am</span> / <span class='bS'>is</span> / <span class='bA'>are</span></b>.<br><span class='pos'>ВЕРНО:</span> <b>My jacket IS blue.</b><br><span class='neg'>НЕВЕРНО:</span> <b>My jacket blue.</b>";
+$$(".gold").forEach(g=>g.innerHTML=GOLD);
+
+// ===== Listening: browser voice reads English =====
+let VO=null;
+function pickVoice(){const v=speechSynthesis.getVoices();VO=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(x){if(!("speechSynthesis" in window)||!x)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(x);u.lang="en-US";if(VO)u.voice=VO;u.rate=.85;speechSynthesis.speak(u)}
+const fin=s=>s.replace(/\([^)]*\)/g,"").replace(/[^\x20-\x7E\u2019]/g," ").replace(/\//g,". ").replace(/\s+/g," ").trim();
+const enCut=s=>fin(s.replace(/<[^>]+>/g,"").split(/[\u0400-\u04FF]/)[0]);
+const enAll=s=>fin(s.replace(/<[^>]+>/g,"").replace(/[\u0400-\u04FF]+/g," ").replace(/__/g,","));
+function spk(key){const s=T[key],a=s.ans.split("/")[0];
+ if(/^(Исправь|Сделай|Скажи)/.test(s.t))return s.d?enAll(a):"";
+ if(/[\u0400-\u04FF]/.test(s.t.replace(/\([^)]*\)/g,"")))return s.d?enAll(a):"";
+ return enAll(s.t.replace("__",s.d?a:"__"))}
+function addSpk(el,txt){const x=enCut(txt);if(!/[A-Za-z]{3}/.test(x)||/НЕВЕРНО/.test(el.textContent))return;
+ const b=document.createElement("button");b.className="spk";b.textContent="🔊";b.title="Слушать";b.onclick=e=>{e.stopPropagation();say(x)};el.append(" ",b)}
+
+// ===== Engine: every item checks itself. 10 attempts, no grades; hints come little by little =====
+// item: [text with __, accepted answers split by /, rule, options (a|b|c = buttons, ~a|b|c = dropdown)]
+const T={},tm={};
+const MAX=10;
+function ex(id,items){
+ $("#ex-"+id).innerHTML=items.map((it,k)=>{
+  const [t,a,r,o]=it,key=id+"_"+k;T[key]={a:0,l:"",d:0,ok:0,ans:a,r,t,o:o||"",w:[]};let c;
+  if(o&&o[0]=="~")c=`<select data-k="${key}"><option value="">—</option>${o.slice(1).split("|").map(x=>`<option>${x}</option>`).join("")}</select>`;
+  else if(o)c=`<span class="opts">${o.split("|").map(x=>`<button data-k="${key}" data-v="${x}">${x}</button>`).join("")}</span>`;
+  else c=`<input type="text" data-k="${key}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`;
+  return `<div class="q" id="q-${key}"><span class="prompt">${k+1}. <button class="spk" data-sp="${key}" title="Слушать" hidden>🔊</button> ${t.includes("__")?t.replace("__",c):t+" "+c}</span><div class="msg"></div></div>`}).join("")+`<p class="score" id="sc-${id}">Решено: 0 / ${items.length} · Попыток: 0</p>`;
+}
+const good=(s,v)=>s.ans.split("/").some(x=>norm(x)==norm(v));
+const mask=(a,f)=>a.split(" ").map(w=>{const L=[...w],k=Math.ceil(L.length*f);return L.map((ch,i)=>/[A-Za-z0-9]/.test(ch)?(i<k?ch:"_"):ch).join("")}).join("  ");
+function paint(key){
+ const s=T[key],q=$("#q-"+key),m=q.querySelector(".msg"),r=R[s.r]||["",""],n=s.a+s.ok,first=s.ans.split("/")[0],c=s.ok?"ok":s.a?"no":"";const L=[];
+ if(s.ok)L.push(s.a?`✅ Верно! Запомни: ${r[0]}`:"✅ Верно с первой попытки!");
+ else if(s.a>=MAX)L.push(`Все попытки закончились. Правильный ответ: <b>${first}</b>`,r[1],`<b>Запомни:</b> ${r[0]}`);
+ else if(s.a>=1){
+  if(s.o){ // choice items: wrong options get crossed out
+   L.push("Не то 🙂 Выбери другой вариант.");
+   L.push(`💡 Подсказка: ${r[0]}`);
+   if(s.a>=2)L.push(`📖 ${r[1]}`);
+  }else{
+   L.push(s.a<2?"Не совсем 🙂 Попробуй ещё раз.":"Пока не то. Перечитай задание и попробуй снова.");
+   if(s.a>=3)L.push(`💡 Подсказка: ${r[0]}`);
+   if(s.a>=5)L.push(`📖 ${r[1]}`);
+   if(s.a>=6)L.push(`Слов в ответе: ${first.split(" ").length}`);
+   if(s.a>=7)L.push(`Буквы ответа: <b>${mask(first,{7:.01,8:.4,9:.7}[s.a])}</b>`);
+  }
+ }
+ const cnt=(s.a||s.ok)?` <span class="att">Попытка ${n} из ${MAX}</span>`:"";
+ m.innerHTML=L.filter(Boolean).join("<br>")+(L.length?cnt:"");m.className="msg "+(s.ok?"g":s.a?"e":"");
+ const sb=q.querySelector(".spk");if(sb)sb.hidden=!/[A-Za-z]{2}/.test(spk(key));
+ q.querySelectorAll("[data-k]").forEach(e=>{
+  if(e.tagName=="BUTTON"){const v=e.dataset.v,bad=s.w.includes(v);e.className=(s.ok&&v==s.l)?"ok":bad?"no":(s.d&&!s.ok&&good(s,v))?"ok":"";e.disabled=bad}
+  else{if(s.l)e.value=s.l;e.className=c;e.disabled=!!s.d;
+   if(e.tagName=="SELECT")[...e.options].forEach(o=>{o.disabled=!!o.value&&s.w.includes(o.value)&&o.value!=s.l})}});
+ const id=key.split("_")[0],ks=Object.keys(T).filter(k=>k.split("_")[0]==id);
+ $("#sc-"+id).textContent="Решено: "+ks.filter(k=>T[k].ok).length+" / "+ks.length+" · Попыток: "+ks.reduce((x,k)=>x+T[k].a+T[k].ok,0);
+}
+function chk(key,v,auto){const s=T[key];if(s.d||!v||!v.trim()||v===s.l)return;
+ if(good(s,v)){s.l=v;s.ok=1;s.d=1}
+ else{
+  if(auto&&!s.o&&s.ans.split("/").some(x=>norm(x).startsWith(norm(v))))return; // still typing: don't count it
+  s.l=v;s.a++;if(s.o)s.w.push(v);if(s.a>=MAX)s.d=1}
+ paint(key);if(s.d)say(spk(key));save()}
+document.addEventListener("input",e=>{const t=e.target;
+ if(t.matches("textarea,#name"))save();
+ const k=t.dataset&&t.dataset.k;if(!k||t.tagName!="INPUT"||T[k].d)return;
+ t.classList.remove("no");clearTimeout(tm[k]);
+ if(good(T[k],t.value))chk(k,t.value);else tm[k]=setTimeout(()=>chk(k,t.value,true),2500)});
+document.addEventListener("change",e=>{const k=e.target.dataset&&e.target.dataset.k;if(k&&e.target.tagName!="BUTTON")chk(k,e.target.value)});
+document.addEventListener("click",e=>{const sp=e.target.closest&&e.target.closest(".spk[data-sp]");if(sp){say(spk(sp.dataset.sp));return}const b=e.target.closest&&e.target.closest("button[data-k]");if(b)chk(b.dataset.k,b.dataset.v)});
+document.addEventListener("keydown",e=>{const k=e.target.dataset&&e.target.dataset.k;if(k&&e.key=="Enter"&&e.target.tagName=="INPUT")chk(k,e.target.value)});
+
+// ===== Exercises =====
+ex("v1",[
+ ["👕 → __","t-shirt/tshirt","w"],["👖 → __","jeans","w"],["👗 → __","dress","w"],
+ ["🧥 → __","jacket/coat","w"],["👟 → __","shoes/trainers/sneakers","w"],["🧢 → __","hat/cap","w"]
+]);
+ex("v2",[
+ ["shirt →","рубашка","w","рубашка|куртка|юбка"],["skirt →","юбка","w","юбка|платье|брюки"],["trousers →","брюки","w","брюки|джинсы|футболка"],
+ ["coat →","пальто","w","пальто|свитер|шапка"],["sweater →","свитер","w","свитер|рубашка|платье"]
+]);
+ex("v3",[
+ ["«длинные» (о волосах) по-английски: __","long","w"],["«кудрявые» по-английски: __","curly","w"],["«зелёные» (о глазах) по-английски: __","green","w"],
+ ["«высокий» по-английски: __","tall","w"],["«старый» по-английски: __","old","w"]
+]);
+ex("be1",[
+ ["I __ tall.","am","am"],["My hair __ long.","is","is"],["Her eyes __ green.","are","are"],["The jacket __ blue.","is","is"],
+ ["My jeans __ black.","are","are"],["We __ young.","are","are"],["The shoes __ new.","are","are"],["What colour __ your jacket?","is","is"]
+]);
+ex("be2",[
+ ["The shirt __ white.","is","is","am|is|are"],["The trousers __ grey.","are","are","am|is|are"],["I __ tired now.","am","am","am|is|are"],
+ ["Anna and Tom __ tall.","are","are","am|is|are"],["Your hat __ red.","is","is","am|is|are"]
+]);
+ex("pron",[
+ ["my hair = __","it","pron","he|she|it|we|they"],["my shoes = __","they","pron","he|she|it|we|they"],
+ ["my sister = __","she","pron","he|she|it|we|they"],["my brother and I = __","we","pron","he|she|it|we|they"]
+]);
+ex("fix",[
+ ["Исправь: My hair long. →","my hair is long/my hair's long","be0"],["Исправь: Her jacket blue. →","her jacket is blue/her jacket's blue","be0"],
+ ["Исправь: My shoes new. →","my shoes are new","be0"],["Исправь: I tall. →","i am tall/i'm tall","be0"],["Исправь: We young. →","we are young/we're young","be0"]
+]);
+ex("wo1",[
+ ["is / blue / my jacket →","my jacket is blue","wo"],["are / my shoes / new →","my shoes are new","wo"],["tall / am / I →","i am tall/i'm tall","wo"],
+ ["now / is / at home / my brother →","my brother is at home now/now my brother is at home","wo"],["are / now / tired / we →","we are tired now/now we are tired/we're tired now/now we're tired","wo"]
+]);
+ex("wo2",[
+ ["Выбери верное предложение →","He is at home now.","wo","~He at home is now.|He is at home now.|Is at home he now."],
+ ["Выбери верное предложение →","Is your jacket warm?","wo","~Your is jacket warm?|Jacket your is warm?|Is your jacket warm?"],
+ ["Выбери верное предложение →","Where are your shoes?","wo","~Where are your shoes?|Where your shoes are?|Your shoes where are?"],
+ ["Выбери верное предложение →","What colour is your hat?","wo","~What colour your hat is?|What colour is your hat?|Your hat what colour is?"]
+]);
+ex("neg",[
+ ["(−) My jacket __ red.","isn't/is not","ben"],["(−) We __ tall.","aren't/are not","ben"],["(−) I __ old.","am not","ben"],
+ ["(?) __ your hair long?","is","beq"],["(?) __ your shoes new?","are","beq"],["Сделай вопрос: she / tall → __","is she tall","beq"]
+]);
+ex("sa",[
+ ["— Is your jacket blue? — Yes, it __.","is","sa","is|are|am"],["— Are your shoes black? — No, they __.","aren't","sa","isn't|aren't|am not"],
+ ["— Are you tall? — Yes, I __.","am","sa","am|is|are"]
+]);
+
+// ===== Autosave on this device =====
+const SK="lesson_clothes_be_v1",ta=()=>$$("textarea,#name");
+function save(){try{localStorage.setItem(SK,JSON.stringify({T:Object.fromEntries(Object.entries(T).map(([k,s])=>[k,[s.a,s.l,s.d,s.ok,s.t+"|"+s.ans,s.w]])),x:ta().map(e=>e.value)}))}catch(e){}}
+try{const d=JSON.parse(localStorage.getItem(SK)||"{}");Object.entries(d.T||{}).forEach(([k,v])=>{if(T[k]&&v[4]===T[k].t+"|"+T[k].ans){[T[k].a,T[k].l,T[k].d,T[k].ok]=v;T[k].w=v[5]||[];paint(k)}});(d.x||[]).forEach((v,i)=>{if(ta()[i])ta()[i].value=v})}catch(e){}
+
+// ===== Speaker buttons on all static English =====
+$$(".phrase").forEach(p=>{p.innerHTML=p.innerHTML.split(/<br\s*\/?>/).map(l=>`<div class="ln">${l}</div>`).join("")});
+$$(".ln,td,.cell").forEach(el=>{if(el.closest(".q")||el.querySelector("td,.cell"))return;addSpk(el,el.textContent)});
+
+// ===== Slides =====
+const S=$$("main section");let cur=0;
+S.forEach((_,i)=>{const d=document.createElement("span");d.onclick=()=>go(i);$("#dots").append(d)});
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle("on",k==cur));
+ $$("#dots span").forEach((d,k)=>d.classList.toggle("on",k==cur));scrollTo(0,0)}
+$("#prev").onclick=()=>go(cur-1);$("#next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(e.target.matches("input,textarea,select"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});go(0);
+
+// ===== Report: readable, with checked answers and mistakes =====
+function report(){
+ const ks=Object.values(T),okc=ks.filter(s=>s.ok).length,first=ks.filter(s=>s.ok&&!s.a).length;
+ const L=["📘 Lesson: Clothes, appearance and To be","Student: "+($("#name").value||"(no name)"),`Итого: решено ${okc} из ${ks.length}, с первой попытки ${first}, всего попыток ${ks.reduce((x,s)=>x+s.a+s.ok,0)}`];
+ S.forEach(s=>{const rows=[];
+  s.querySelectorAll(".q").forEach(q=>{const t=T[q.id.slice(2)],v=t.l||"—",
+   p=(t.t.includes("__")?t.t.replace("__","["+v+"]"):t.t+" ["+v+"]").replace(/<[^>]+>/g,"");
+   rows.push((t.ok?(t.a?"🟡 ":"✅ "):t.d?"❌ ":"▫️ ")+p+(t.d&&!t.ok?" → верно: "+t.ans.split("/")[0]:"")+(t.a+t.ok?" (попыток: "+(t.a+t.ok)+")":""))});
+  s.querySelectorAll("textarea").forEach(t=>rows.push("✍️ "+(t.dataset.open||"Текст")+":\n"+(t.value||"—")));
+  if(rows.length)L.push("\n"+(s.querySelector("h2,h1")||{textContent:"Ответы"}).textContent,...rows)});
+ return L.join("\n");
+}
+$("#copy").onclick=()=>{navigator.clipboard.writeText(report()).then(()=>$("#status").textContent="Скопировано! ✅",()=>$("#status").textContent="Не удалось скопировать")};
+$("#send").onclick=async()=>{
+ if(!$("#name").value.trim()){$("#status").textContent="Пожалуйста, напиши своё имя на первой странице.";return}
+ if(!confirm("Отправить ответы учителю?"))return;
+ const txt=report();$("#status").textContent="Отправляем…";
+ try{for(let p=0;p<txt.length;p+=1000){if(!(await tg("sendMessage",{text:txt.slice(p,p+1000)})).ok)throw 0}
+  $("#status").textContent="Отправлено! ✅ Спасибо!"}catch(e){$("#status").textContent="Не удалось отправить ❌ Нажми «Скопировать ответы» и отправь их учителю."}};
+</script>
+</body>
+</html>
