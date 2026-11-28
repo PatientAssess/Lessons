@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English lesson: Hello, To be and Present Simple</title>
+<style>
+:root{--ink:#1f2a44;--sun:#ffc93c;--sea:#12998f;--bg:#f6f4ee;--card:#fff;--ok:#1f9d55;--no:#d64545;--mute:#6b7488}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 "Trebuchet MS","Segoe UI",Arial,sans-serif}
+header{background:var(--ink);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+header b{font-size:20px}
+#dots{display:flex;gap:6px;flex-wrap:wrap}
+#dots span{width:12px;height:12px;border-radius:50%;background:#56628a;cursor:pointer}
+#dots span.on{background:var(--sun)}
+main{max-width:900px;margin:18px auto;padding:0 14px 40px}
+section{display:none;background:var(--card);border-radius:14px;padding:22px 24px;border:3px solid var(--ink)}
+section.on{display:block}
+h1,h2{margin:.1em 0 .4em;line-height:1.2}
+h2{font-size:28px}
+h3{margin:1em 0 .3em;color:var(--sea)}
+p{margin:.65em 0}
+.hint,i{color:var(--mute);font-size:15px}
+.box{background:#fff6d6;border-left:8px solid var(--sun);padding:11px 14px;border-radius:8px;margin:12px 0}
+.box.sea{background:#e2f5f3;border-color:var(--sea)}
+.box.pink{background:#fff0f0;border-color:#d77b7b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.cell{border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:#fff}
+.cell big{font-size:25px;display:block}
+.pos{color:var(--ok);font-weight:bold}.neg{color:var(--no);font-weight:bold}
+table{border-collapse:collapse;width:100%;margin:10px 0}
+td,th{border:2px solid var(--ink);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--sun)}
+input[type=text],textarea,select{font:inherit;border:0;border-bottom:3px solid var(--ink);background:#fffbe9;padding:5px 7px;min-width:145px;color:var(--ink);border-radius:4px 4px 0 0;max-width:100%}
+textarea{width:100%;border:3px solid var(--ink);border-radius:8px;min-height:100px;margin:6px 0}
+input:focus,textarea:focus,select:focus{outline:3px solid var(--sea)}
+input.ok,select.ok{background:#d9f5e3;border-color:var(--ok)}input.no,select.no{background:#fde0e0;border-color:var(--no)}
+.q{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 0;border-bottom:1px dashed #cfd3df}
+.q .prompt{flex:1;min-width:230px}
+.fix{color:var(--no);font-size:15px}
+button{font:inherit;font-weight:bold;background:var(--sun);color:var(--ink);border:3px solid var(--ink);border-radius:10px;padding:8px 18px;cursor:pointer}
+button.alt{background:var(--sea);color:#fff}
+button:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.score{font-weight:bold;margin-left:10px}
+nav{position:sticky;top:0;z-index:5;background:var(--ink);padding:8px 10px 10px;display:flex;justify-content:center;gap:14px}
+.tag{display:inline-block;background:#e2f5f3;border-radius:8px;padding:3px 8px;margin:2px;font-weight:bold}
+.small{font-size:15px;color:var(--mute)}
+.phrase{background:#f1f3fa;border-radius:8px;padding:8px 10px;margin:5px 0}
+footer{color:var(--mute);font-size:13px;text-align:center;margin:14px}
+@media(max-width:600px){section{padding:17px 14px}body{font-size:16px}h2{font-size:24px}}
+.gold{background:#fff0f0;border:3px solid #d77b7b;border-left-width:10px;border-radius:8px;padding:10px 14px;margin:12px 0}
+.opts button{margin:2px 3px;padding:4px 12px}button.ok{background:#d9f5e3;border-color:var(--ok)}button.no{background:#fde0e0;border-color:var(--no)}
+.q{align-items:flex-start}.msg{flex-basis:100%;font-size:15px}.msg.g{color:var(--ok)}.msg.e{color:var(--no)}
+p.score{font-weight:bold;margin:8px 0}.rec{border:3px dashed var(--sea);border-radius:10px;padding:12px;margin:10px 0}
+.att{color:var(--mute);font-size:13px;margin-left:6px;white-space:nowrap}button:disabled{opacity:.55;cursor:default}
+.spk{padding:0 8px;margin-left:6px;font-size:14px;border-width:2px;border-radius:8px;vertical-align:middle;background:#e2f5f3}.ln{margin:3px 0}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+</head>
+<body>
+<header><b>English lesson · Hello, To be, Present Simple</b><div id="dots"></div></header>
+<nav><button id="prev">← Назад</button><button id="next">Далее →</button></nav>
+<main>
+
+<section>
+<h1>👋 Hello! To be и Present Simple</h1>
+<p>Сегодня мы <b>очень хорошо</b> разберём три вещи:</p>
+<div class="grid">
+<div class="cell">👋 <b>Hello, Hi, Nice to meet you, See you later</b></div>
+<div class="cell">🟢 <b>to be</b>: am / is / are</div>
+<div class="cell">🔵 <b>Present Simple</b>: play / plays</div>
+<div class="cell">⏰ Мой день (routine)</div>
+</div>
+<p>🔊 Везде, где есть значок, можно <b>послушать</b> английский.</p>
+<div class="gold"></div>
+<div class="box sea"><b>Как проверяются ответы:</b> оценок здесь нет. На каждое задание у тебя <b>10 попыток</b>, а рядом показывается, какая попытка сейчас. Кнопок «Проверить» нет — просто пиши, и ответ проверится сам. Подсказки приходят <b>по чуть-чуть</b>: сначала просто «Попробуй ещё раз», потом короткая подсказка, потом объяснение, потом количество слов и первые буквы ответа. Если все 10 попыток закончились, мы покажем правильный ответ. Ошибаться нормально — так мы запоминаем!</div>
+<p>Имя ученика: <input type="text" id="name" placeholder="Напиши своё имя"></p>
+</section>
+
+<section>
+<h2>1. Hello! Простые фразы</h2>
+<p>Нажимай на <b>🔊</b>, слушай и повторяй вслух.</p>
+<table>
+<tr><th>Фраза</th><th>Что значит</th></tr>
+<tr><td><b>Hello!</b> / <b>Hi!</b></td><td>Привет!</td></tr>
+<tr><td><b>My name is Tom.</b></td><td>Меня зовут Том.</td></tr>
+<tr><td><b>Nice to meet you!</b></td><td>Приятно познакомиться!</td></tr>
+<tr><td><b>How are you?</b></td><td>Как дела?</td></tr>
+<tr><td><b>I'm fine, thanks.</b></td><td>У меня всё хорошо, спасибо.</td></tr>
+<tr><td><b>See you soon!</b></td><td>Скоро увидимся!</td></tr>
+<tr><td><b>See you later!</b></td><td>Увидимся позже!</td></tr>
+<tr><td><b>Goodbye!</b> / <b>Bye!</b></td><td>До свидания! Пока!</td></tr>
+</table>
+<div class="box">В этих фразах уже есть <b>to be</b>: My name <b>IS</b> Tom. How <b>ARE</b> you? I<b>'M</b> fine (I'm = I <b>am</b>).</div>
+<h3>Мини-диалог</h3>
+<div class="phrase">— <b>Hello!</b> My name <b>is</b> Tom.<br>— <b>Hi</b>, Tom! I<b>'m</b> Mia. <b>Nice to meet you!</b><br>— <b>Nice to meet you.</b> <b>How are you?</b><br>— I<b>'m</b> fine, thanks. <b>See you later!</b><br>— <b>Bye!</b></div>
+</section>
+
+<section>
+<h2>Practice 1: Hello-фразы</h2>
+<h3>Как сказать по-английски?</h3><div id="ex-ph"></div>
+<h3>Вставь слово в диалог</h3><div id="ex-dlg"></div>
+</section>
+
+<section>
+<h2>Слова урока</h2>
+<p>Эти слова будут в упражнениях. Нажми <b>🔊</b> и послушай.</p>
+<div class="grid">
+<div class="cell"><big>🐱 cat</big>кошка</div><div class="cell"><big>🐶 dog</big>собака</div>
+<div class="cell"><big>👩 mum</big>мама</div><div class="cell"><big>👨 dad</big>папа</div>
+<div class="cell"><big>🧑 friend</big>друг</div><div class="cell"><big>🏫 school</big>школа</div>
+<div class="cell"><big>🏠 home</big>дом</div><div class="cell"><big>🧑‍🏫 teacher</big>учитель</div>
+<div class="cell"><big>⚫ black</big>чёрный</div><div class="cell"><big>🐘 big</big>большой</div>
+<div class="cell"><big>😊 happy</big>счастливый</div><div class="cell"><big>😴 tired</big>уставший</div>
+<div class="cell"><big>🍕 hungry</big>голодный</div><div class="cell"><big>🔢 twelve</big>двенадцать</div>
+</div>
+<h3>Глаголы (действия)</h3>
+<div class="grid">
+<div class="cell"><big>⚽ play</big>играть</div><div class="cell"><big>❤️ like</big>любить, нравится</div>
+<div class="cell"><big>🚶 go</big>идти, ходить</div><div class="cell"><big>📺 watch</big>смотреть</div>
+<div class="cell"><big>📚 study</big>учиться</div><div class="cell"><big>😴 sleep</big>спать</div>
+<div class="cell"><big>🍽️ have</big>иметь; есть (еду)</div><div class="cell"><big>🏡 live</big>жить</div>
+</div>
+</section>
+
+<section>
+<h2>2. To be: am / is / are</h2>
+<div class="gold"></div>
+<p>По-русски мы говорим «Моя кошка чёрная» — глагола нет. А в английском <b>глагол нужен ВСЕГДА</b>. Этот глагол — <b>to be</b>. Поэтому:</p>
+<p><span class="neg">НЕВЕРНО:</span> <span class="neg">My cat black.</span> &nbsp; <span class="pos">ВЕРНО:</span> <span class="pos">My cat IS black.</span></p>
+<table>
+<tr><th>Кто / что</th><th>to be</th><th>Пример</th></tr>
+<tr><td><b>I</b></td><td><b>AM</b></td><td>I <b>am</b> Tom. (I'm)</td></tr>
+<tr><td><b>he / she / it</b></td><td><b>IS</b></td><td>He <b>is</b> tall. It <b>is</b> a cat.</td></tr>
+<tr><td><b>you / we / they</b></td><td><b>ARE</b></td><td>You <b>are</b> my friend. They <b>are</b> at school.</td></tr>
+</table>
+<h3>Кто это: he, she, it или they?</h3>
+<div class="grid">
+<div class="cell">my cat, my dog, a book → <b>IT</b> <b>IS</b></div>
+<div class="cell">my mum, Anna → <b>SHE</b> <b>IS</b></div>
+<div class="cell">my dad, Tom → <b>HE</b> <b>IS</b></div>
+<div class="cell">my friends, the children → <b>THEY</b> <b>ARE</b></div>
+<div class="cell">Tom and I → <b>WE</b> <b>ARE</b></div>
+</div>
+<h3>Когда нужен to be? Всегда, если дальше идёт:</h3>
+<table>
+<tr><td>👤 <b>кто / что это</b></td><td>I <b>am</b> a student.</td></tr>
+<tr><td>🎨 <b>какой</b></td><td>My cat <b>is</b> black.</td></tr>
+<tr><td>📍 <b>где</b></td><td>We <b>are</b> at school.</td></tr>
+<tr><td>🎂 <b>сколько лет</b></td><td>I <b>am</b> twelve. (по-английски «я ЕСТЬ 12»)</td></tr>
+</table>
+<table>
+<tr><th></th><th>I</th><th>he / she / it</th><th>you / we / they</th></tr>
+<tr><td>(+)</td><td>I <b>am</b> happy.</td><td>She <b>is</b> happy.</td><td>They <b>are</b> happy.</td></tr>
+<tr><td>(−)</td><td>I <b>am not</b> happy.</td><td>She <b>isn't</b> happy.</td><td>They <b>aren't</b> happy.</td></tr>
+<tr><td>(?)</td><td><b>Am</b> I happy?</td><td><b>Is</b> she happy?</td><td><b>Are</b> they happy?</td></tr>
+</table>
+<h3>Короткие ответы с to be</h3>
+<table>
+<tr><td>Are you happy?</td><td><b>Yes, I am.</b> (Да) / <b>No, I'm not.</b> (Нет)</td></tr>
+<tr><td>Is she a teacher?</td><td><b>Yes, she is.</b> / <b>No, she isn't.</b></td></tr>
+<tr><td>Are they at home?</td><td><b>Yes, they are.</b> / <b>No, they aren't.</b></td></tr>
+</table>
+<div class="box pink"><b>Запомни:</b> <span class="neg">НЕВЕРНО:</span> My cat black. <span class="pos">ВЕРНО:</span> My cat <b>IS</b> black. Нет глагола — нет предложения!</div>
+</section>
+
+<section>
+<h2>Practice 2: To be</h2>
+<div class="gold"></div>
+<h3>Впиши am / is / are</h3><div id="ex-be1"></div>
+<h3>Выбери</h3><div id="ex-be2"></div>
+<h3>Исправь: тут потерялся to be!</h3><div id="ex-fix"></div>
+<h3>he, she, it, we или they?</h3><div id="ex-pron"></div>
+<h3>Отрицание и вопрос</h3><div id="ex-ben"></div>
+</section>
+
+<section>
+<h2>3. To be уходит — приходят глаголы</h2>
+<div class="gold"></div>
+<p>Теперь самое важное. Задай себе вопрос <b>после подлежащего</b>:</p>
+<table>
+<tr><th>Что дальше?</th><th>Что ставим?</th><th>Пример</th></tr>
+<tr><td>🟢 <b>Какой? Кто? Где? Сколько лет?</b><br>(black, a teacher, at home, twelve)</td><td><b>to be</b><br>am / is / are</td><td>My cat <b>IS</b> black.<br>He <b>IS</b> at home.</td></tr>
+<tr><td>🔵 <b>Что делает?</b><br>(play, like, go, live)</td><td><b>глагол</b> в Present Simple<br>(<b>to be НЕ нужен!</b>)</td><td>My cat <b>PLAYS</b>.<br>He <b>LIVES</b> in Spain.</td></tr>
+</table>
+<div class="box pink"><b>Один глагол на одно предложение!</b><br><span class="neg">НЕВЕРНО:</span> I am play. <span class="neg">НЕВЕРНО:</span> He is likes pizza. <span class="neg">НЕВЕРНО:</span> My cat is plays.<br><span class="pos">ВЕРНО:</span> I <b>play</b>. <span class="pos">ВЕРНО:</span> He <b>likes</b> pizza. <span class="pos">ВЕРНО:</span> My cat <b>plays</b>.<br><span class="pos">ВЕРНО:</span> А если оба нужны, то это <b>два предложения</b>: I <b>am</b> a student. I <b>study</b> English.</div>
+</section>
+
+<section>
+<h2>4. Present Simple: что мы делаем обычно</h2>
+<div class="gold"></div>
+<p>Present Simple — это <b>привычки и режим дня</b>. Слова-подсказки: <span class="tag">every day</span><span class="tag">always</span><span class="tag">usually</span><span class="tag">often</span><span class="tag">sometimes</span><span class="tag">never</span><span class="tag">on Mondays</span></p>
+<table>
+<tr><th>Кто</th><th>Что делаем с глаголом</th><th>Пример</th></tr>
+<tr><td><b>I / you / we / they</b></td><td>глагол <b>без изменений</b></td><td>I <b>play</b>. They <b>go</b>.</td></tr>
+<tr><td><b>he / she / it</b></td><td>глагол <b>+ S</b></td><td>He <b>plays</b>. My cat <b>sleeps</b>.</td></tr>
+</table>
+<h3>Как добавить -s</h3>
+<table>
+<tr><td>обычно <b>+S</b></td><td>play → play<b>s</b>, like → like<b>s</b>, get up → get<b>s</b> up</td></tr>
+<tr><td>после <b>s, sh, ch, x, o</b> → <b>+ES</b></td><td>watch → watch<b>es</b>, wash → wash<b>es</b>, go → go<b>es</b>, do → do<b>es</b></td></tr>
+<tr><td>согласная + <b>y</b> → <b>IES</b></td><td>study → stud<b>ies</b> (но play → plays)</td></tr>
+<tr><td>особый глагол</td><td>have → <b>has</b></td></tr>
+</table>
+<table>
+<tr><th></th><th>I / you / we / they</th><th>he / she / it</th></tr>
+<tr><td>(+)</td><td>I play</td><td>He play<b>s</b></td></tr>
+<tr><td>(−)</td><td>I <b>don't</b> play</td><td>He <b>doesn't</b> play</td></tr>
+<tr><td>(?)</td><td><b>Do</b> you play?</td><td><b>Does</b> he play?</td></tr>
+</table>
+<h3>Короткие ответы</h3>
+<table>
+<tr><td>Do you like pizza?</td><td><b>Yes, I do.</b> (Да) / <b>No, I don't.</b> (Нет)</td></tr>
+<tr><td>Does he like pizza?</td><td><b>Yes, he does.</b> / <b>No, he doesn't.</b></td></tr>
+<tr><td>Do they play chess?</td><td><b>Yes, they do.</b> / <b>No, they don't.</b></td></tr>
+</table>
+<div class="box pink"><b>Внимание:</b> после <b>does / doesn't</b> -s у глагола <b>НЕ нужен</b>: <span class="pos">ВЕРНО:</span> He doesn't play (не plays). И <b>to be</b> тут тоже не нужен!</div>
+</section>
+
+<section>
+<h2>5. My day: распорядок дня</h2>
+<div class="grid">
+<div class="cell"><big>⏰ get up</big>вставать</div>
+<div class="cell"><big>🪥 brush my teeth</big>чистить зубы</div>
+<div class="cell"><big>🥣 have breakfast</big>завтракать</div>
+<div class="cell"><big>🚌 go to school</big>идти в школу</div>
+<div class="cell"><big>📚 have lessons</big>учиться на уроках</div>
+<div class="cell"><big>🏠 come home</big>приходить домой</div>
+<div class="cell"><big>✏️ do my homework</big>делать домашку</div>
+<div class="cell"><big>🎮 play games</big>играть в игры</div>
+<div class="cell"><big>📺 watch TV</big>смотреть ТВ</div>
+<div class="cell"><big>🍝 have dinner</big>ужинать</div>
+<div class="cell"><big>🛏️ go to bed</big>ложиться спать</div>
+</div>
+<h3>Пример</h3>
+<div class="phrase">I <b>get up</b> at seven. My brother <b>gets up</b> at eight.<br>Mum <b>has</b> breakfast and <b>goes</b> to work.<br>We <b>watch</b> TV in the evening. Our cat <b>sleeps</b> all day.<br>👉 Тут нет am/is/are: везде <b>действия</b>!</div>
+<div class="box"><b>А где to be?</b> Только для описания: I <b>am</b> tired. My brother <b>is</b> at school. We <b>are</b> hungry.</div>
+</section>
+
+<section>
+<h2>Practice 3: Present Simple (+) утверждения</h2>
+<div class="gold"></div>
+<h3>Впиши глагол в нужной форме</h3><div id="ex-ps1"></div>
+<h3>Выбери правильный</h3><div id="ex-ps2"></div>
+</section>
+
+<section>
+<h2>Practice 4: Present Simple (−) отрицания</h2>
+<div class="gold"></div>
+<p><b>(−)</b> значит «отрицание»: <b>don't</b> (I / you / we / they) и <b>doesn't</b> (he / she / it) + глагол <b>без -s</b>.</p>
+<h3>Впиши don't или doesn't</h3><div id="ex-neg1"></div>
+<h3>Выбери</h3><div id="ex-neg2"></div>
+</section>
+
+<section>
+<h2>Practice 5: Present Simple (?) вопросы</h2>
+<div class="gold"></div>
+<p><b>(?)</b> значит «вопрос»: <b>Do</b> (I / you / we / they) и <b>Does</b> (he / she / it) в начале + глагол <b>без -s</b>.</p>
+<h3>Впиши Do или Does</h3><div id="ex-q1"></div>
+<h3>Выбери</h3><div id="ex-q2"></div>
+<h3>Короткие ответы: Yes или No</h3><div id="ex-q3"></div>
+</section>
+
+<section>
+<h2>Practice 6: все три формы вместе</h2>
+<div class="gold"></div>
+<h3>Что это: утверждение, отрицание или вопрос?</h3><div id="ex-kind"></div>
+<h3>Преврати предложение</h3><div id="ex-conv"></div>
+<h3>Исправь ошибку</h3><div id="ex-ps4"></div>
+</section>
+
+<section>
+<h2>Practice 7: To be или глагол?</h2>
+<div class="gold"></div>
+<p>Это <b>главное задание</b> урока. Смотри, что стоит <b>после</b> пропуска: <b>описание</b> → to be, <b>действие</b> → глагол.</p>
+<div id="ex-mix"></div>
+<h3>Впиши: to be или глагол</h3><div id="ex-mix2"></div>
+<h3>Отрицания и вопросы: to be или do / does?</h3><div id="ex-mix3"></div>
+</section>
+
+<section>
+<h2>Practice 8: Соотношения</h2>
+<h3>Режим дня: что значит?</h3><div id="ex-mt2"></div>
+<h3>Закончи предложение</h3><div id="ex-mt3"></div>
+</section>
+
+<section>
+<h2>Writing ✍️</h2>
+<div class="box pink"><b>Проверь себя:</b> в каждом предложении <b>один глагол</b>: либо <b>am / is / are</b> (описание), либо <b>действие</b> (play, like, go). Для he / she / it не забудь <b>-s</b>.</div>
+<h3>1. Диалог (минимум 6 реплик)</h3>
+<p>Ты знакомишься с новым учеником. Используй: <b>Hello, My name is, Nice to meet you, How are you, Where are you from, See you later</b>.</p>
+<textarea data-open="Диалог" placeholder="— Hello! My name is ..."></textarea>
+<h3>2. My day (6 предложений)</h3>
+<p>Расскажи про свой день: <b>I get up at..., I have breakfast..., I go to school...</b> Добавь <b>usually / every day / sometimes</b>.</p>
+<textarea data-open="My day" placeholder="I usually get up at ..."></textarea>
+<h3>3. My best friend или my pet (5 предложений)</h3>
+<p>3 предложения с <b>is / are</b> (имя, возраст, какой) и 2 предложения с <b>глаголом</b> (что любит делать): <b>My friend is... He is... He likes... He plays...</b></p>
+<textarea data-open="Friend / pet" placeholder="My friend is Max. He is twelve ..."></textarea>
+</section>
+
+<section>
+<h2>Speaking 🎙</h2>
+<div class="box">Нажми «Записать», говори (до <b>5 минут</b>), потом послушай. Можно <b>перезаписать</b> или <b>удалить</b>. Перед отправкой появится вопрос «Ты уверен?». Имя берётся с первой страницы.</div>
+<h3>Задание 1: выбери ситуацию</h3>
+<select id="sit">
+<option>A: Ты знакомишься с новым учеником онлайн. Скажи hello, своё имя, откуда ты, спроси 2 вопроса и попрощайся (See you later!).</option>
+<option>B: Расскажи про своего друга или питомца: 3 предложения с is / are и 3 предложения с глаголом (likes, plays, sleeps).</option>
+<option>C: Иностранный друг спрашивает: «What do you do every day?» Расскажи про свой школьный день (6 предложений).</option>
+</select>
+<div id="rec-1"></div>
+<h3>Задание 2: Read and say</h3>
+<p>Нажми 🔊, послушай и повтори <b>3 раза</b>. Потом скажи те же предложения про себя.</p>
+<div class="phrase">My cat is black.<br>My cat plays.<br>My mum is at home.<br>My mum watches TV.<br>They are friends.<br>They go to school.</div>
+<div id="rec-2"></div>
+</section>
+
+<section>
+<h2>Final test 🏆</h2>
+<div class="gold"></div>
+<div id="ex-fin"></div>
+<h3>Отправить учителю</h3>
+<p><button id="send">Отправить ответы учителю 📨</button> <button class="alt" id="copy">Скопировать ответы</button></p>
+<p id="status" class="small"></p>
+</section>
+
+</main>
+<footer>Ответы сохраняются на этом устройстве автоматически.</footer>
+<script>
+// ===== Teacher: VK settings =====
+const VK_TOKEN="vk1.a.tK6DmD3Qyhn1JVv2ZYrg3ximf65iPMjojvveQxeJyIksMAyKtxWuXtHKK7aty8JmBVzheAGRPAsrCQiMsT87GsbMelSpTowNBEriOaYGYBiYU0XD0evk8OgY8IgjDLmF-8V11GtA4F25Dg-nUtpbY-QWy_4pU6XEs0-jzCbLo-MFV0sfC5rIwDBTNUv0N-TCZGKjw_PeJnJolFrBOt1LaA";   // community access key with "messages" permission
+const VK_USER="267123155";            // your numeric VK id (digits only)
+function vk(m,p){return new Promise((ok,no)=>{const cb="vk"+Math.random().toString(36).slice(2),sc=document.createElement("script");
+ window[cb]=r=>{delete window[cb];sc.remove();ok(r)};sc.onerror=()=>{delete window[cb];sc.remove();no()};
+ sc.src="https://api.vk.com/method/"+m+"?"+new URLSearchParams({...p,access_token:VK_TOKEN,v:"5.199",callback:cb});document.head.append(sc)})}
+async function tg(method,o){ // sends to VK
+ if(VK_TOKEN.startsWith("PASTE"))return{ok:false};
+ if(method=="sendMessage"){const r=await vk("messages.send",{peer_ids:VK_USER,random_id:Date.now()+Math.floor(Math.random()*1e6),message:o.text});
+  const x=r.response&&r.response[0];return x&&x.conversation_message_id?{ok:true,result:{message_id:x.conversation_message_id}}:{ok:false}}
+ const r=await vk("messages.edit",{peer_id:VK_USER,conversation_message_id:o.message_id,message:o.text});return{ok:!!r.response}}
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const norm=s=>String(s).toLowerCase().replace(/-/g," ").replace(/[’`]/g,"'").replace(/[.,!?]/g,"").replace(/\s+/g," ").trim();
+
+// ===== Rules: [short hint, long explanation] =====
+const R={
+phr:["это готовая фраза, учи её целиком.","<b>Hello / Hi</b> — привет. <b>Nice to meet you</b> — приятно познакомиться. <b>See you soon</b> — скоро увидимся. <b>See you later</b> — увидимся позже. <b>Good morning / Good night</b> — доброе утро / спокойной ночи."],
+from:["<b>from</b> значит «из».","<b>Where are you FROM?</b> — <b>I'm FROM</b> Russia. Я из России."],
+mt:["подумай, что логично ответить.","Вопрос и ответ идут парой: <b>How are you? — I'm fine. Nice to meet you — Nice to meet you, too. What's your name? — My name is...</b>"],
+am:["после <b>I</b> всегда <b>am</b>.","<b>I → AM</b>. I <b>am</b> Tom. Глагол нужен всегда: I <b>am</b> happy, а не «I happy»."],
+is:["<b>he / she / it</b> и один предмет → <b>IS</b>.","<b>He / She / It / My cat / My mum → IS</b>. Глагол нужен всегда: My cat <b>IS</b> black, а не «My cat black»."],
+are:["<b>you / we / they</b> и несколько предметов → <b>ARE</b>.","<b>You / We / They / My friends → ARE</b>. We <b>ARE</b> at school. They <b>ARE</b> happy."],
+be0:["в предложении потерялся to be.","Нельзя говорить «My cat black». Нужно <b>My cat IS black</b>. Берём <b>am / is / are</b>: I → <b>am</b>, he / she / it → <b>is</b>, you / we / they → <b>are</b>."],
+pron:["подставь слово вместо имени.","<b>my cat, my dog, a book → IT</b>; <b>my mum, Anna → SHE</b>; <b>my dad, Tom → HE</b>; <b>my friends, the children → THEY</b>; <b>Tom and I → WE</b>."],
+ben:["для отрицания добавь <b>not</b> после to be.","<b>am not</b>, <b>is not (isn't)</b>, <b>are not (aren't)</b>. To be остаётся, <b>do / does не нужны</b>."],
+beq:["в вопросе to be выходит на первое место.","<b>Is</b> she a teacher? <b>Are</b> they at home? <b>Am</b> I late? To be ставим <b>перед</b> подлежащим, без do / does."],
+s0:["после I / you / we / they глагол <b>без -s</b>.","<b>I / you / we / they + глагол</b> (play, go, do). Никакого -s и никакого to be: не «I am play»."],
+s1:["после he / she / it к глаголу добавь <b>-s</b>.","<b>He / She / It / My cat + глагол + S</b>: play<b>s</b>, get<b>s</b> up, sleep<b>s</b>. To be не нужен: не «She is plays»."],
+es:["после <b>s, sh, ch, x, o</b> добавляем <b>-es</b>.","watch → watch<b>es</b>, wash → wash<b>es</b>, go → go<b>es</b>, do → do<b>es</b>."],
+ies:["согласная + <b>y</b> → <b>-ies</b>.","study → stud<b>ies</b>. (Но play → play<b>s</b>: перед y стоит гласная.)"],
+has:["have для he / she / it → <b>has</b>.","I / you / we / they <b>have</b>; he / she / it <b>has</b>. Это особый глагол."],
+dont:["отрицание: <b>don't</b> (I / you / we / they), <b>doesn't</b> (he / she / it).","I <b>don't</b> like fish. She <b>doesn't</b> like fish. После don't / doesn't глагол <b>без -s</b>."],
+doq:["вопрос: <b>Do</b> (I / you / we / they) или <b>Does</b> (he / she / it) + подлежащее + глагол.","<b>Do</b> you play? <b>Does</b> he play? После does глагол <b>без -s</b>. To be тут не нужен."],
+base:["после does / doesn't глагол <b>без -s</b>.","<b>Does she play?</b> She <b>doesn't play</b>. Окончание -s уже «забрал» does."],
+kind:["смотри на слова: <b>don't / doesn't</b> — отрицание; <b>Do / Does</b> в начале — вопрос; иначе — утверждение.","<b>Утверждение</b>: She plays. <b>Отрицание</b> (−): She <b>doesn't</b> play. <b>Вопрос</b> (?): <b>Does</b> she play? По первым словам всегда видно, какая это форма."],
+bb:["дальше идёт описание, место или возраст → <b>to be</b>.","Вопрос «<b>какой? кто? где? сколько лет?</b>» → <b>am / is / are</b>."],
+bv:["дальше идёт действие → <b>глагол Present Simple</b>.","Вопрос «<b>что делает?</b>» → глагол (plays, likes, go). <b>To be тут не ставим</b>: не «My cat is plays»."],
+voc:["вспомни слайд «My day».","<b>get up</b> — вставать, <b>brush my teeth</b> — чистить зубы, <b>go to school</b> — идти в школу, <b>have dinner</b> — ужинать, <b>watch TV</b> — смотреть телевизор, <b>go to bed</b> — ложиться спать."],
+mt3:["подумай о смысле и о форме глагола.","<b>I am</b> eleven years old (возраст → to be). <b>My dogs are</b> brown and white (описание → to be). <b>He plays</b> football after school (действие). <b>She gets up</b> at six (действие). <b>We go</b> to school by bus (действие)."]
+};
+const GOLD="<b>🔑 ЗОЛОТОЕ ПРАВИЛО:</b><br>В английском предложении <b>ВСЕГДА</b> есть глагол!<br>🟢 Дальше <b>описание или место</b> (black, happy, at home, a teacher) → <b>to be (am / is / are)</b>: <span class='pos'>ВЕРНО:</span> <b>My cat IS black.</b><br>🔵 Дальше <b>действие</b> (play, like, go) → <b>глагол Present Simple</b>, а to be <b>НЕ нужен</b>: <span class='pos'>ВЕРНО:</span> <b>My cat PLAYS.</b><br><span class='neg'>НЕВЕРНО:</span> <b>My cat black.</b><br><span class='neg'>НЕВЕРНО:</span> <b>My cat is plays.</b>";
+$$(".gold").forEach(g=>g.innerHTML=GOLD);
+
+// ===== Listening: browser voice reads English =====
+let VO=null;
+function pickVoice(){const v=speechSynthesis.getVoices();VO=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(x){if(!("speechSynthesis" in window)||!x)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(x);u.lang="en-US";if(VO)u.voice=VO;u.rate=.85;speechSynthesis.speak(u)}
+const fin=s=>s.replace(/\([^)]*\)/g,"").replace(/[^\x20-\x7E\u2019]/g," ").replace(/\//g,". ").replace(/\s+/g," ").trim();
+const enCut=s=>fin(s.replace(/<[^>]+>/g,"").split(/[\u0400-\u04FF]/)[0]);
+const enAll=s=>fin(s.replace(/<[^>]+>/g,"").replace(/[\u0400-\u04FF]+/g," ").replace(/__/g,","));
+function spk(key){const s=T[key],a=s.ans.split("/")[0];
+ if(/^(Исправь|Сделай|Скажи)/.test(s.t))return s.d?enAll(a):"";
+ if(/[\u0400-\u04FF]/.test(s.t.replace(/\([^)]*\)/g,"")))return s.d?enAll(a):"";
+ return enAll(s.t.replace("__",s.d?a:"__"))}
+function addSpk(el,txt){const x=enCut(txt);if(!/[A-Za-z]{3}/.test(x)||/НЕВЕРНО/.test(el.textContent))return;
+ const b=document.createElement("button");b.className="spk";b.textContent="🔊";b.title="Слушать";b.onclick=e=>{e.stopPropagation();say(x)};el.append(" ",b)}
+
+// ===== Engine: every item checks itself. 10 attempts, no grades; hints come little by little =====
+// item: [text with __, accepted answers split by /, rule, options (a|b|c = buttons, ~a|b|c = dropdown)]
+const T={},tm={};
+const MAX=10;
+function ex(id,items){
+ $("#ex-"+id).innerHTML=items.map((it,k)=>{
+  const [t,a,r,o]=it,key=id+"_"+k;T[key]={a:0,l:"",d:0,ok:0,ans:a,r,t,o:o||"",w:[]};let c;
+  if(o&&o[0]=="~")c=`<select data-k="${key}"><option value="">—</option>${o.slice(1).split("|").map(x=>`<option>${x}</option>`).join("")}</select>`;
+  else if(o)c=`<span class="opts">${o.split("|").map(x=>`<button data-k="${key}" data-v="${x}">${x}</button>`).join("")}</span>`;
+  else c=`<input type="text" data-k="${key}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`;
+  return `<div class="q" id="q-${key}"><span class="prompt">${k+1}. <button class="spk" data-sp="${key}" title="Слушать" hidden>🔊</button> ${t.includes("__")?t.replace("__",c):t+" "+c}</span><div class="msg"></div></div>`}).join("")+`<p class="score" id="sc-${id}">Решено: 0 / ${items.length} · Попыток: 0</p>`;
+}
+const good=(s,v)=>s.ans.split("/").some(x=>norm(x)==norm(v));
+const mask=(a,f)=>a.split(" ").map(w=>{const L=[...w],k=Math.ceil(L.length*f);return L.map((ch,i)=>/[A-Za-z0-9]/.test(ch)?(i<k?ch:"_"):ch).join("")}).join("  ");
+function paint(key){
+ const s=T[key],q=$("#q-"+key),m=q.querySelector(".msg"),r=R[s.r]||["",""],n=s.a+s.ok,first=s.ans.split("/")[0],c=s.ok?"ok":s.a?"no":"";const L=[];
+ if(s.ok)L.push(s.a?`✅ Верно! Запомни: ${r[0]}`:"✅ Верно с первой попытки!");
+ else if(s.a>=MAX)L.push(`Все попытки закончились. Правильный ответ: <b>${first}</b>`,r[1],`<b>Запомни:</b> ${r[0]}`);
+ else if(s.a>=1){
+  if(s.o){ // choice items: wrong options get crossed out
+   L.push("Не то 🙂 Выбери другой вариант.");
+   L.push(`💡 Подсказка: ${r[0]}`);
+   if(s.a>=2)L.push(`📖 ${r[1]}`);
+  }else{
+   L.push(s.a<2?"Не совсем 🙂 Попробуй ещё раз.":"Пока не то. Перечитай задание и попробуй снова.");
+   if(s.a>=3)L.push(`💡 Подсказка: ${r[0]}`);
+   if(s.a>=5)L.push(`📖 ${r[1]}`);
+   if(s.a>=6)L.push(`Слов в ответе: ${first.split(" ").length}`);
+   if(s.a>=7)L.push(`Буквы ответа: <b>${mask(first,{7:.01,8:.4,9:.7}[s.a])}</b>`);
+  }
+ }
+ const cnt=(s.a||s.ok)?` <span class="att">Попытка ${n} из ${MAX}</span>`:"";
+ m.innerHTML=L.filter(Boolean).join("<br>")+(L.length?cnt:"");m.className="msg "+(s.ok?"g":s.a?"e":"");
+ const sb=q.querySelector(".spk");if(sb)sb.hidden=!/[A-Za-z]{2}/.test(spk(key));
+ q.querySelectorAll("[data-k]").forEach(e=>{
+  if(e.tagName=="BUTTON"){const v=e.dataset.v,bad=s.w.includes(v);e.className=(s.ok&&v==s.l)?"ok":bad?"no":(s.d&&!s.ok&&good(s,v))?"ok":"";e.disabled=bad}
+  else{if(s.l)e.value=s.l;e.className=c;e.disabled=!!s.d;
+   if(e.tagName=="SELECT")[...e.options].forEach(o=>{o.disabled=!!o.value&&s.w.includes(o.value)&&o.value!=s.l})}});
+ const id=key.split("_")[0],ks=Object.keys(T).filter(k=>k.split("_")[0]==id);
+ $("#sc-"+id).textContent="Решено: "+ks.filter(k=>T[k].ok).length+" / "+ks.length+" · Попыток: "+ks.reduce((x,k)=>x+T[k].a+T[k].ok,0);
+}
+function chk(key,v,auto){const s=T[key];if(s.d||!v||!v.trim()||v===s.l)return;
+ if(good(s,v)){s.l=v;s.ok=1;s.d=1}
+ else{
+  if(auto&&!s.o&&s.ans.split("/").some(x=>norm(x).startsWith(norm(v))))return; // still typing: don't count it
+  s.l=v;s.a++;if(s.o)s.w.push(v);if(s.a>=MAX)s.d=1}
+ paint(key);if(s.d)say(spk(key));save()}
+document.addEventListener("input",e=>{const t=e.target;
+ if(t.matches("textarea,#name"))save();
+ const k=t.dataset&&t.dataset.k;if(!k||t.tagName!="INPUT"||T[k].d)return;
+ t.classList.remove("no");clearTimeout(tm[k]);
+ if(good(T[k],t.value))chk(k,t.value);else tm[k]=setTimeout(()=>chk(k,t.value,true),2500)});
+document.addEventListener("change",e=>{const k=e.target.dataset&&e.target.dataset.k;if(k&&e.target.tagName!="BUTTON")chk(k,e.target.value)});
+document.addEventListener("click",e=>{const sp=e.target.closest&&e.target.closest(".spk[data-sp]");if(sp){say(spk(sp.dataset.sp));return}const b=e.target.closest&&e.target.closest("button[data-k]");if(b)chk(b.dataset.k,b.dataset.v)});
+document.addEventListener("keydown",e=>{const k=e.target.dataset&&e.target.dataset.k;if(k&&e.key=="Enter"&&e.target.tagName=="INPUT")chk(k,e.target.value)});
+
+// ===== Exercises =====
+ex("ph",[
+ ["«Пока!» по-английски: __","Bye/Goodbye","phr","Bye|Hi|How are you?"],
+ ["«Меня зовут Макс» по-английски: __","My name is Max","phr","My name is Max|I'm fine, thanks|See you soon"],
+ ["«Приятно познакомиться» по-английски: __","Nice to meet you","phr"],
+ ["«Как дела?» по-английски: __","How are you?","phr","How are you?|Nice to meet you|Goodbye"],
+ ["«Всё хорошо, спасибо» по-английски: __","I'm fine, thanks/I am fine, thanks","phr"],
+ ["«Скоро увидимся» по-английски: __","See you soon","phr"],
+ ["«Увидимся позже» по-английски: __","See you later","phr","See you later|Hello|My name is Max"]
+]);
+ex("dlg",[
+ ["— Hi! My name __ Max.","is","is"],
+ ["— __, Max! I'm Kate. (привет)","hello/hi","phr"],
+ ["— Nice to __ you, Kate. (познакомиться)","meet","phr"],
+ ["— How __ you today?","are","are"],
+ ["— I __ fine, thanks.","am","am"],
+ ["— Bye! See you __. (позже)","later","phr"]
+]);
+ex("be1",[
+ ["I __ eleven.","am","am"],["My dog __ big.","is","is"],["Our parents __ at work.","are","are"],
+ ["He __ my brother.","is","is"],["We __ in the kitchen.","are","are"],["The books __ on the table.","are","are"],
+ ["You __ very kind.","are","are"],["It __ cold today.","is","is"]
+]);
+ex("be2",[
+ ["My sister __ at school.","is","is","am|is|are"],["We __ hungry.","are","are","am|is|are"],["I __ late.","am","am","am|is|are"],
+ ["Ben and Max __ friends.","are","are","am|is|are"],["The tea __ hot.","is","is","am|is|are"],["Her shoes __ new.","are","are","am|is|are"]
+]);
+ex("fix",[
+ ["Исправь: My dog big. →","my dog is big/my dog's big","be0"],["Исправь: He a doctor. →","he is a doctor/he's a doctor","be0"],
+ ["Исправь: They in the car. →","they are in the car/they're in the car","be0"],["Исправь: I tired. →","i am tired/i'm tired","be0"],
+ ["Исправь: We very happy. →","we are very happy/we're very happy","be0"],["Исправь: My sister eleven. →","my sister is eleven/my sister's eleven","be0"]
+]);
+ex("pron",[
+ ["my brother = __","he","pron","he|she|it|we|they"],["the dogs = __","they","pron","he|she|it|we|they"],
+ ["my aunt = __","she","pron","he|she|it|we|they"],["Kate and I = __","we","pron","he|she|it|we|they"],["the table = __","it","pron","he|she|it|we|they"]
+]);
+ex("ben",[
+ ["(−) She __ tired.","isn't/is not","ben"],["(−) We __ at school.","aren't/are not","ben"],["(−) I __ hungry.","am not","ben"],
+ ["(?) __ he a doctor?","is","beq"],["(?) __ you at home?","are","beq"],["(?) __ they friends?","are","beq"],
+ ["Сделай вопрос: she / ready → __","is she ready","beq"]
+]);
+ex("ps1",[
+ ["I __ (play) chess every Sunday.","play","s0"],["He __ (play) the guitar on Friday.","plays","s1"],["She __ (get up) at six.","gets up","s1"],
+ ["We __ (go) to the park on Saturday.","go","s0"],["My dad __ (watch) the news in the evening.","watches","es"],["Anna __ (have) lunch at one.","has","has"],
+ ["They __ (do) sport after school.","do","s0"],["My brother __ (study) maths.","studies","ies"],["The dog __ (sleep) on the sofa.","sleeps","s1"]
+]);
+ex("ps2",[
+ ["She __ to school by bus.","goes","es","go|goes"],["We __ our teeth every day.","brush","s0","brush|brushes"],
+ ["My cat __ on the sofa.","sleeps","s1","sleep|sleeps"],["I __ dinner at seven.","have","has","has|have"],
+ ["He __ TV after school.","watches","es","watch|watches"],["The kids __ games on Sunday.","play","s0","play|plays"]
+]);
+ex("neg1",[
+ ["(−) We __ like tea.","don't/do not","dont"],["(−) I __ play football.","don't/do not","dont"],["(−) He __ like fish.","doesn't/does not","dont"],
+ ["(−) My dog __ sleep on the bed.","doesn't/does not","dont"],["(−) They __ watch TV in the morning.","don't/do not","dont"],["(−) She doesn't __ (watch) cartoons.","watch","base"]
+]);
+ex("neg2",[
+ ["(−) She __ play chess.","doesn't","dont","don't|doesn't"],["(−) We __ watch TV.","don't","dont","don't|doesn't"],["(−) My cat __ like milk.","doesn't","dont","don't|doesn't"],
+ ["(−) They __ have a dog.","don't","dont","don't|doesn't"],["(−) He doesn't __ tea.","like","base","like|likes"],["(−) My sister doesn't __ games.","play","base","play|plays"]
+]);
+ex("q1",[
+ ["(?) __ they like pizza?","do","doq"],["(?) __ he play tennis?","does","doq"],["(?) __ you go to school by bus?","do","doq"],
+ ["(?) __ your dog sleep a lot?","does","doq"],["(?) Does she __ (have) a cat?","have","base"],["(?) Do they __ (watch) TV?","watch","base"]
+]);
+ex("q2",[
+ ["(?) __ she like milk?","Does","doq","Do|Does"],["(?) __ we play games?","Do","doq","Do|Does"],["(?) Does he __ tea?","like","base","like|likes"],
+ ["(?) Do they __ chess?","play","base","play|plays"],["(?) Does your dad __ TV?","watch","base","watch|watches"]
+]);
+ex("q3",[
+ ["— Do you like fish? — No, I __.","don't","dont","do|don't|am not"],["— Does she play tennis? — Yes, she __.","does","doq","do|does|is"],
+ ["— Do they go to school? — No, they __.","don't","dont","don't|doesn't|aren't"],["— Does he like cats? — No, he __.","doesn't","dont","don't|doesn't|isn't"],
+ ["— Do you play chess? — Yes, I __.","do","doq","do|does|am"]
+]);
+const KP="~утверждение|отрицание|вопрос";
+ex("kind",[
+ ["The cat doesn't like fish. →","отрицание","kind",KP],["Do your friends play chess? →","вопрос","kind",KP],["My dad watches TV. →","утверждение","kind",KP],
+ ["Does Anna study English? →","вопрос","kind",KP],["They don't go to school on Sunday. →","отрицание","kind",KP],["Kate plays the piano. →","утверждение","kind",KP]
+]);
+ex("conv",[
+ ["Сделай отрицание: She plays chess. →","she doesn't play chess/she does not play chess","dont"],["Сделай отрицание: We like milk. →","we don't like milk/we do not like milk","dont"],
+ ["Сделай вопрос: He likes dogs. →","does he like dogs","doq"],["Сделай вопрос: They play games. →","do they play games","doq"],["Сделай вопрос: My dad watches TV. →","does my dad watch tv","doq"]
+]);
+ex("ps4",[
+ ["Исправь: He play chess. →","he plays chess","s1"],["Исправь: She don't like milk. →","she doesn't like milk/she does not like milk","dont"],
+ ["Исправь: Does he likes tea? →","does he like tea","base"],["Исправь: We plays games. →","we play games","s0"]
+]);
+ex("mix",[
+ ["My dog __ white.","is","bb","is|sleeps"],["My dog __ a lot.","sleeps","bv","sleeps|is"],["Kate __ eleven.","is","bb","is|likes"],
+ ["Kate __ cartoons.","likes","bv","likes|is"],["We __ at home.","are","bb","are|watch"],["We __ TV every evening.","watch","bv","watch|are"],
+ ["He __ a doctor.","is","bb","is|teaches"],["He __ maths at school.","teaches","bv","teaches|is"],["The kids __ hungry.","are","bb","are|play"],["The kids __ football after school.","play","bv","play|are"]
+]);
+ex("mix2",[
+ ["My sister __ (be) twelve.","is","bb"],["My sister __ (play) tennis.","plays","bv"],["We __ (be) tired.","are","bb"],
+ ["We __ (like) pizza.","like","bv"],["My grandparents __ (be) at home.","are","bb"],["My grandparents __ (live) in a village.","live","bv"]
+]);
+ex("mix3",[
+ ["(−) She __ tired.","isn't","bb","isn't|doesn't"],["(−) She __ like tea.","doesn't","bv","doesn't|isn't"],["(?) __ they at school?","Are","bb","Are|Do"],
+ ["(?) __ they play chess?","Do","bv","Do|Are"],["(?) __ he a doctor?","Is","bb","Is|Does"],["(?) __ he like milk?","Does","bv","Does|Is"]
+]);
+const VP="~вставать|ужинать|ложиться спать|идти в школу|смотреть телевизор|чистить зубы";
+ex("mt2",[
+ ["get up →","вставать","voc",VP],["have dinner →","ужинать","voc",VP],["go to bed →","ложиться спать","voc",VP],
+ ["go to school →","идти в школу","voc",VP],["watch TV →","смотреть телевизор","voc",VP],["brush my teeth →","чистить зубы","voc",VP]
+]);
+const HP="~eleven years old|football after school|at six|brown and white|to school by bus";
+ex("mt3",[
+ ["I am →","eleven years old","mt3",HP],["He plays →","football after school","mt3",HP],["She gets up →","at six","mt3",HP],
+ ["My dogs are →","brown and white","mt3",HP],["We go →","to school by bus","mt3",HP]
+]);
+ex("fin",[
+ ["My dog __ white.","is","bb"],["My dog __ with a ball.","plays","bv"],["We __ students.","are","are"],["He __ lunch at one. (have)","has","has"],
+ ["I __ eleven.","am","am"],["(−) She __ like milk.","doesn't/does not","dont"],["(?) __ they like tea?","do","doq"],["(?) __ he at home?","is","beq"],["(−) We __ tired.","aren't/are not","ben"],
+ ["Исправь: My mum a nurse. →","my mum is a nurse/my mum's a nurse","be0"],["Исправь: She watch TV. →","she watches tv","es"],["Скажи: Увидимся позже → __","see you later","phr"]
+]);
+
+// ===== Autosave on this device =====
+const SK="lesson_hello_be_ps_v3",ta=()=>$$("textarea,#name");
+function save(){try{localStorage.setItem(SK,JSON.stringify({T:Object.fromEntries(Object.entries(T).map(([k,s])=>[k,[s.a,s.l,s.d,s.ok,s.t+"|"+s.ans,s.w]])),x:ta().map(e=>e.value)}))}catch(e){}}
+try{const d=JSON.parse(localStorage.getItem(SK)||"{}");Object.entries(d.T||{}).forEach(([k,v])=>{if(T[k]&&v[4]===T[k].t+"|"+T[k].ans){[T[k].a,T[k].l,T[k].d,T[k].ok]=v;T[k].w=v[5]||[];paint(k)}});(d.x||[]).forEach((v,i)=>{if(ta()[i])ta()[i].value=v})}catch(e){}
+
+// ===== Speaker buttons on all static English =====
+$$(".phrase").forEach(p=>{p.innerHTML=p.innerHTML.split(/<br\s*\/?>/).map(l=>`<div class="ln">${l}</div>`).join("")});
+$$(".ln,td,.cell").forEach(el=>{if(el.closest(".q")||el.querySelector("td,.cell"))return;addSpk(el,el.textContent)});
+
+// ===== Slides =====
+const S=$$("main section");let cur=0;
+S.forEach((_,i)=>{const d=document.createElement("span");d.onclick=()=>go(i);$("#dots").append(d)});
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle("on",k==cur));
+ $$("#dots span").forEach((d,k)=>d.classList.toggle("on",k==cur));scrollTo(0,0)}
+$("#prev").onclick=()=>go(cur-1);$("#next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(e.target.matches("input,textarea,select"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});go(0);
+
+// ===== Audio recorder: MP3, 5 min, re-record, delete, confirm, send link to VK, share, save =====
+async function toMp3(b){try{const ac=new AudioContext(),buf=await ac.decodeAudioData(await b.arrayBuffer()),d=buf.getChannelData(0),pcm=new Int16Array(d.length);
+ for(let i=0;i<d.length;i++)pcm[i]=Math.max(-1,Math.min(1,d[i]))*32767;
+ const e=new lamejs.Mp3Encoder(1,buf.sampleRate,64),out=[];for(let i=0;i<pcm.length;i+=1152){const c=e.encodeBuffer(pcm.subarray(i,i+1152));if(c.length)out.push(c)}
+ out.push(e.flush());return new Blob(out,{type:"audio/mpeg"})}catch(x){return b}}
+function rec(id,task){const el=$("#rec-"+id),f=s=>el.querySelector(s);let mr,blob=null,iv;
+ el.innerHTML=`<div class="rec"><button class="alt r1">🎙 Записать</button> <span class="rt">0:00 / 5:00</span><div class="rp" hidden><audio controls></audio><br><button class="r2">🔁 Перезаписать</button> <button class="r3">🗑 Удалить</button> <button class="r4">📨 Отправить учителю</button> <button class="r5">↗ Поделиться</button> <button class="r6">💾 Сохранить</button></div><div class="small rs"></div></div>`;
+ const st=t=>f(".rs").textContent=t;
+ async function start(){try{const s=await navigator.mediaDevices.getUserMedia({audio:true});mr=new MediaRecorder(s);const ch=[];mr.ondataavailable=e=>ch.push(e.data);
+  mr.onstop=()=>{s.getTracks().forEach(x=>x.stop());clearInterval(iv);blob=new Blob(ch,{type:mr.mimeType});f("audio").src=URL.createObjectURL(blob);f(".rp").hidden=false;f(".r1").textContent="🎙 Записать";st("Послушай запись. Можно перезаписать или отправить.")};
+  mr.start();const t0=Date.now();f(".rp").hidden=true;f(".r1").textContent="⏹ Стоп";st("");
+  iv=setInterval(()=>{const n=Math.floor((Date.now()-t0)/1000);f(".rt").textContent=Math.floor(n/60)+":"+String(n%60).padStart(2,"0")+" / 5:00";if(n>=300)mr.stop()},500)}
+  catch(x){st("Нет доступа к микрофону. Разреши его в настройках браузера.")}}
+ const file=async()=>{const m=await toMp3(blob);return new File([m],"audio_"+id+(m.type=="audio/mpeg"?".mp3":blob.type.includes("mp4")?".m4a":".webm"),{type:m.type})};
+ f(".r1").onclick=()=>mr&&mr.state=="recording"?mr.stop():start();
+ f(".r2").onclick=()=>{if(confirm("Перезаписать? Старая запись удалится."))start()};
+ f(".r3").onclick=()=>{if(confirm("Удалить запись?")){blob=null;f(".rp").hidden=true;f(".rt").textContent="0:00 / 5:00";st("")}};
+ f(".r4").onclick=async()=>{const n=$("#name").value.trim();if(!n){st("Сначала напиши своё имя на первой странице.");return}
+  if(!confirm("Ты уверен? Отправить запись учителю?"))return;st("Отправляем…");
+  try{const fd=new FormData();fd.append("file",await file());const r=await(await fetch("https://tmpfiles.org/api/v1/upload",{method:"POST",body:fd})).json();
+   const u=r.data.url.replace("tmpfiles.org/","tmpfiles.org/dl/");
+   const x=await tg("sendMessage",{text:"🎙 Audio from "+n+"\nЗадание: "+task()+"\n"+u+"\n(ссылка живёт около часа)"});
+   st(x.ok?"Отправлено! ✅":"Не удалось отправить ❌ Нажми «Поделиться» или «Сохранить».")}catch(e){st("Не удалось отправить ❌ Нажми «Поделиться» или «Сохранить».")}};
+ f(".r5").onclick=async()=>{try{await navigator.share({files:[await file()]})}catch(e){st("Поделиться не получилось. Нажми «Сохранить».")}};
+ f(".r6").onclick=async()=>{const x=await file(),a=document.createElement("a");a.href=URL.createObjectURL(x);a.download=x.name;a.click()};
+}
+rec("1",()=>$("#sit").value);
+rec("2",()=>"Read and say: My cat is black. My cat plays. My mum is at home. My mum watches TV. They are friends. They go to school.");
+
+// ===== Report: readable, with checked answers and mistakes =====
+function report(){
+ const ks=Object.values(T),okc=ks.filter(s=>s.ok).length,first=ks.filter(s=>s.ok&&!s.a).length;
+ const L=["📘 Lesson: Hello, To be, Present Simple","Student: "+($("#name").value||"(no name)"),`Итого: решено ${okc} из ${ks.length}, с первой попытки ${first}, всего попыток ${ks.reduce((x,s)=>x+s.a+s.ok,0)}`];
+ S.forEach(s=>{const rows=[];
+  s.querySelectorAll(".q").forEach(q=>{const t=T[q.id.slice(2)],v=t.l||"—",
+   p=(t.t.includes("__")?t.t.replace("__","["+v+"]"):t.t+" ["+v+"]").replace(/<[^>]+>/g,"");
+   rows.push((t.ok?(t.a?"🟡 ":"✅ "):t.d?"❌ ":"▫️ ")+p+(t.d&&!t.ok?" → верно: "+t.ans.split("/")[0]:"")+(t.a+t.ok?" (попыток: "+(t.a+t.ok)+")":""))});
+  s.querySelectorAll("textarea").forEach(t=>rows.push("✍️ "+(t.dataset.open||"Текст")+":\n"+(t.value||"—")));
+  if(rows.length)L.push("\n"+(s.querySelector("h2,h1")||{textContent:"Ответы"}).textContent,...rows)});
+ return L.join("\n");
+}
+$("#copy").onclick=()=>{navigator.clipboard.writeText(report()).then(()=>$("#status").textContent="Скопировано! ✅",()=>$("#status").textContent="Не удалось скопировать")};
+$("#send").onclick=async()=>{
+ if(!$("#name").value.trim()){$("#status").textContent="Пожалуйста, напиши своё имя на первой странице.";return}
+ if(!confirm("Отправить ответы учителю?"))return;
+ const txt=report();$("#status").textContent="Отправляем…";
+ try{for(let p=0;p<txt.length;p+=1000){if(!(await tg("sendMessage",{text:txt.slice(p,p+1000)})).ok)throw 0}
+  $("#status").textContent="Отправлено! ✅ Спасибо!"}catch(e){$("#status").textContent="Не удалось отправить ❌ Нажми «Скопировать ответы» и отправь их учителю."}};
+</script>
+</body>
+</html>
